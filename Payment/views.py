@@ -9,9 +9,13 @@ from .serializer import PaymentSerializer,OrderSerializer
 from django.db.models import Q
 from datetime import timedelta
 import razorpay
-client = razorpay.Client(auth=("rzp_test_KgiLdhTO6F4BS3", "XBUSNhYRLL2J6eODHO4aw18W"))
+from decouple import config
 
 
+client = razorpay.Client(auth=(config('id'), config('key')))
+
+config('id')
+config('key')
 # Create your views here.
 
 @api_view(['GET'])

@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 // import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import AuthContext from "./AuthContext";
+import AuthContext, { BaseUrl } from "./AuthContext";
 
 const LeadContext = createContext();
 export default LeadContext;
@@ -30,7 +30,7 @@ export const LeadProvider = ({ children }) => {
 
   const createBatch = async (batch, advisor, location) => {
     console.log(advisor, location, batch);
-    await axios.post("http://127.0.0.1:8000/batch/create/batch",
+    await axios.post(BaseUrl + "batch/create/batch",
         {
           'advisor': advisor,
           'location': location,
@@ -65,7 +65,7 @@ export const LeadProvider = ({ children }) => {
 
   const createGroup = async (batch, name, advisor, domain) => {
     console.log(batch, name, advisor, domain);
-    await axios.post("http://127.0.0.1:8000/batch/create/group",
+    await axios.post(BaseUrl + "batch/create/group",
         {
           batch: batch,
           name: name,
@@ -84,7 +84,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const createPlacement = async (student, name, location, designation, LPA, address, count) => {
-    await axios.post("http://127.0.0.1:8000/student/create/placement",
+    await axios.post(BaseUrl + "student/create/placement",
         {
           student: student,
           name: name,
@@ -110,7 +110,7 @@ export const LeadProvider = ({ children }) => {
   const getAdvisors = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/admins/view/advisors",
+        BaseUrl + "admins/view/advisors",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -126,7 +126,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const getAdvisorsNames = async () => {
-    await axios.post("http://127.0.0.1:8000/admins/view/advisors/names",
+    await axios.post(BaseUrl + "admins/view/advisors/names",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -140,7 +140,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const getGroups = async () => {
-    await axios.post("http://127.0.0.1:8000/batch/view/groups",
+    await axios.post(BaseUrl + "batch/view/groups",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -154,7 +154,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const getGroupDetails = async (groupId) => {
-    await axios.post("http://127.0.0.1:8000/batch/view/group/details",
+    await axios.post(BaseUrl + "batch/view/group/details",
         { id: groupId },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -169,7 +169,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const getGroupLess = async () => {
-    await axios.post("http://127.0.0.1:8000/batch/view/group/less",
+    await axios.post(BaseUrl + "batch/view/group/less",
         {
           domain: groupDetails.domain,
           batch: groupDetails.batch,
@@ -186,7 +186,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const getPlacements = async () => {
-    await axios.get("http://127.0.0.1:8000/student/view/placements",
+    await axios.get(BaseUrl + "student/view/placements",
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
         }).then((res) => {
@@ -198,7 +198,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const getProfile = async (userId) => {
-    await axios.post("http://127.0.0.1:8000/user/view/profile",
+    await axios.post(BaseUrl + "user/view/profile",
         {
           "userId": userId,
         },
@@ -213,7 +213,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const getRequests = async () => {
-    await axios.post("http://127.0.0.1:8000/student/view/requests", {},
+    await axios.post(BaseUrl + "student/view/requests", {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
         }).then((res) => {
@@ -225,7 +225,7 @@ export const LeadProvider = ({ children }) => {
   }
 
   const getStudents = async () => {
-    await axios.get("http://127.0.0.1:8000/student/view/students",
+    await axios.get(BaseUrl + "student/view/students",
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
         }
@@ -243,7 +243,7 @@ export const LeadProvider = ({ children }) => {
 
 
   const updateBatch = async (batch, advisor) => {
-    await axios.post("http://127.0.0.1:8000/batch/update/batch",
+    await axios.post(BaseUrl + "batch/update/batch",
         {
           'advisor': advisor,
           'id': batch,
@@ -298,7 +298,7 @@ export const LeadProvider = ({ children }) => {
 
 
   const deleteAdvisor = async (advisorId) => {
-    await axios.post("http://127.0.0.1:8000/admins/delete/advisor",
+    await axios.post(BaseUrl + "admins/delete/advisor",
         {
           'id': advisorId,
         },
@@ -313,7 +313,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const deleteBatch = async (batchId) => {
-    await axios.post("http://127.0.0.1:8000/batch/delete/batch",
+    await axios.post(BaseUrl + "batch/delete/batch",
         { id: batchId },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -327,7 +327,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const deleteDomain = async (domainId) => {
-    await axios.post("http://127.0.0.1:8000/user/delete/domain",
+    await axios.post(BaseUrl + "user/delete/domain",
         { id: domainId },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -341,7 +341,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const deleteGroup = async (groupId) => {
-    await axios.post("http://127.0.0.1:8000/batch/delete/group",
+    await axios.post(BaseUrl + "batch/delete/group",
         { id: groupId },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -359,7 +359,7 @@ export const LeadProvider = ({ children }) => {
 
 
   const addInGroup = async (userId) => {
-    await axios.post("http://127.0.0.1:8000/batch/add/group",
+    await axios.post(BaseUrl + "batch/add/group",
         {
           student: userId,
           group: groupDetails.id,
@@ -377,7 +377,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const rmFromGroup = async (userId) => {
-    await axios.post("http://127.0.0.1:8000/batch/remove/group",
+    await axios.post(BaseUrl + "batch/remove/group",
         {
           student: userId,
         },
@@ -394,7 +394,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const studentManage = async (student, batch, domain,fee) => {
-    await axios.post("http://127.0.0.1:8000/student/manage/student", {
+    await axios.post(BaseUrl + "student/manage/student", {
       'student':student,
       'batch':batch,
       'domain':domain,
@@ -411,7 +411,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const shiftAccept = async (id,amount) => {
-    await axios.post("http://127.0.0.1:8000/student/shift/accept", {
+    await axios.post(BaseUrl + "student/shift/accept", {
       'id':id,
       'amount':amount,
     },{
@@ -425,7 +425,7 @@ export const LeadProvider = ({ children }) => {
   }
 
   const shiftReject = async (id) => {
-    await axios.post("http://127.0.0.1:8000/student/shift/reject", {
+    await axios.post(BaseUrl + "student/shift/reject", {
       'id':id,
     },{
       headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -438,7 +438,7 @@ export const LeadProvider = ({ children }) => {
   }
 
   const terminateAccept = async (id) => {
-    await axios.post("http://127.0.0.1:8000/student/terminate/accept", {
+    await axios.post(BaseUrl + "student/terminate/accept", {
       'id':id,
     },{
       headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -451,7 +451,7 @@ export const LeadProvider = ({ children }) => {
   }
 
   const terminateReject = async (id) => {
-    await axios.post("http://127.0.0.1:8000/student/terminate/reject", {
+    await axios.post(BaseUrl + "student/terminate/reject", {
       'id':id,
     },{
       headers: { Authorization: `Bearer ${authTokens.access}` },

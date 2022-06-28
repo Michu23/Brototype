@@ -7,8 +7,9 @@ import StyleContext from "./StyleContext";
 import FormData from "form-data";
 
 const AuthContext = createContext();
-
 export default AuthContext;
+
+export const BaseUrl = "http://localhost: 8000/";
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ export const AuthProvider = ({ children }) => {
   const signupUser = async ({ username, email, password }) => {
     const check = signUpBatch === 0 ? true : false;
     await axios
-      .post("http://127.0.0.1:8000/user/signup", {
+      .post(BaseUrl + "user/signup", {
         username: username,
         email: email,
         password: password,
@@ -72,7 +73,7 @@ export const AuthProvider = ({ children }) => {
 
   const stndingData = async (username, password) => {
     await axios
-      .post("http://127.0.0.1:8000/user/token", { username, password })
+      .post(BaseUrl + "user/token", { username, password })
       .then((res) => {
         setAuthTokens(res.data);
         setUser(jwt_decode(res.data.access));
@@ -130,7 +131,7 @@ export const AuthProvider = ({ children }) => {
   const reset_password = async (email) => {
     console.log(email);
     await axios
-      .post("http://127.0.0.1:8000/user/password_reset/done/", { email }, { headers: { "Content-Type": "application/json" } })
+      .post(BaseUrl + "user/password_reset/done/", { email }, { headers: { "Content-Type": "application/json" } })
       .then((res) => {
         infoToast("Password reset link has been sent to your email");
       }).catch((err) => {
@@ -155,7 +156,7 @@ export const AuthProvider = ({ children }) => {
     }
     if (password === confirm_password) {
       await axios
-        .post("http://127.0.0.1:8000/user/reset_password_confirm", body , { headers: { "Content-Type": "application/json" } })
+        .post(BaseUrl + "user/reset_password_confirm", body , { headers: { "Content-Type": "application/json" } })
         .then((res) => {
           infoToast("Password changed successfully");
         }).catch((err) => {
@@ -174,7 +175,7 @@ export const AuthProvider = ({ children }) => {
   const getMyProfile = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/user/view/profile",
+        BaseUrl + "user/view/profile",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -192,7 +193,7 @@ export const AuthProvider = ({ children }) => {
   const getDomains = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/user/view/domain",
+        BaseUrl + "user/view/domain",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -209,7 +210,7 @@ export const AuthProvider = ({ children }) => {
 
   const backendUpdate = async (data) => {
     await axios
-      .post("http://127.0.0.1:8000/user/update/profilephoto", data, {
+      .post(BaseUrl + "user/update/profilephoto", data, {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -224,7 +225,7 @@ export const AuthProvider = ({ children }) => {
   const getReviewers = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/admins/view/reviewers",
+        BaseUrl + "admins/view/reviewers",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -239,7 +240,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getBatches = async () => {
-    await axios.post("http://127.0.0.1:8000/batch/view/batches",
+    await axios.post(BaseUrl + "batch/view/batches",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -255,7 +256,7 @@ export const AuthProvider = ({ children }) => {
   const getStudentTasks = async (studentId) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/view/tasklist",
+        BaseUrl + "manifest/view/tasklist",
         { id: studentId },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -279,7 +280,7 @@ export const AuthProvider = ({ children }) => {
 
   const getChartData = async () => {
     await axios
-      .get("http://127.0.0.1:8000/manifest/view/chartdata", {
+      .get(BaseUrl + "manifest/view/chartdata", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -293,7 +294,7 @@ export const AuthProvider = ({ children }) => {
   const getPendings = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/view/pendings",
+        BaseUrl + "manifest/view/pendings",
         {
           id: curr_student,
         },
@@ -313,7 +314,7 @@ export const AuthProvider = ({ children }) => {
   const deletePendings = async (id) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/delete/pendings",
+        BaseUrl + "manifest/delete/pendings",
         {
           id: id,
         },
@@ -334,7 +335,7 @@ export const AuthProvider = ({ children }) => {
   const getStudentManifest = async (manifestId) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/view/manifest",
+        BaseUrl + "manifest/view/manifest",
         { id: manifestId },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -351,7 +352,7 @@ export const AuthProvider = ({ children }) => {
 
   const isLinkValid = async (link) => {
     const res = await axios.post(
-      "http://127.0.0.1:8000/user/validate/link",
+      BaseUrl + "user/validate/link",
       { link: link },
       {}
     );
@@ -366,7 +367,7 @@ export const AuthProvider = ({ children }) => {
     }
     await axios
       .post(
-        "http://127.0.0.1:8000/user/update/profile",
+        BaseUrl + "user/update/profile",
         {
           first_name: e.target.first_name.value,
           last_name: e.target.last_name.value,
@@ -409,7 +410,7 @@ export const AuthProvider = ({ children }) => {
 
   const [notifications, setNotifications] = useState([]);
   const getNotifications = async () => {
-    axios.post("http://127.0.0.1:8000/user/view/notifications",{},{ headers: { Authorization: `Bearer ${authTokens.access}` } }
+    axios.post(BaseUrl + "user/view/notifications",{},{ headers: { Authorization: `Bearer ${authTokens.access}` } }
       ).then((res) => {
         console.log(res.data);
         setNotifications(res.data);
@@ -421,7 +422,7 @@ export const AuthProvider = ({ children }) => {
   const getNotificationsTypes = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/user/types",
+        BaseUrl + "user/types",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -439,7 +440,7 @@ export const AuthProvider = ({ children }) => {
   const createNotifications = async (type, content) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/user/create/notification",
+        BaseUrl + "user/create/notification",
         {
           type: type,
           content: content,
@@ -459,7 +460,7 @@ export const AuthProvider = ({ children }) => {
   const deleteNotifications = async (id) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/user/delete/notification",
+        BaseUrl + "user/delete/notification",
         { id: id },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -479,7 +480,7 @@ export const AuthProvider = ({ children }) => {
 
   const showPayment = async () => {
     await axios
-      .get("http://127.0.0.1:8000/payment/pay", {
+      .get(BaseUrl + "payment/pay", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -504,7 +505,7 @@ export const AuthProvider = ({ children }) => {
 
   const showUpFront = async () => {
     await axios
-      .get("http://127.0.0.1:8000/payment/upfrontpay", {
+      .get(BaseUrl + "payment/upfrontpay", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -529,7 +530,7 @@ export const AuthProvider = ({ children }) => {
 
   const showShiftPayment = async () => {
     await axios
-      .get("http://127.0.0.1:8000/payment/shiftpay", {
+      .get(BaseUrl + "payment/shiftpay", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -553,7 +554,7 @@ export const AuthProvider = ({ children }) => {
 
   const showFinePayment = async () => {
     await axios
-      .get("http://127.0.0.1:8000/payment/FinePayments", {
+      .get(BaseUrl + "payment/FinePayments", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -608,7 +609,7 @@ export const AuthProvider = ({ children }) => {
     console.log(bodyDatas);
 
     const data = await axios({
-      url: "http://127.0.0.1:8000/payment/start_payment",
+      url: BaseUrl + "payment/start_payment",
       method: "POST",
       headers: {
         Authorization: `Bearer ${authTokens.access}`,
@@ -653,7 +654,7 @@ export const AuthProvider = ({ children }) => {
       console.log(bodyData);
 
       await axios({
-        url: "http://127.0.0.1:8000/payment/paying",
+        url: BaseUrl + "payment/paying",
         method: "POST",
         data: bodyData,
         headers: {
@@ -702,7 +703,7 @@ export const AuthProvider = ({ children }) => {
 
   const myPayments = async () => {
     await axios
-      .get("http://127.0.0.1:8000/payment/myPayments", {
+      .get(BaseUrl + "payment/myPayments", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -717,7 +718,7 @@ export const AuthProvider = ({ children }) => {
 
   const allPendingPayments = async () => {
     await axios
-      .get("http://127.0.0.1:8000/payment/pending", {
+      .get(BaseUrl + "payment/pending", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -733,7 +734,7 @@ export const AuthProvider = ({ children }) => {
 
   const allCompletedPayments = async () => {
     await axios
-      .get("http://127.0.0.1:8000/payment/completed", {
+      .get(BaseUrl + "payment/completed", {
         headers: { Authorization: `Bearer ${authTokens.access}` },
       })
       .then((res) => {
@@ -749,7 +750,7 @@ export const AuthProvider = ({ children }) => {
   const cashpaid = async (id) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/payment/cashpaid",
+        BaseUrl + "payment/cashpaid",
         {
           id: id,
         },
@@ -767,7 +768,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const folderSubmit = async (data) => {
-    await axios.post("http://127.0.0.1:8000/manifest/folder/submit", data, {
+    await axios.post(BaseUrl + "manifest/folder/submit", data, {
       headers: { Authorization: `Bearer ${authTokens.access}` },
     });
   }
@@ -775,7 +776,7 @@ export const AuthProvider = ({ children }) => {
   const sendForm = async (id,amount) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/payment/sendform",
+        BaseUrl + "payment/sendform",
         {
           id: id,
           amount: amount,
@@ -797,7 +798,7 @@ export const AuthProvider = ({ children }) => {
 
   const getLocations = async () => {
     await axios
-      .get("http://127.0.0.1:8000/user/getLocations", {})
+      .get(BaseUrl + "user/getLocations", {})
       .then((res) => {
         console.log(res.data);
         setAllLocations(res.data);
@@ -815,7 +816,7 @@ export const AuthProvider = ({ children }) => {
     // console.log("Inside");
     // await axios
     //   .post(
-    //     "http://127.0.0.1:8000/user/getBranches",
+    //     BaseUrl + "user/getBranches",
     //     {
     //       location: LocationId,
     //     },
@@ -835,7 +836,7 @@ export const AuthProvider = ({ children }) => {
   const getBranchStudents = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/user/getBatchStudents",
+        BaseUrl + "user/getBatchStudents",
         {
           branch: branchid,
         },
@@ -852,7 +853,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getLeads = async () => {
-    await axios.post("http://127.0.0.1:8000/admins/view/leads", {}, {
+    await axios.post(BaseUrl + "admins/view/leads", {}, {
       headers: { Authorization: `Bearer ${authTokens.access}` },
       }).then((res) => {
         console.log(res.data);
@@ -863,7 +864,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const createLead = async (data) => {
-    await axios.post("http://127.0.0.1:8000/admins/create/lead", data, {
+    await axios.post(BaseUrl + "admins/create/lead", data, {
       headers: { Authorization: `Bearer ${authTokens.access}` },
     }).then((res) => {
       console.log(res.data);
@@ -874,7 +875,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const deleteLead = async (id) => {
-    await axios.post("http://127.0.0.1:8000/admins/delete/lead", {
+    await axios.post(BaseUrl + "admins/delete/lead", {
       id: id,
     }, {
       headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -887,7 +888,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const updatePlacementProfile = async (data) => {
-    await axios.post("http://127.0.0.1:8000/student/update/placement", data, {
+    await axios.post(BaseUrl + "student/update/placement", data, {
       headers: { Authorization: `Bearer ${authTokens.access}` },
     }).then((res) => {
       console.log(res.data);
@@ -897,7 +898,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const getPlacementProfile = async (id) => {
-    await axios.post("http://127.0.0.1:8000/student/view/placement", {
+    await axios.post(BaseUrl + "student/view/placement", {
       student: id,
     }, {
       headers: { Authorization: `Bearer ${authTokens.access}` },

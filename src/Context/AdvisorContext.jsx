@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
-import AuthContext from "./AuthContext";
+import AuthContext, { BaseUrl } from "./AuthContext";
 
 const AdvisorContext = createContext();
 export default AdvisorContext;
@@ -11,8 +11,7 @@ export const AdvisorProvider = ({ children }) => {
   //Asign the useNavigate hook to a variable
   const navigate = useNavigate();
 
-  const { authTokens, curr_manifest, getStudentManifest } =
-    useContext(AuthContext);
+  const { authTokens, curr_manifest, getStudentManifest } = useContext(AuthContext);
 
   //Define the state of the context
   const [myStudents, setMyStudents] = useState(null);
@@ -24,7 +23,7 @@ export const AdvisorProvider = ({ children }) => {
   const addTask = async (task) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/add/task",
+        BaseUrl + "manifest/add/task",
         {
           task: task,
           manifest: curr_manifest,
@@ -46,7 +45,7 @@ export const AdvisorProvider = ({ children }) => {
   const deleteTask = async (id) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/delete/task",
+        BaseUrl + "manifest/delete/task",
         {
           id: id,
         },
@@ -67,7 +66,7 @@ export const AdvisorProvider = ({ children }) => {
   const reviewPassed = async (form, reviewer, remark, date, status) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/review/passed",
+        BaseUrl + "manifest/review/passed",
         {
           form: form,
           reviewer: reviewer,
@@ -93,7 +92,7 @@ export const AdvisorProvider = ({ children }) => {
   const reviewRepeated = async (form, reviewer, remark, date, status) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/manifest/review/repeated",
+        BaseUrl + "manifest/review/repeated",
         {
           form: form,
           reviewer: reviewer,
@@ -121,7 +120,7 @@ export const AdvisorProvider = ({ children }) => {
   const getMyGroups = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/batch/view/mygroups",
+        BaseUrl + "batch/view/mygroups",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -139,7 +138,7 @@ export const AdvisorProvider = ({ children }) => {
   const getMyStudents = async () => {
     await axios
       .post(
-        "http://127.0.0.1:8000/student/view/mystudents",
+        BaseUrl + "student/view/mystudents",
         {},
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -157,7 +156,7 @@ export const AdvisorProvider = ({ children }) => {
   const getMyGroupDetails = async (groupId) => {
     await axios
       .post(
-        "http://127.0.0.1:8000/batch/view/mygroup/details",
+        BaseUrl + "batch/view/mygroup/details",
         { id: groupId },
         {
           headers: { Authorization: `Bearer ${authTokens.access}` },
@@ -174,7 +173,7 @@ export const AdvisorProvider = ({ children }) => {
   //Update function
 
   const taskComplete = async (taskId) => {
-    await axios.post('http://127.0.0.1:8000/manifest/complete/task',{'task':taskId},{
+    await axios.post(BaseUrl + 'manifest/complete/task',{'task':taskId},{
         headers: {Authorization : `Bearer ${authTokens.access}`}
     }).then(res=>{
         console.log(res.data)
@@ -186,7 +185,7 @@ export const AdvisorProvider = ({ children }) => {
   // Other function
 
   const sendShiftRequest = async (studentId, shiftTo) => {
-    await axios.post('http://127.0.0.1:8000/student/request/shift',{
+    await axios.post(BaseUrl + 'student/request/shift',{
         'student':studentId,
         'shift_to':shiftTo,
       },{
@@ -200,7 +199,7 @@ export const AdvisorProvider = ({ children }) => {
   }
 
   const sendTerminateRequest = async (studentId) => {
-    await axios.post('http://127.0.0.1:8000/student/request/terminate',{
+    await axios.post(BaseUrl + 'student/request/terminate',{
         'student':studentId,
       },{
         headers: {Authorization : `Bearer ${authTokens.access}`}

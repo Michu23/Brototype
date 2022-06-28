@@ -1,0 +1,35 @@
+.accordion-button:not(.collapsed) {
+  color: #fff !important;
+  background-color: #c9a100 !important;
+  outline: none !important;
+  border: none !important;
+}
+
+
+.accordion-button:focus {
+  border: hidden !important;
+  border-color: #fff !important;
+  background-color: #000;
+  outline: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background-color: #fff !important;
+}
+
+.accordion-flush .accordion-item .accordion-button {
+  background: none !important ;
+}
+
+tr {
+  margin: 10px;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent !important ;
+  color: black !important;
+}
+
+.accordion-button{
+  padding: 0px;
+}
+

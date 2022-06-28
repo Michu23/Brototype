@@ -1,0 +1,28 @@
+.manifest {
+    background: var(--white);
+    border-color: var(--info);
+}
+.head {
+    background: var(--dark);
+    font-size: larger;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.label {
+    font-weight: 600;
+}
+
+h6{
+    font-weight: 700;
+}
+
+.input {
+    background: var(--light); 
+    border: none;
+    color: var(--dark);
+}
+
+.todoDiv {
+    background: var(--light);
+}

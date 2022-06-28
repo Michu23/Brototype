@@ -1,0 +1,58 @@
+.payment {
+    background: var(--light);
+}
+
+.crDiv {
+    background: var(--white);
+}
+
+.crMonth {
+    font-weight: 600;
+}
+
+.lastDate {
+    font-weight: 700;
+}
+
+.crCash {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.btn {
+    background: var(--info);
+    font-weight: 600;
+}
+
+.btnCancel {
+    background: var(--dark);
+    font-weight: 600;
+    color: var(--light);
+}
+
+.btn:hover {
+    background: var(--info);
+    opacity: 0.9;
+}
+
+.btnCancel:hover {
+    background: var(--dark);
+    opacity: 0.9;
+    color: var(--light);
+
+}
+
+.input {
+    background: var(--light);
+    border: none;
+    background: var(--light);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.status {
+    font-weight: 700;
+    color: var(--info);
+}

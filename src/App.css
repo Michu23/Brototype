@@ -1,0 +1,279 @@
+.cp {
+  cursor: pointer;
+}
+
+body {
+  background: var(--light);
+}
+
+.abcd{
+  color: var(--dark) !important;
+}
+
+.css-i4bv87-MuiSvgIcon-root{
+  color: var(--dark) !important;
+}
+
+.navdiv:hover .css-i4bv87-MuiSvgIcon-root{
+  color: var(--light) !important;
+}
+
+.bgred {
+  background-color: rgb(255, 0, 0) !important;
+}
+
+.bgorange {
+  background-color: rgb(255, 171, 37) !important;
+}
+
+.bggreen {
+  background-color: rgb(21, 255, 0) !important;
+}
+
+.bgblue {
+  background-color: rgb(0, 251, 255) !important;
+}
+
+.bgyellow {
+  background-color: rgb(242, 255, 0) !important;
+}
+
+.bg {
+  background: var(--white) !important;
+}
+
+.bginfo {
+  background: var(--info) !important;
+}
+
+.bglight {
+  background: var(--light) !important;
+}
+
+.bggrey {
+  background: var(--grey) !important;
+}
+
+.bgdark {
+  background: var(--dark) !important;
+}
+
+Link {
+  text-decoration: none !important;
+}
+
+.submitProfileDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.submitProfile {
+  width: 150px;
+}
+
+.textlight {
+  color: var(--light) !important;
+}
+
+.textdark {
+  color: var(--dark) !important;
+}
+
+.navitems {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 10px 10px;
+}
+
+.displayname {
+  text-transform: capitalize;
+}
+
+.paymentpendingbutton {
+  background-color: var(--dark) !important;
+  color: var(--light) !important;
+}
+
+.sendform,
+.completed {
+  background-color: var(--dark) !important;
+  color: var(--light) !important;
+}
+
+.coh {
+  background-color: var(--info) !important;
+  color: var(--light) !important;
+}
+
+tr {
+  border: none !important;
+}
+
+.accordion-button {
+  background-color: var(--white) !important;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* > * {
+  font-family: "Poppins", cursive !important;
+}
+
+input[type="text"],
+textarea {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  outline: none;
+  -moz-appearance: textfield;
+}
+/* variables */
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  width: 80px;
+  height: 40px;
+  border-radius: 50px;
+  outline: none;
+  /* background-color: yellow; */
+  background-image: url(https://i.postimg.cc/857jHw2q/Screenshot-2020-04-16-at-1-07-06-PM.png);
+  background-size: cover;
+}
+
+input[type="checkbox"]::before {
+  position: absolute;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  background-color: var(--primary-dark);
+  border-radius: 50px;
+}
+
+input[type="checkbox"]:checked:before {
+  transform: translate(100%);
+}
+
+input[type="checkbox"]:checked {
+  background-image: url(https://i.postimg.cc/Hn0nstVK/Screenshot-2020-04-16-at-1-07-19-PM.png);
+}
+
+.addtask {
+  background-color: var(--dark) !important;
+  color: var(--light) !important;
+}
+
+.searchbtn {
+  background-color: var(--dark) !important;
+  color: var(--light) !important;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.slides {
+  min-height: 65px;
+  padding: 10px;
+  -webkit-transition: background-color 0.25s ease-out;
+  -moz-transition: background-color 0.25s ease-out;
+  -o-transition: background-color 0.25s ease-out;
+  transition: background-color 0.25s ease-out;
+  cursor: pointer;
+  background-color: var(--black);
+  color: var(--dark);
+  font-weight: 575;
+  line-height: 150%;
+}
+
+.slides:hover{
+  background-color: var(--light) !important; 
+}
+
+.dltbtn{
+  display: none !important;
+}
+
+.slides:hover .dltbtn{
+  display: block !important;
+}
+
+.vertical {
+  margin-top: 1px;
+  height: 100% !important;
+  opacity: 0.5;
+  width: 30px;
+}
+
+
+.notifycontent{
+  min-height: fit-content;
+}
+
+.noti-content{
+  padding: 10px;
+  border-radius: 5px var(--grey);
+  background-color: var(--white);
+  color: var(--dark);
+}
+
+.textinfo{
+  color: var(--info);
+}
+
+.notitype{
+  font-size: 13px !important;
+  font-weight: 700;
+  margin-bottom: 0px !important;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  margin-left: 45px !important;
+  margin-top: 10px !important;
+  opacity: 0.9;
+}
+
+.slides:hover .tooltiptext {
+  visibility: visible;
+}
+
+.chartspage{
+  margin-left: 2.9rem !important;
+  margin-right: 0.3rem !important;
+}
+
+.header2{
+  height: 70px !important;
+}
+
+.errorsign{
+  margin-left: 390px;
+  margin-top: -30px;
+}
+
+label{
+  margin-left: 7px;
+  font-size: 12px;
+  font-weight: 400;
+}

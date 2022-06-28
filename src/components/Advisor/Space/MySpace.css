@@ -1,0 +1,33 @@
+.accordion-button:not(.collapsed) {
+  color: #fff !important;
+  background-color: #5500c9 !important;
+}
+
+.accordion-button:link,
+.accordion-button:visited,
+.accordion-button:hover,
+.accordion-button::active,
+.accordion-button:focus {
+  border: hidden !important;
+  border-color: #fff !important;
+  outline: 0;
+  border: 0;
+  background-color: #fff !important;
+}
+
+
+.accordion-flush .accordion-item .accordion-button{
+  background: none !important ;
+}
+
+
+tr {
+  margin: 10px;
+}
+
+
+
+.accordion-button:not(.collapsed){
+  background-color: transparent !important ;
+  color: black !important;
+}

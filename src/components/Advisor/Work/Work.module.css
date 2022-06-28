@@ -1,0 +1,29 @@
+.tasks {
+    background: var(--light);
+  }
+  
+  .tableHead {
+    background: var(--dark);
+  }
+  
+  .tableHeadText {
+    color: var(--light);
+  }
+  
+  .tableBody {
+    background: var(--white);
+  }
+  
+  .tableBodyText {
+    color: var(--dark);
+    font-size: 18px;
+  }
+  
+  /* {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+  }  */
+  

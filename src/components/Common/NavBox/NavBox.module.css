@@ -1,0 +1,30 @@
+.navItems:hover {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.navItems:hover .css-i4bv87-MuiSvgIcon-root:hover{
+    color: var(--light) !important;
+  }
+
+
+
+.navSelected {
+    height: 100%;
+    background: var(--info);
+    z-index: 1;
+}
+
+a{
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.material-icons-round:hover{
+    fill: var(--light)
+}
+
+.iconss:hover{
+    color: var(--light);
+
+}

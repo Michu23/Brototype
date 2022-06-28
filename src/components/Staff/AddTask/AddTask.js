@@ -123,7 +123,7 @@ const AddTask = ({ title, value, form }) => {
     }else if (value === "st_manage") {
       studentManage(form, batch, domain, fee)
     } else if (value === "addnotifications") {
-      createNotifications(form, type, content);
+      createNotifications(type, content);
     } else if (value === "placement") {
       createPlacement(student, name, location, designation, LPA, address, count);
     }

@@ -9,7 +9,7 @@ import FormData from "form-data";
 const AuthContext = createContext();
 export default AuthContext;
 
-export const BaseUrl = "http://localhost: 8000/";
+export const BaseUrl = "http://127.0.0.1:8000/";
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -438,6 +438,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const createNotifications = async (type, content) => {
+    console.log(type, content);
     await axios
       .post(
         BaseUrl + "user/create/notification",

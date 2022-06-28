@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Add from "../../Staff/AddTask/AddTask";
 
 const Notifications = () => {
-  const { notifications, user_is, deleteNotifications, getNotifications } = useContext(AuthContext);
+  const { notifications, user, deleteNotifications, getNotifications } = useContext(AuthContext);
   var bgColor;
   useEffect(() => {
     getNotifications()
@@ -15,7 +15,7 @@ const Notifications = () => {
       <div className="d-flex justify-content-between">
         <h2>My Notifications</h2>
 
-        {user_is === "lead" && <Add title="Add" value="addnotifications"></Add>}
+        { (user.position === "Lead" || user.position === "Admin") && <Add title="Add" value="addnotifications"></Add>}
       </div>
 
       {notifications &&
@@ -50,7 +50,7 @@ const Notifications = () => {
                 {notification.content}
               </Col>
               <Col xs={2} className="my-auto d-flex justify-content-end">
-                {user_is === "lead" && (
+                {(user.position === "Lead" || user.position === "Admin") && (
                   <Button
                     variant="contained"
                     color="error"
@@ -63,7 +63,7 @@ const Notifications = () => {
                   </Button>
                 )}
               </Col>
-              {user_is === "lead" && (
+              {(user.position === "Lead" || user.position === "Admin") && (
               <span class="tooltiptext">{notification.creator}</span>
         )}
 

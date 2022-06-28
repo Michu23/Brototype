@@ -322,9 +322,10 @@ const PlacementProfile = () => {
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
                   autoWidth
-                  label="experience ( if )"
+                  label="experience ( if any )"
+                  // defaultValue="No"
                   maxHeight="200px"
-                  value={education?.experience ? education?.experience : false}
+                  defaultValue={education?.experience ? education?.experience : false}
                   onChange={(e) => setExperience(e.target.value)}
                 >
                   {(!education || education.experience === true) && 

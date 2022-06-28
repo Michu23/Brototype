@@ -84,7 +84,7 @@ const Placement = () => {
         {placements && placements.map((placement) => {
           if ((name !== '' && batch !== '' && placement.student.user.username.includes(name) && placement.student.batch.name.includes(batch)) || ((name !== '' && batch === '' && placement.student.user.username.includes(name)) || (name === '' && batch !== '' &&  placement.student.batch.name.includes(batch))) || (name === '' && batch === '')) {
           return (
-        <Link to={`/${user.position === "Lead" ? "lead" : "placement"}/placements/info`} style={{ textDecoration: 'none' }}
+        <Link to={`/${user.position === "Placement" ? "placement" : "lead"}/placements/info`} style={{ textDecoration: 'none' }}
         onClick={()=>{setCurr_student(placement.student.id)}}>
           <Col sm={12} className="py-2 mb-2 cp rounded-3 bg" key={placement.id}>
             <Row className="m-0">

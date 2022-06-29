@@ -11,13 +11,12 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import ProfilePic from "../../Common/Crop/Crop";
 import StyleContext from "../../../Context/StyleContext";
 import LeadContext from '../../../Context/LeadContext';
 
 const PlacementProfile = () => {
 
-    const { profile, updatePlacementProfile, getPlacementProfile, education, placement, user, getDomains, domains, getNotifications, curr_student } = useContext(AuthContext);
+    const { profile, updatePlacementProfile, getPlacementProfile, education, placement, user, getDomains, getNotifications, curr_student } = useContext(AuthContext);
     const { getProfile } = useContext(LeadContext);
   const {infoToast,errorToast } = useContext(StyleContext);
 
@@ -47,7 +46,7 @@ const PlacementProfile = () => {
       company: e.target.company.value,
       duration: e.target.duration.value
     }
-    updatePlacementProfile(data);
+    updatePlacementProfile(data)
   }
 
 
@@ -297,20 +296,20 @@ const PlacementProfile = () => {
                 value={education?.backlogs}
                 />
             </Col>
-            {/* {education?.experience ? (<Col
+            {education?.education ? (<Col
               className={`py-1 pb-3 text-start mt-2 ps-3 rounded-3 ${style.inputField}`}
             >
               <label className={`${style.label}`}>Experience</label>
               {education?.experience === true ? <input
-                type="number"
+                type="text"
                 className={`w-100 ${style.input}`}
                 value="Yes"
                 /> : <input
-                type="number"
+                type="text"
                 className={`w-100 ${style.input}`}
                 value="No"
                 />}
-            </Col>):( */}
+            </Col>):(
             <Col
               className={`p-2 text-start rounded-3 mt-2 ${style.inputField}`}
             >
@@ -323,7 +322,6 @@ const PlacementProfile = () => {
                   id="demo-simple-select-autowidth"
                   autoWidth
                   label="experience ( if any )"
-                  // defaultValue="No"
                   maxHeight="200px"
                   defaultValue={education?.experience ? education?.experience : false}
                   onChange={(e) => setExperience(e.target.value)}
@@ -339,7 +337,7 @@ const PlacementProfile = () => {
                 </Select>
               </FormControl>
             </Col>
-            {/* )} */}
+            )}
           </Col>
           {(experience === true) && (<>
             <Col xs={12} md={6} className="py-1 pe-md-1 px-0">

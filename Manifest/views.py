@@ -11,7 +11,7 @@ from Manifest.models import Manifest
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getTaskslist(request):
-    if request.user.is_lead or request.user.is_staff or request.user.is_student:
+    if request.user.is_lead or (request.user.is_staff and request.user.is_active) or request.user.is_superuser or request.user.is_student:
         if request.user.is_lead or request.user.is_staff:
             student = Student.objects.get(id=request.data['id'])
         else:
@@ -29,7 +29,7 @@ def getTaskslist(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getManifest(request):
-    if request.user.is_lead or request.user.is_staff or request.user.is_student:
+    if request.user.is_lead or (request.user.is_staff and request.user.is_active) or request.user.is_superuser or request.user.is_student:
         manifest = Manifest.objects.get(id=request.data['id'])
         manifest.tasks = Tasks.objects.filter(week=manifest)
         serializer = ManifestTaskSerealizer(manifest).data
@@ -40,7 +40,7 @@ def getManifest(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addTask(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         Tasks.objects.create(
             week=Manifest.objects.get(id=request.data['manifest']),
             taskname=request.data['task'],
@@ -53,7 +53,7 @@ def addTask(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def completeTask(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         Tasks.objects.filter(id=request.data['task']).update(status=True)
         return Response({'success': 'Task completed'})
     else:
@@ -62,7 +62,7 @@ def completeTask(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def reviewPassed(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         manifest = Manifest.objects.get(id=request.data['manifest'])
         Review.objects.create(
             manifest=manifest,
@@ -87,7 +87,7 @@ def reviewPassed(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def reviewRepeated(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         manifest = Manifest.objects.get(id=request.data['manifest'])
         Review.objects.create(manifest=manifest,
             advisor=Advisor.objects.get(user=request.user),
@@ -106,7 +106,7 @@ def reviewRepeated(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getPendings(request):
-    if request.user.is_staff or request.user.is_lead:
+    if (request.user.is_staff and request.user.is_active) or request.user.is_superuser or request.user.is_lead:
         student = Student.objects.get(id=request.data['id'])
     elif request.user.is_student:
         student = Student.objects.get(user=request.user)
@@ -120,7 +120,7 @@ def getPendings(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def deletePendings(request):
-    if request.user.is_staff or request.user.is_lead:
+    if (request.user.is_staff and request.user.is_active) or request.user.is_superuser or request.user.is_lead:
         Tasks.objects.filter(id=request.data['id']).update(status=True)
         return Response({'success': 'Task deleted'})
         
@@ -137,7 +137,7 @@ def folderSubmit(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def delete_task(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_active and request.user.is_superuser == False:
         Tasks.objects.filter(id=request.data['id']).delete()
         return Response({'success': 'Task deleted'})
     else:

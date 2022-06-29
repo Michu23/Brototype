@@ -14,7 +14,7 @@ from Manifest.models import Manifest, Tasks
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getStudents(request):
-    if request.user.is_lead or request.user.is_staff:
+    if request.user.is_lead or (request.user.is_staff and request.user.is_active) or request.user.is_superuser:
         students = Student.objects.all().order_by('batch')
         for student in students:
             student.week = Manifest.objects.filter(student_name=student).order_by('-id')[0].title
@@ -31,7 +31,7 @@ def getStudents(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getMyStudents(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         # students = Student.objects.filter(batch__advisor=request.user.advisor, status__in=["Training", "RequestedTermination"])
         students = Student.objects.all()
         print(students)
@@ -70,7 +70,7 @@ def manageStudent(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def shiftRequest(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         student = Student.objects.get(id=request.data['student'])
         Shifted.objects.create(student=student, shifted_to=Batch.objects.get(id=request.data['shift_to']), shifted_from=student.batch)
         return Response({"message": "Student Updated"})
@@ -80,7 +80,7 @@ def shiftRequest(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def terminateRequest(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         Student.objects.filter(id=request.data['student']).update(status="RequestedTermination")
         return Response({"message": "Student Updated"})
     else:

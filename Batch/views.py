@@ -34,7 +34,7 @@ def getBatches(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createBatch(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         advisor = Advisor.objects.get(id=request.data['advisor'])
         Batch.objects.create( name=request.data['name'], advisor=advisor, code=generateLink(request.data['name']))
         return Response({"message": "Batch created successfully"})
@@ -44,7 +44,7 @@ def createBatch(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def deleteBatch(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         Batch.objects.filter(id=request.data['id']).delete()
         return Response({"message": "Batch deleted successfully"})
     else:
@@ -53,7 +53,7 @@ def deleteBatch(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def updateBatch(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         Batch.objects.filter(id=request.data['id']).update(advisor=request.data['advisor'])
         return Response({"message": "Batch updated successfully"})
     else:
@@ -62,7 +62,7 @@ def updateBatch(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getGroups(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         groups = Group.objects.all()
         groupsArray = []
         for group in groups:
@@ -77,7 +77,7 @@ def getGroups(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getMyGroups(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser == False:
         groups = Group.objects.filter(advisor=request.user.advisor)
         groupsArray = []
         for group in groups:
@@ -92,7 +92,7 @@ def getMyGroups(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getGroupLess(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         students = Student.objects.filter(group = None,domain__name=request.data['domain'], batch__name=request.data['batch'])
         for student in students:
             [student.week] = Manifest.objects.filter(student_name=student)[:1]
@@ -106,7 +106,7 @@ def getGroupLess(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getGroupDetails(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         group = Group.objects.get(id=request.data['id'])
         group.student = Student.objects.filter(group=group)
         for student in group.student:
@@ -122,7 +122,7 @@ def getGroupDetails(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getMyGroupDetails(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser == False:
         group = Group.objects.get(id=request.data['id'])
         students = Student.objects.filter(group=group)
         for student in students:
@@ -138,7 +138,7 @@ def getMyGroupDetails(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addInGroup(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         student = Student.objects.get(id=request.data['student'])
         group = Group.objects.get(id=request.data['group'])
         student.group = group
@@ -150,7 +150,7 @@ def addInGroup(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def removeFromGroup(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         student = Student.objects.get(id=request.data['student'])
         student.group = None
         student.save()
@@ -161,7 +161,7 @@ def removeFromGroup(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createGroup(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         Group.objects.create( name = request.data['name'], batch = Batch.objects.get(id=request.data['batch']),
          domain = Domain.objects.get(id=request.data['domain']), advisor = Advisor.objects.get(id=request.data['advisor']))
         return Response({"message": "Group created successfully"})
@@ -171,7 +171,7 @@ def createGroup(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def deleteGroup(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         Group.objects.filter(id=request.data['id']).delete()
         return Response({"message": "Group deleted successfully"})
     else:
@@ -180,7 +180,7 @@ def deleteGroup(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def updateGroup(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         if request.data['advisor'] != '':
             Group.objects.filter(id=request.data['id']).update(name = request.data['new_name'], advisor = Advisor.objects.get(id=request.data['advisor']))
         else:

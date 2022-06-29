@@ -96,13 +96,15 @@ def rentPayments(request):
             return Response(context)
         else:
             return Response({'status':'Paid'})
+    else:
+        return Response({'status':'Not Student'})
             
     
             
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def upfrontPayments(request):
-    if request.user.is_student and request.user.student.fee=="Upfront":
+    if request.user.is_student and request.user.student.fee == "Upfront":
         date = datetime.datetime.today()
         date_2 = datetime.date.today()
         month = date.strftime("%B")
@@ -164,6 +166,8 @@ def upfrontPayments(request):
                 return Response(context)
             else:
                 return Response({'status':'Paid'})
+    else:
+        return Response({'status':'Either Not Student or Not Upfront'})
             
                 
             
@@ -196,6 +200,8 @@ def shiftPayments(request):
                 return Response({'status':'Paid'})
         else:
             return Response({'status':'Paid'})
+    else:
+        return Response({'status':'Not Student'})
             
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -221,13 +227,13 @@ def FinePayments(request):
                 return Response({'status':'Paid'})
         else:
             return Response({'status':'Paid'})
+    else:
+        return Response({'status':'Not Student'})
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def start_payment(request):
-
-    print(request.data)
     amount = request.data['amount']
     theid = request.data['id']
     
@@ -300,6 +306,8 @@ def paying(request):
 
         else:
             return Response({'status':'Failed'})
+    else:
+        return Response({'status':'Not Student'})
             
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -313,14 +321,16 @@ def myPayments(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def allCompletedPayments(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         payments= PaymentSerializer(Payment.objects.filter(status="Completed"),many=True).data
         return Response(payments)
+    else:
+        return Response({'status':'Yoy are not authorized to do this action'})
     
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def allPendingPayments(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         payments= PaymentSerializer(Payment.objects.filter(Q(status="Partially") | Q(status="Pending") | Q(status="Expired")),many=True).data
         return Response(payments)
     else:
@@ -330,7 +340,7 @@ def allPendingPayments(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def cashPaid(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         ids = request.data['id']
         date = datetime.date.today()
         pay = Payment.objects.filter(paymentid=ids)
@@ -347,7 +357,7 @@ def cashPaid(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def sendForm(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         ids = request.data['id']
         amount = request.data['amount']
         print(ids)
@@ -399,11 +409,3 @@ def sendForm(request):
             return Response({'status':'Not Found'})
     else:
         return Response({'status':'Not Authorized'})
-            
-        
-    
-
-        
-
-        
-        

@@ -60,15 +60,17 @@ def getNotifications(request):
 @permission_classes([IsAuthenticated])
 def deleteNotifications(request):
     user = request.user
-    if user.is_lead:
+    if user.is_lead or request.user.is_superuser:
         Notification.objects.filter(id=request.data['id']).delete()
-    return Response({'status': 'Success'})
+        return Response({'status': 'Success'})
+    else:
+        return Response({'error': 'You are not allowed to perform this action'})
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createNotifications(request):
     user = request.user
-    if user.is_lead:
+    if user.is_lead or request.user.is_superuser:
         Notification.objects.create(type = request.data['type'], content = request.data['content'], creator = user.username)
         return Response({"message": "Notification created successfully"})
     else:
@@ -78,16 +80,18 @@ def createNotifications(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getTypes(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
        types = getNotificationTypes(Notification.objects.all(),many=True).data
        return Response(types)
+    else:
+         return Response({"message": "You are not authorized to create Notification"})
     
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def updateProfile(request):
     user = request.user
-    if user.is_staff:
+    if user.is_staff and request.user.is_superuser == False:
             profile = Profile.objects.get(advisor=Advisor.objects.get(user=user))
     elif user.is_student:
         student = Student.objects.get(user=user)
@@ -124,7 +128,7 @@ def updateProfile(request):
 @permission_classes([IsAuthenticated])
 def getMyProfile(request):
     user = request.user
-    if user.is_staff:
+    if user.is_staff and request.user.is_superuser == False:
         profile = ProfileSerealizer(Profile.objects.get(advisor=Advisor.objects.get(user=user)))
     elif user.is_student:
         profile = ProfileSerealizer(Profile.objects.get(student=Student.objects.get(user=user)))
@@ -144,7 +148,7 @@ def getMyProfile(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getDomain(request):
-    if request.user.is_lead or request.user.is_student :
+    if request.user.is_lead or request.user.is_student or request.user.is_superuser:
         domain = DomainSerealizer(Domain.objects.all(), many=True).data
         return Response(domain)
     else:
@@ -153,7 +157,7 @@ def getDomain(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createDomain(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         Domain.objects.create( name=request.data['name'] )
         return Response({"message": "Domain created successfully"})
     else:
@@ -162,7 +166,7 @@ def createDomain(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def deleteDomain(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         Domain.objects.filter(id=request.data['id']).delete()
         return Response({"message": "Domain deleted successfully"})
     else:
@@ -170,7 +174,7 @@ def deleteDomain(request):
 
 @api_view(['POST'])
 def updateDomain(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         Domain.objects.filter(id=request.data['id']).update(name=request.data['new_name'])
         return Response({"message": "Domain updated successfully"})
     else:
@@ -179,7 +183,6 @@ def updateDomain(request):
 @api_view(['POST'])
 def isLinkValid(request):
     link = request.data['link']
-    print(link)
     if Batch.objects.filter(code=link).exists():
         batch = Batch.objects.get(code=link)
         branches = BranchSerealizer(Branch.objects.filter(location=batch.location), many=True).data
@@ -194,7 +197,7 @@ def isLinkValid(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def updateProfilephoto(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser == False:
         profile = Profile.objects.get(advisor=Advisor.objects.get(user=request.user))
     elif request.user.is_student:
         profile = Profile.objects.get(student=Student.objects.get(user=request.user))
@@ -215,7 +218,6 @@ def getLocations(request):
         
 @api_view(['POST'])
 def getBranches(request):
-    print(request.data)
     location = Location.objects.get(id=request.data['location'])
     branches = BranchSerealizer(Branch.objects.filter(location=location), many=True).data
     return Response(branches)
@@ -224,7 +226,7 @@ def getBranches(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getBatchStudents(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser == False:
         branch = Branch.objects.get(id=request.data['branch'])
         students = Student.objects.filter(branch=branch)
         for student in students:

@@ -40,8 +40,7 @@ def getManifest(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addTask(request):
-    if request.user.is_staff:
-        print(request.data['manifest'])
+    if request.user.is_staff and request.user.is_superuser == False:
         Tasks.objects.create(
             week=Manifest.objects.get(id=request.data['manifest']),
             taskname=request.data['task'],
@@ -63,7 +62,7 @@ def completeTask(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def reviewPassed(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser == False:
         manifest = Manifest.objects.get(id=request.data['manifest'])
         Review.objects.create(
             manifest=manifest,
@@ -88,7 +87,7 @@ def reviewPassed(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def reviewRepeated(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser == False:
         manifest = Manifest.objects.get(id=request.data['manifest'])
         Review.objects.create(manifest=manifest,
             advisor=Advisor.objects.get(user=request.user),

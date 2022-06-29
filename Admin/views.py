@@ -11,7 +11,7 @@ from .serializer import AdvisorFullSerealizer, AdvisorHalfSerializer, ReviewerSe
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getAdvisorsNames(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         advisors = AdvisorHalfSerializer(Advisor.objects.all(), many=True)
         return Response(advisors.data)
     else:
@@ -29,7 +29,7 @@ def getReviewers(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getAdvisors(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         advisors = Advisor.objects.all()
         for advisor in advisors:
             advisor.batch = [ batch.name for batch in list(Batch.objects.filter(advisor=advisor))]
@@ -45,7 +45,7 @@ def getAdvisors(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def deleteAdvisor(request):
-    if request.user.is_lead:
+    if request.user.is_lead or request.user.is_superuser:
         advisor = Advisor.objects.filter(id=request.data['id'])
         User.objects.filter(advisor=advisor[0]).update(is_staff=False)
         return Response({"message": "Advisor deleted successfully"})

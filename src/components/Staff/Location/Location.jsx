@@ -1,10 +1,8 @@
-import React from 'react'
+import React from "react";
 import ManageSearchRoundedIcon from "@mui/icons-material/ManageSearchRounded";
 import { Row, Col } from "react-bootstrap";
 import style from "./Requests.module.css";
 import Button from "@mui/material/Button";
-
-
 
 const Location = () => {
   return (
@@ -12,10 +10,7 @@ const Location = () => {
       <Col sm={12} className="d-flex justify-content-between mb-2">
         <div className="d-flex">
           <h3 className="me-4">Locations</h3>
-          <Button className="ml-1 h-50 bgdark textlight">
-            Add
-            </Button>
-          
+          <Button className="ml-1 h-50 bgdark textlight">Add</Button>
         </div>
 
         <div className="d-flex justify-content-end textlight">
@@ -32,7 +27,7 @@ const Location = () => {
             className={`py-1 textwhite my-1 pb-3 text-start ps-3 rounded-3 ${style.inputField}`}
           >
             <label className={`${style.label}`}>Batch</label>
-            <input type="text"   className={`w-100 ${style.input}`} />
+            <input type="text" className={`w-100 ${style.input}`} />
           </Col>
 
           <Button className=" mx-1 searchbtn">
@@ -62,32 +57,30 @@ const Location = () => {
       </Col>
 
       <Col className="m-0 row ">
-       
         <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
           <Row className="m-0">
             <Col className="textdark" sm={2}>
-            #1
+              #1
             </Col>
             <Col className="textdark" sm={2}>
-            Kochi
+              Kochi
             </Col>
             <Col className="textdark" sm={2}>
-            4
+              4
             </Col>
             <Col className="textdark" sm={2}>
-            3
+              3
             </Col>
             <Col className="textdark d-flex justify-content-center" sm={4}>
-            
-             <Button color="error" variant="contained" >Delete</Button>
+              <Button color="error" variant="contained">
+                Delete
+              </Button>
             </Col>
-           
           </Row>
         </Col>
-          
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default Location
+export default Location;

@@ -22,16 +22,16 @@ const AdminCreate = () => {
     <div>
       <div className="p-0 pt-5 m-0 w-100" style={{ height: "100vh" }}>
         <div
-          className="container w-50 bg-light p-5 text-left"
+          className="container w-50 bg-light p-5 text-left bs"
           style={{
             borderRadius: "2px",
           }}
         >
-          <form onSubmit={handleSubmit}>
-            <h4 className="text-center">
-              Create New User
-            </h4>
-            <div className="form-group">
+          <form onSubmit={handleSubmit} className="w-100">
+            <h2 className="text-center">
+              New Staff
+            </h2>
+            <div className="form-group mt-4">
               <label>Full name</label>
               <input
                 type="text"
@@ -91,7 +91,7 @@ const AdminCreate = () => {
                 <option value="Finance">Finance</option>
               </select>
             </div>
-            <div className="form-group">
+            <div className="form-group mb-4">
               <label>Password</label>
               <input
                 name="password"
@@ -108,7 +108,7 @@ const AdminCreate = () => {
             </div>
             <div className="d-flex justify-content-center ">
               <Link to="/admin">
-                <button className="btn btn-light mt-3">Back to homepage</button>
+                <button className="btn btn-light mt-3">Go Back</button>
               </Link>
             </div>
           </form>

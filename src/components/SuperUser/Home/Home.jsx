@@ -2,6 +2,10 @@ import Header from "../../Common/Header/Header";
 import AuthContext from "../../../Context/AuthContext";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ManageSearchRoundedIcon from "@mui/icons-material/ManageSearchRounded";
+import { Row, Col } from "react-bootstrap";
+import style from "./Requests.module.css";
+import Button from "@mui/material/Button";
 
 const AdminHome = () => {
   const { leads, getLeads, deleteLead, getNotifications } = useContext(AuthContext);
@@ -14,7 +18,92 @@ const AdminHome = () => {
 
   return (
     <>
-      <div className="container-fluid p-0 m-0 ">
+    <Row className="m-0 p-3 rounded-2 pb-0">
+      <Col sm={12} className="d-flex justify-content-between mb-2">
+        <div className="d-flex">
+          <h3 className="me-4">Leads</h3>
+          <Link to="/admin/create/lead"><Button className="ml-1 h-50 bgdark textlight">Add</Button></Link>
+          
+        </div>
+
+        <div className="d-flex justify-content-end textlight">
+          <Col
+            xs={4}
+            className={`py-1 my-1 textwhite mx-2 pb-3 text-start ps-3 rounded-3 ${style.inputField}`}
+          >
+            <label className={`${style.label}`}>Name</label>
+            <input type="text" className={`w-100 ${style.input}`} />
+          </Col>
+
+          <Col
+            xs={4}
+            className={`py-1 textwhite my-1 pb-3 text-start ps-3 rounded-3 ${style.inputField}`}
+          >
+            <label className={`${style.label}`}>Batch</label>
+            <input type="text" className={`w-100 ${style.input}`} />
+          </Col>
+
+          <Button className=" mx-1 searchbtn">
+            <ManageSearchRoundedIcon className="searchbtn" />
+          </Button>
+        </div>
+      </Col>
+
+      <Col sm={12} className="py-2 my-2 bgdark  px-4 rounded-3">
+        <Row className="m-0 textlight" xs={0}>
+          <Col className="bgdark" sm={1}>
+            Index
+          </Col>
+          <Col className="bgdark" sm={2}>
+            Name
+          </Col>
+          <Col className="bgdark" sm={2}>
+            Location
+          </Col>
+          <Col className="bgdark" sm={2}>
+            Position
+          </Col>
+          <Col className="bgdark" sm={2}>
+            Phone
+          </Col>
+          <Col className="bgdark text-center" sm={4}>
+            Actions
+          </Col>
+        </Row>
+      </Col>
+
+      <Col className="m-0 row ">
+        <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
+        {leads &&
+                leads.map((lead, index) => {
+                  return (
+          <Row className="m-0"  key={index}>
+          
+            <Col className="textdark" sm={2}>
+            #{index+1}
+            </Col>
+            <Col className="textdark" sm={2}>
+            {lead.name}
+            </Col>
+            <Col className="textdark" sm={2}>
+            {lead.user.username}
+            </Col>
+            <Col className="textdark" sm={2}>
+            {lead.user.username}
+            </Col>
+            <Col className="textdark d-flex justify-content-center" sm={4}>
+              <Button color="error" variant="contained">
+                Delete
+              </Button>
+            </Col>
+           
+          </Row>
+           );
+          })}
+        </Col>
+      </Col>
+    </Row>
+      {/* <div className="container-fluid p-0 m-0 ">
 
         <div className="container">
           <table
@@ -24,8 +113,8 @@ const AdminHome = () => {
             <thead className="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Username</th>
+                <th scope="col">{lead.name}</th>
+                <th scope="col">{lead.user.username}</th>
                 <th scope="col">
                   <Link to="/admin/create/lead">
                     <button className="btn btn-dark px-3">+ Add User</button>
@@ -58,7 +147,7 @@ const AdminHome = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

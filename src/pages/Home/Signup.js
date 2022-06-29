@@ -96,7 +96,7 @@ const Signup = () => {
               </Typography>
               <form onSubmit={handleSubmit(signupUser)}>
                 <div className="">
-                  <div className="form-group">
+                  <div className="form-group mt-4">
                     <label>Username</label>
                     <input
                       type="text"
@@ -183,7 +183,7 @@ const Signup = () => {
                     />
                   </Grid>
 
-                  <div className="pt-2">
+                  <div className="pt-4">
                     <button
                       type="submit"
                       className="btn btn-primary btn-lg w-100"
@@ -203,9 +203,79 @@ const Signup = () => {
         </>
       ) : (
         <>
-          <div>Loading...</div>
+          <Container2 component="main" className="bglight signupbox">
+            <Box
+              className="bg p-5 w-100 rounded-3 "
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <img width="500px" height="100px" src={Logo} alt="" />
+              <Typography component="h1" variant="h3">
+                Sign up
+              </Typography>
+              <form className="w-100">
+                <div>
+                  <div className="form-group mt-4">
+                    <div className="skeleton skeleton-text"></div>
+                    <div className="skeleton skeleton-box"></div>
+                    <label className="text-danger">
+                      {errUser}
+                      {errors.username && errors.username.message}
+                    </label>
+                  </div>
+
+                  <div className="form-group">
+                  <div className="skeleton skeleton-text"></div>
+                    <div className="skeleton skeleton-box"></div>
+                    <label className="text-danger">
+                      {errors.email?.message}
+                    </label>
+                  </div>
+                  <div className="form-group">
+                  <div className="skeleton skeleton-text"></div>
+                    <div className="skeleton skeleton-box"></div>
+                    <label className="text-danger">
+                      {errors.password?.message}
+                    </label>
+                  </div>
+                  <div className="form-group">
+                  <div className="skeleton skeleton-text"></div>
+                    <div className="skeleton skeleton-box"></div>
+                    <label className="text-danger">
+                      {errors.cpassword && "Passwords doesn't match"}
+                    </label>
+                  </div>
+                  <div className="form-group mb-4">
+                  <div className="skeleton skeleton-text"></div>
+                    <div className="skeleton skeleton-box"></div>
+                  </div>
+                  <Grid item xs={12}>
+                  <div className="skeleton skeleton-smalltext"></div>
+                  <div className="skeleton skeleton-smalltext"></div>
+                  
+                  </Grid>
+
+                  <div className="pt-4">
+                    <div className="skeleton skeleton-box"></div>
+                  </div>
+                </div>
+                <div className="card-body mt-3 flex-grow-0">
+                  <div className="form-group pb-3 text-center d-flex justify-content-center slign-content-center text-muted">
+                  <div className="skeleton skeleton-smalltext"></div>
+
+                  </div>
+                </div>
+              </form>
+            </Box>
+          </Container2>
         </>
       )}
+
+      
+      
     </>
   );
 };

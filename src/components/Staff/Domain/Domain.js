@@ -5,11 +5,15 @@ import Button from "@mui/material/Button";
 import AddTask from "../../Staff/AddTask/AddTask"
 import AuthContext from "../../../Context/AuthContext";
 import LeadContext from "../../../Context/LeadContext";
+import Confirm from "../Confirm/Confirm";
 
 const Domain = () => {
 
   const { getDomains, domains, getNotifications } = useContext(AuthContext);
   const { deleteDomain } = useContext(LeadContext);
+
+  const message = "Are you sure you want to delete this domain?";
+  const onConfirm = "If you delete this domain, all the students associated with it will be domainless!";
 
   useEffect(() => {
     getDomains();
@@ -57,7 +61,8 @@ const Domain = () => {
 
               <Col className="textdark d-flex justify-content-center" sm={6}>
                 <AddTask title="Edit" value="updateDomain" form={domain.id} />
-                <Button className="coh px-4 ms-2" onClick={()=>{deleteDomain(domain.id)}}>Delete</Button>
+                <Confirm title="Delete" name={domain.name}  value="deleteDomain" message={message} onConfirm={onConfirm} form={domain.id} />
+                {/* <Button className="coh px-4 ms-2" onClick={()=>{deleteDomain(domain.id)}}>Delete</Button> */}
               </Col>
             </Row>
           </Col>

@@ -7,6 +7,8 @@ import AddTask from "../../Staff/AddTask/AddTask";
 import style from "./Groups.module.css";
 import LeadContext from "../../../Context/LeadContext";
 import AuthContext from "../../../Context/AuthContext";
+import Confirm from "../Confirm/Confirm";
+
 
 const Groups = () => {
 
@@ -14,6 +16,10 @@ const Groups = () => {
   const { getNotifications } = useContext(AuthContext);
 
   const [add, setAdd] = useState("dont");
+
+  const message = "Are you sure you want to delete this group?";
+  const onConfirm = "If you delete this group, all the students associated with it will be groupless!";
+
 
   const handleShow = () => {
     getGroupLess();
@@ -27,7 +33,9 @@ const Groups = () => {
         <div className="d-flex">
           <h2 className="me-4">#20 A</h2>
           <AddTask title="Edit" value="group" />
-          <Button color="error" variant="contained" size="small" className="h-50 ms-2" onClick={()=>{deleteGroup(groupDetails.id)}} >Delete</Button>
+          {/* <Button color="error" variant="contained" size="small" className="h-50 ms-2" onClick={()=>{deleteGroup(groupDetails.id)}} >Delete</Button> */}
+          <Confirm title="Delete" name={groupDetails.name}  value="deleteGroup" message={message} onConfirm={onConfirm} form={groupDetails.id} />
+
         </div>
 
         <div className="d-flex justify-content-end textlight">

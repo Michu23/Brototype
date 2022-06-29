@@ -65,13 +65,13 @@ const Students = () => {
           <Col className="bgdark" sm={2}>
             Domain
           </Col>
-          <Col className="bgdark" sm={2}>
+          <Col className="bgdark" sm={1}>
             Week
           </Col>
           <Col className="bgdark" sm={2}>
             Group
           </Col>
-          <Col className="bgdark" sm={2}>
+          <Col className="bgdark" sm={4}>
             Actions
           </Col>
         </Row>
@@ -100,24 +100,29 @@ const Students = () => {
                   <Col className="navTo textdark" sm={2}>
                     {student.domain}
                   </Col>
-                  <Col className="navTo textdark" sm={2}>
+                  <Col className="navTo textdark" sm={1}>
                     {student.week}
                   </Col>
                   <Col className="navTo textdark" sm={2}>
                     {student.group ? student.group : "Not Assigned"}
                   </Col>
-                  <Col className="navTo textdark d-flex" sm={2}>
-                    <AddTask title="Manage" value="st_manage" form={student.id}/>
-                    <Button
+                  <Col className="navTo textdark" sm={4}>
+                    <Row>
+                    <Col md={4} className="pt-2" sm={12}><AddTask  title="Manage" value="st_manage" form={student.id}/></Col>
+                    <Col md={4} sm={12}><Button
                       variant="contained"
-                      className="mx-2 px-5"
+                      className="m-2 ms-0 px-4"
                       onClick={async () => {
                         await getProfile(student.id);
                         navigate("/lead/student/profile");
                       }}
                     >
                       Profile
-                    </Button>
+                    </Button></Col>
+                    </Row>
+                    
+                    
+                    
                   </Col>
                 </Row>
               </Col>

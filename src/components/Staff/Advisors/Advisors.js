@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 
 import LeadContext from "../../../Context/LeadContext";
 import { useNavigate } from "react-router";
-import AuthContext from "../../../Context/AuthContext";
+import AuthContext,{ BaseUrl } from "../../../Context/AuthContext";
 
 const Advisors = () => {
 
@@ -33,7 +33,7 @@ const Advisors = () => {
         </div>
         <div>
           <Button className="searchbtn w-75" 
-          onClick={()=>{copyToClipboard("https://brotocamp.space/signup/"+advisorLink)}}>Link</Button>
+          onClick={()=>{copyToClipboard(BaseUrl+"/signup/"+advisorLink)}}>Link</Button>
         </div>
       </Col>
 

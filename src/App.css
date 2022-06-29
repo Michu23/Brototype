@@ -281,3 +281,48 @@ label{
   font-size: 12px;
   font-weight: 400;
 }
+
+
+
+.skeleton{
+  animation: skeleton-loader 1s linear infinite alternate;
+}
+
+.skeleton-text{
+  width: 30%;
+  height: .9rem;
+  margin-bottom: .25rem;
+  border-radius: .125rem;
+}
+
+.skeleton-smalltext{
+  width: 100%;
+  height: .5rem;
+  margin-bottom: .25rem;
+  border-radius: .125rem;
+}
+
+.skeleton-smalltext:last-child{
+  margin-bottom: .25rem;
+  width: 80%;
+}
+
+.skeleton-box{
+  width: 100%;
+  height: 2rem;
+  margin-bottom: .25rem;
+  border-radius: .125rem;
+}
+
+
+@keyframes skeleton-loader {
+  0% {
+    background-color: hsl(200, 20%, 75%);
+  }
+  50% {
+    background-color: hsl(200, 20%, 85%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}

@@ -48,7 +48,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const createDomain = async (domain) => {
-    await axios.post("http://127.0.0.1.:8000/user/create/domain",
+    await axios.post(BaseUrl + "user/create/domain",
         {
           name: domain,
         },
@@ -260,7 +260,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const updateDomain = async (domainId, domain) => {
-    await axios.post("http://127.0.0.1.:8000/user/update/domain",
+    await axios.post(BaseUrl + "user/update/domain",
         {
           'id': domainId,
           'new_name': domain,
@@ -277,7 +277,7 @@ export const LeadProvider = ({ children }) => {
   };
 
   const updateGroup = async (groupId, name, advisor) => {
-    await axios.post("http://127.0.0.1.:8000/batch/update/group",
+    await axios.post(BaseUrl + "batch/update/group",
         {
           'id': groupId,
           'new_name': name,

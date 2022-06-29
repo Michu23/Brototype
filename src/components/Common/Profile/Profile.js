@@ -565,7 +565,7 @@ function Profile({ by }) {
             />
           </Col>
         </Col>
-        <Col className="m-0 p-0">
+        {!profile?.dob &&<Col className="m-0 p-0">
           <Col className="submitProfileDiv mt-3">
             <Button
               className="submitProfile"
@@ -582,7 +582,7 @@ function Profile({ by }) {
               Cancel
             </Button>
           </Col>
-        </Col>
+        </Col>}
       </form>
     </Row>
   );

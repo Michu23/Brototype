@@ -4,11 +4,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
 from Student.models import Placement, Student
-from Manifest.models import Manifest
-from Manifest.models import Review
-from Manifest.models import Tasks
-from .models import Batch, Group
-from Admin.models import Advisor
+from Manifest.models import Manifest, Review, Tasks
+from .models import Batch, Group, Branch
+from Admin.models import Advisor, Location
 from User.models import Domain
 from .serializer import StudentGroupSerializer, ViewBatchSerializer, ViewGroupSerializer, ViewGroupDetailsSerializer, GroupStudentDetailsSerializer
 from .utils import generateLink
@@ -189,3 +187,20 @@ def updateGroup(request):
     else:
         return Response({"message": "You are not authorized to update Group"})
         
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createBranch(request):
+    if request.user.is_lead or request.user.is_superuser:
+        Branch.objects.create(name = request.data['name'], location=Location.objects.get(id=request.data['location']))
+        return Response({"message": "Branch created successfully"})
+    else:
+        return Response({"message": "You are not authorized to create Branch"})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def deleteBranch(request):
+    if request.user.is_lead or request.user.is_superuser:
+        Branch.objects.filter(id=request.data['id']).delete()
+        return Response({"message": "Branch deleted successfully"})
+    else:
+        return Response({"message": "You are not authorized to delete Branch"})

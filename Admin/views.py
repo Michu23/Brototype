@@ -126,3 +126,21 @@ def updateReviewer(request):
         return Response({"message": "Reviewer updated successfully"})
     else:
         return Response({"message": "You are not authorized to update Reviewer"})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createLocation(request):
+    if request.user.is_superuser or request.user.is_lead:
+        Location.objects.create(place=request.data['name'])
+        return Response({"message": "Location created successfully"})
+    else:
+        return Response({"message": "You are not authorized to create Location"})
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def deleteLocation(request):
+    if request.user.is_superuser or request.user.is_lead:
+        Location.objects.filter(id=request.data['id']).delete()
+        return Response({"message": "Location deleted successfully"})
+    else:
+        return Response({"message": "You are not authorized to delete Location"})

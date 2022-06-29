@@ -49,7 +49,7 @@ class ViewGroupDetailsSerializer(serializers.ModelSerializer):
     batch = serializers.CharField(source='batch.name', read_only=True)
     class Meta:
         model = Group
-        fields = ('id', 'domain', 'batch', 'student')
+        fields = ('id', 'name', 'domain', 'batch', 'student')
 
 class GroupStudentDetailsSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='user.username', read_only=True)

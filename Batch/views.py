@@ -18,7 +18,7 @@ from .utils import generateLink
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getBatches(request):
-    if request.user.is_lead or request.user.is_staff:
+    if request.user.is_lead or (request.user.is_staff and request.user.is_active) or request.user.is_superuser:
         batchs = Batch.objects.all()
         batchsArray = []
         for batch in batchs:
@@ -77,7 +77,7 @@ def getGroups(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getMyGroups(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         groups = Group.objects.filter(advisor=request.user.advisor)
         groupsArray = []
         for group in groups:
@@ -122,7 +122,7 @@ def getGroupDetails(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getMyGroupDetails(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         group = Group.objects.get(id=request.data['id'])
         students = Student.objects.filter(group=group)
         for student in students:

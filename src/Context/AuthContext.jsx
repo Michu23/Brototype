@@ -9,7 +9,7 @@ import FormData from "form-data";
 const AuthContext = createContext();
 export default AuthContext;
 
-export const BaseUrl = "https://api.brotocamp.space/";
+export const BaseUrl = "http://127.0.0.1.:8000/";
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -895,6 +895,7 @@ export const AuthProvider = ({ children }) => {
       headers: { Authorization: `Bearer ${authTokens.access}` },
     }).then((res) => {
       console.log(res.data);
+      getPlacementProfile(curr_student)
     }).catch((err) => {
       console.log(err);
     })

@@ -91,7 +91,7 @@ def getTypes(request):
 @permission_classes([IsAuthenticated])
 def updateProfile(request):
     user = request.user
-    if user.is_staff and request.user.is_superuser == False:
+    if user.is_staff and request.user.is_superuser == False and request.user.is_active:
             profile = Profile.objects.get(advisor=Advisor.objects.get(user=user))
     elif user.is_student:
         student = Student.objects.get(user=user)
@@ -129,7 +129,10 @@ def updateProfile(request):
 def getMyProfile(request):
     user = request.user
     if user.is_staff and request.user.is_superuser == False:
-        profile = ProfileSerealizer(Profile.objects.get(advisor=Advisor.objects.get(user=user)))
+        if user.iS_active:
+            profile = ProfileSerealizer(Profile.objects.get(advisor=Advisor.objects.get(user=user)))
+        else:
+            return Response({'error': 'You are not authorized to view profile'})
     elif user.is_student:
         profile = ProfileSerealizer(Profile.objects.get(student=Student.objects.get(user=user)))
     else:
@@ -197,7 +200,7 @@ def isLinkValid(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def updateProfilephoto(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         profile = Profile.objects.get(advisor=Advisor.objects.get(user=request.user))
     elif request.user.is_student:
         profile = Profile.objects.get(student=Student.objects.get(user=request.user))
@@ -226,7 +229,7 @@ def getBranches(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def getBatchStudents(request):
-    if request.user.is_staff and request.user.is_superuser == False:
+    if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         branch = Branch.objects.get(id=request.data['branch'])
         students = Student.objects.filter(branch=branch)
         for student in students:

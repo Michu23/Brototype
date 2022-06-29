@@ -11,7 +11,7 @@ export const LeadProvider = ({ children }) => {
   //Asign the useNavigate hook to a variable
   const navigate = useNavigate();
 
-  const { authTokens, getDomains, setProfile, getBatches } = useContext(AuthContext);
+  const { authTokens, getDomains, setProfile, getBatches, getReviewers } = useContext(AuthContext);
 
   //Define the state of the context
   const [advisorsNames, setAdvisorsNames] = useState(null);
@@ -102,6 +102,18 @@ export const LeadProvider = ({ children }) => {
         }).catch((err) => {
           console.log(err);
         })
+  }
+
+  const createReviewer = async (name) => {
+    await axios.post(BaseUrl + "admins/create/reviewer",{
+      name: name,
+    },{
+      headers: { Authorization: `Bearer ${authTokens.access}` },
+    }).then((res) => {
+      getReviewers();
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   //Read function
@@ -293,24 +305,35 @@ export const LeadProvider = ({ children }) => {
         console.log(err);
       });
   };
+
+  const updateReviewer = async (id, name) => {
+    await axios.post(BaseUrl + "admins/update/reviewer",{
+      'id': id,
+      'name': name
+    },{
+      headers: { Authorization: `Bearer ${authTokens.access}` },
+    }).then((res) => {
+      console.log(res.data);
+      getReviewers();
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  const changeLink = async (link) => {
+    await axios.post(BaseUrl + "admins/update/link", {
+      'link': link
+    },{
+      headers: { Authorization: `Bearer ${authTokens.access}` },
+    }).then((res) => {
+      setAdvisorLink(res.data.code.code);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
   
   //Delete function
 
-
-  const deleteAdvisor = async (advisorId) => {
-    await axios.post(BaseUrl + "admins/delete/advisor",
-        {
-          'id': advisorId,
-        },
-        {
-          headers: { Authorization: `Bearer ${authTokens.access}` },
-        }
-      ).then((res) => {
-        getAdvisors();
-      }).catch((err) => {
-        console.log(err);
-      });
-  };
 
   const deleteBatch = async (batchId) => {
     await axios.post(BaseUrl + "batch/delete/batch",
@@ -350,6 +373,34 @@ export const LeadProvider = ({ children }) => {
         console.log(res.data);
         getGroups();
         navigate("/lead/groups");
+      }).catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteReviewer = async (id) => {
+    await axios.post(BaseUrl + "admins/delete/reviewer",
+    { id: id },
+    {
+      headers: { Authorization: `Bearer ${authTokens.access}` },
+    }).then((res) => {
+      console.log(res.data);
+      getReviewers();
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+  
+  const blockAdvisor = async (advisorId) => {
+    await axios.post(BaseUrl + "admins/block/advisor",
+        {
+          'id': advisorId,
+        },
+        {
+          headers: { Authorization: `Bearer ${authTokens.access}` },
+        }
+      ).then((res) => {
+        getAdvisors();
       }).catch((err) => {
         console.log(err);
       });
@@ -469,6 +520,7 @@ export const LeadProvider = ({ children }) => {
     createDomain,
     createGroup,
     createPlacement,
+    createReviewer,
 
     //Read
     getAdvisors,
@@ -485,12 +537,15 @@ export const LeadProvider = ({ children }) => {
     updateBatch,
     updateDomain,
     updateGroup,
+    updateReviewer,
+    changeLink,
 
     //Delete
-    deleteAdvisor,
+    blockAdvisor,
     deleteBatch,
     deleteDomain,
     deleteGroup,
+    deleteReviewer,
 
     //Others
     addInGroup,

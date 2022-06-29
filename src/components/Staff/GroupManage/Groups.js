@@ -25,7 +25,7 @@ const Groups = () => {
     <Row className="m-0 px-3 rounded-2 bglight py-3">
       <Col sm={12} className="d-flex justify-content-between mb-2">
         <div className="d-flex">
-          <h2 className="me-4">#20 A</h2>
+          <h2 className="me-4">{groupDetails?.name}</h2>
           <AddTask title="Edit" value="group" />
           <Button color="error" variant="contained" size="small" className="h-50 ms-2" onClick={()=>{deleteGroup(groupDetails.id)}} >Delete</Button>
         </div>
@@ -57,7 +57,6 @@ const Groups = () => {
           <Col className="bgdark" sm={2}>
             Batch
           </Col>
-
           <Col className="bgdark" sm={2}>
             Name
           </Col>

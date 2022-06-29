@@ -14,7 +14,7 @@ function Tasks() {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    if (user.position === "Lead"){
+    if (user.position === "Lead" || user.position === "Admin"){
       navigate("/lead/student/manifest")
     }else if(user.position === "Advisor"){
       navigate("/advisor/group/manifest")

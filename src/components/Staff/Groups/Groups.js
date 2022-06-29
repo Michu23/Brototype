@@ -84,7 +84,7 @@ const Groups = () => {
           <Col Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
             <Row className="m-0">
               <Col className="textdark" sm={2}>
-                #{index + 1}
+                {group.batch}
               </Col>
               <Col className="textdark" sm={2}>
                 {group.advisor}

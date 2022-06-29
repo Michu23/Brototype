@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
 import AddTask from "../../Staff/AddTask/AddTask";
 import LeadContext from "../../../Context/LeadContext";
-import AuthContext,{ BaseUrl } from "../../../Context/AuthContext";
+import AuthContext,{ BaseLink } from "../../../Context/AuthContext";
 import Confirm from "../Confirm/Confirm";
 
 
@@ -74,7 +74,7 @@ const Batch = () => {
               {batch.placement}
             </Col>
             <Col className="textdark d-flex" sm={5}>
-              <Button className="me-2" variant="contained" onClick={()=>{copyToClipboard(BaseUrl+"/signup/"+batch.code)}}>Link</Button>
+              <Button className="me-2" variant="contained" onClick={()=>{copyToClipboard(BaseLink+"/signup/"+batch.code)}}>Link</Button>
               <AddTask title="Edit" value="updateBatch" form={batch.id} />
               {/* <Button className="coh ms-3" onClick={()=>{deleteBatch(batch.id)}}>Delete</Button> */}
               <Confirm title="Delete" name={batch.name} value="deleteBatch" message={message} onConfirm={onConfirm} form={batch.id} />

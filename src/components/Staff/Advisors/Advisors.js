@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
 import LeadContext from "../../../Context/LeadContext";
 import { useNavigate } from "react-router";
-import AuthContext, { BaseUrl } from "../../../Context/AuthContext";
+import AuthContext, { BaseLink } from "../../../Context/AuthContext";
 import Confirm from "../Confirm/Confirm";
 
 /////////////////////////
@@ -48,7 +48,7 @@ const Advisors = () => {
           {advisorLink ? <div className="d-flex">
             <ChangeCode button="Change" title="Change Old Link" />
             <Button className="ms-2 w-75 bgdark textlight"
-              onClick={()=>{copyToClipboard(BaseUrl + "signup/" + advisorLink)}}>Link</Button>
+              onClick={()=>{copyToClipboard(BaseLink + "signup/" + advisorLink)}}>Link</Button>
           </div>:<>
             <ChangeCode button="Add Link" title="Add New Link" />
           </>}

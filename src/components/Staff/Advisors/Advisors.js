@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import LeadContext from "../../../Context/LeadContext";
 import { useNavigate } from "react-router";
 import AuthContext, { BaseUrl } from "../../../Context/AuthContext";
+import Confirm from "../Confirm/Confirm";
+
 /////////////////////////
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -23,6 +25,9 @@ const Advisors = () => {
   const { getNotifications } = useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  const message = "Are you sure you want to block this advisor?";
+  const onConfirm = "If you block this advisor, All the students, batches and groups associated with her will be orphaned!";
 
   function copyToClipboard(text) {
     navigator.clipboard.writeText(text);
@@ -89,8 +94,10 @@ const Advisors = () => {
             </Col>
 
             <Col className="textdark d-flex" sm={3}>
-              <Button variant="contained" className="mx-1" color="error" onClick={() => {blockAdvisor(advisor.id)}}>Block</Button>
-              <Button className="coh mx-1" onClick={ async () => {await getProfile(advisor.id)
+              {/* <Button variant="contained" className="mx-1" color="error" onClick={() => {blockAdvisor(advisor.id)}}>Block</Button> */}
+              <Confirm title="Block" name={advisor.username} value="blockAdvisor" message={message} onConfirm={onConfirm} form={advisor.id} />
+
+              <Button className="bgdark textlight px-3 mx-1" onClick={ async () => {await getProfile(advisor.id)
           navigate("/lead/advisor/profile")}}>Profile</Button>
             </Col>
           </Row>

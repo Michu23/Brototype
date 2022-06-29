@@ -92,9 +92,11 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
 
-        
+{user.position === "Admin" && (
+        <Navs title="Leads" link="/admin" icon={<HomeIcon />} />
+      )}
 
-        { user && user.position === 'Lead' && (
+        { (user.position === 'Lead' || user.position === "Admin") && (
 <>
 <Divider />
 
@@ -110,6 +112,9 @@ export default function AccountMenu() {
     <Navs title ="Placements" link="/lead/placements" icon={<WorkspacePremiumIcon  />}  />
 </>
          )}
+
+
+
 
           {user && user.position === 'Advisor' && (
             <>

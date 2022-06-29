@@ -22,7 +22,7 @@ export default function AlertDialogSlide({
 }) {
   const [open, setOpen] = React.useState(false);
   const [copen, setCopen] = React.useState(false);
-  const { deleteDomain, deleteBatch, deleteGroup } =
+  const { deleteDomain, deleteBatch, deleteGroup,blockAdvisor } =
     React.useContext(LeadContext);
 
   const handleClickOpen = () => {
@@ -47,6 +47,7 @@ export default function AlertDialogSlide({
     } else if (value === "deleteGroup") {
         deleteGroup(form);
     }
+
   };
 
   const handleCloses = () => {

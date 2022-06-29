@@ -59,7 +59,7 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-         {user.position === 'Lead' && (
+         {(user.position === 'Lead' || user.position === "Admin") && (
 <>
 <Divider />
 
@@ -75,6 +75,10 @@ export default function SwipeableTemporaryDrawer() {
     <Navs title ="Placements" link="/lead/placements" icon={<WorkspacePremiumIcon  />}  />
 </>
          )}
+
+{user.position === "Admin" && (
+        <Navs title="Leads" link="/admin" icon={<HomeIcon />} />
+      )}
 
           {user.position === 'Advisor' && (
             <>

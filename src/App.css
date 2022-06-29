@@ -42,6 +42,10 @@ body {
   background: var(--white) !important;
 }
 
+.bgwhite {
+  background: #fff !important;
+}
+
 .bginfo {
   background: var(--info) !important;
 }

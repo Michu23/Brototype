@@ -110,6 +110,7 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+
   const loginUser = async (e) => {
     e.preventDefault();
     const username = e.target.username.value;
@@ -143,6 +144,7 @@ export const AuthProvider = ({ children }) => {
       }
       );
   }
+  
 
   const reset_password_confirm = async (e,uid,token,new_password,re_new_password) => {
     e.preventDefault();

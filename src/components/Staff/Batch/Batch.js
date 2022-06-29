@@ -69,7 +69,7 @@ const Batch = () => {
               {batch.placement}
             </Col>
             <Col className="textdark d-flex" sm={5}>
-              <Button className="me-2" variant="contained" onClick={()=>{copyToClipboard("http://localhost:3000/signup/"+batch.code)}}>Link</Button>
+              <Button className="me-2" variant="contained" onClick={()=>{copyToClipboard("https://brotocamp.space/signup/"+batch.code)}}>Link</Button>
               <AddTask title="Edit" value="updateBatch" form={batch.id} />
               <Button className="coh ms-3" onClick={()=>{deleteBatch(batch.id)}}>Delete</Button>
             </Col>

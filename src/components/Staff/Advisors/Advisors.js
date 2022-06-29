@@ -33,7 +33,7 @@ const Advisors = () => {
         </div>
         <div>
           <Button className="searchbtn w-75" 
-          onClick={()=>{copyToClipboard("http://localhost:3000/signup/"+advisorLink)}}>Link</Button>
+          onClick={()=>{copyToClipboard("https://brotocamp.space/signup/"+advisorLink)}}>Link</Button>
         </div>
       </Col>
 

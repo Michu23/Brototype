@@ -52,6 +52,23 @@ function RadarChart({data}) {
     )
 }
 function DoughnutChart({data}) {
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: data.title,
+        color: "var(--dark)",
+        fullSize: true,
+        font: {
+          size: 20
+      }
+      },
+    },
+  };
     const datas = {
         labels: data.labels,
         datasets: [
@@ -66,11 +83,29 @@ function DoughnutChart({data}) {
       };
     return (
         <div>
-        <Doughnut data={datas} />
+        <Doughnut options={options} data={datas} />
         </div>
     )
 }
 function PieChart({data}) {
+  const options = {
+      
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: data.title,
+        color: "var(--dark)",
+        fullSize: true,
+        font: {
+          size: 20,
+      }
+      },
+    },
+  };
     const datas = {
         labels: data.labels,
         datasets: [
@@ -85,12 +120,13 @@ function PieChart({data}) {
       };
     return (
         <div>
-        <Pie data={datas} />
+        <Pie options={options} data={datas} />
         </div>
     )
 }
 function LineChart({data}) {
     const options = {
+      
       responsive: true,
       plugins: {
         legend: {
@@ -99,9 +135,10 @@ function LineChart({data}) {
         title: {
           display: true,
           text: data.title,
+          color: "var(--dark)",
           fullSize: true,
           font: {
-            size: 20
+            size: 20,
         }
         },
       },
@@ -126,6 +163,7 @@ function BarChart({data}) {
         title: {
           display: true,
           text: data.title,
+          color: "var(--dark)",
           fullSize: true,
           font: {
             size: 20

@@ -18,11 +18,8 @@ const AdminHome = () => {
 
         <div className="container">
           <table
-            className="table text-center"
-            style={{
-              borderRadius: "2px",
-              boxShadow: "rgba(100, 100, 111, 0.4) 0px 7px 29px 0px",
-            }}
+            className="table text-center bs"
+            
           >
             <thead className="thead-dark">
               <tr>

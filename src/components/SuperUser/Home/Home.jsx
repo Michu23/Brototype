@@ -66,7 +66,7 @@ const AdminHome = () => {
           <Col className="bgdark" sm={2}>
             Phone
           </Col>
-          <Col className="bgdark text-center" sm={4}>
+          <Col className="bgdark text-center" sm={2}>
             Actions
           </Col>
         </Row>
@@ -79,7 +79,7 @@ const AdminHome = () => {
                   return (
           <Row className="m-0"  key={index}>
           
-            <Col className="textdark" sm={2}>
+            <Col className="textdark" sm={1}>
             #{index+1}
             </Col>
             <Col className="textdark" sm={2}>
@@ -91,8 +91,11 @@ const AdminHome = () => {
             <Col className="textdark" sm={2}>
             {lead.user.username}
             </Col>
-            <Col className="textdark d-flex justify-content-center" sm={4}>
-              <Button color="error" variant="contained">
+            <Col className="textdark" sm={2}>
+            {lead.user.username}
+            </Col>
+            <Col className="textdark d-flex justify-content-center" sm={2}>
+              <Button color="error" variant="contained" className="pb-1">
                 Delete
               </Button>
             </Col>

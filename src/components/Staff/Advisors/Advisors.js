@@ -6,9 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
 import LeadContext from "../../../Context/LeadContext";
 import { useNavigate } from "react-router";
-<<<<<<< HEAD
-import AuthContext,{ BaseUrl } from "../../../Context/AuthContext";
-=======
 import AuthContext, { BaseUrl } from "../../../Context/AuthContext";
 /////////////////////////
 import Dialog from "@mui/material/Dialog";
@@ -19,7 +16,6 @@ import DialogActions from "@mui/material/DialogActions";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 /////////////////////////
->>>>>>> 55c48117313414a44a2767bfaed27d200bb22e5c
 
 const Advisors = () => {
 

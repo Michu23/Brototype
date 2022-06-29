@@ -29,6 +29,11 @@ function NavBox() {
         <>
           <Navs title="Home" link="/lead" icon={<HomeIcon />} />
           <Navs
+            title="Location"
+            link="/lead/location"
+            icon={<BatchPredictionIcon />}
+          />
+          <Navs
             title="Batches"
             link="/lead/batch"
             icon={<BatchPredictionIcon />}

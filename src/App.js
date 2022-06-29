@@ -63,6 +63,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Home from "./pages/Home/Home";
 import Requests from "./components/Staff/Requests/Requests";
+import TabPanel from "./components/Staff/Location/TabPanel";
 import PlacementProfile from "./components/Staff/Placement/PlacementProfile";
 import Location from "./components/Advisor/Attendance/Location";
 import Branches from "./components/Advisor/Attendance/Branch";
@@ -271,6 +272,12 @@ function App() {
                   path="/lead/requests"
                   element={
                     <Lead child={<Requests />}/>
+                  }
+                />
+                <Route
+                  path="/lead/location"
+                  element={
+                    <Lead child={<TabPanel />}/>
                   }
                 />
                 <Route

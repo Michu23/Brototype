@@ -76,7 +76,7 @@ def rentPayments(request):
                 'status':pay.status,
             }
             return Response(context)
-        elif len(pay2) is 0:
+        elif len(pay2) == 0:
             newrpay = client.order.create({
             "amount": amount*100,
             "currency": "INR",
@@ -286,7 +286,7 @@ def paying(request):
         payment = client.order.fetch(ord_id)
         print(payment['amount'])
         
-        if check and pay.status is not 'Completed':
+        if check and pay.status != 'Completed':
             if  payment['amount'] == payment['amount_paid']:
                 pay.paid=payment['amount']/100
                 pay.status = 'Completed'

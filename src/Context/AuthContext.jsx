@@ -9,9 +9,9 @@ import FormData from "form-data";
 const AuthContext = createContext();
 export default AuthContext;
 
-export const BaseUrl = "https://api.brotocamp.space/";
+// export const BaseUrl = "https://api.brotocamp.space/";
 export const BaseLink = "https://brotocamp.space/";
-// export const BaseUrl = "http://127.0.0.1:8000/";
+export const BaseUrl = "http://127.0.0.1:8000/";
 // export const BaseLink = "http://localhost:3000/";
 
 export const AuthProvider = ({ children }) => {

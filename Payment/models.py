@@ -49,7 +49,7 @@ class Payment(models.Model):
     totalamt = models.IntegerField(default=0,null=True,blank=True)
     month = models.CharField(max_length=20,choices=MONTH,default='---')
     paid_date = models.DateField(null=True,blank=True)
-    expiry_date = models.DateField(null=True,blank=True,default=datetime.datetime.today()-datetime.timedelta(1))
+    expiry_date = models.DateField(null=True,blank=True, default="2020-01-01")
     paymentid = models.CharField(max_length=25,null=True,blank=True)
 
     def __str__(self):

@@ -38,7 +38,7 @@ const Completed = ({name, batch}) => {
 
       <Col className="m-0 row">
         <>
-          {allpaid &&
+          {allpaid ?
             allpaid.map((paid, index) => {
               if ((name !== '' && batch !== '' && paid.student.includes(name) && paid.batch.includes(batch)) || ((name !== '' && batch === '' && paid.student.includes(name)) || (name === '' && batch !== '' &&  paid.batch.includes(batch))) || (name === '' && batch === '')) {
               return (
@@ -53,7 +53,46 @@ const Completed = ({name, batch}) => {
                   </Row>
                 </Col>
               )}
-            })}
+            }):
+            
+            [1,1,1,1,1,1,1,1].map(()=>{
+              return (
+            <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
+                <Row className="m-0">
+                  <Col className="textdark" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+      
+                  </Col>
+                  <Col className="textdark" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+      
+                  </Col>
+                  <Col className="textdark" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+      
+                  </Col>
+                  <Col className="textdark" sm={3}>
+                  <div className="skeleton skeleton-id"></div>
+      
+                  </Col>
+      
+                  <Col className="textdark d-flex" sm={3}>
+                    {/* <Button variant="contained" className="mx-1" color="error" onClick={() => {blockAdvisor(advisor.id)}}>Block</Button> */}
+                    <div className="skeleton skeleton-id"></div>
+      
+      
+                    <div className="skeleton skeleton-id"></div>
+      
+               
+                  </Col>
+                </Row>
+              </Col>
+               )
+              })
+            
+            
+            
+            }
 
         </>
       </Col>

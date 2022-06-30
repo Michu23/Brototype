@@ -47,7 +47,7 @@ const Domain = () => {
         </Row>
       </Col>
 
-      {domains && domains.map((domain, index) =>{
+      {domains ? domains.map((domain, index) =>{
         return (
         <Col className="m-0" sm={12} key={index}>
           <Col sm={9} className="py-2 mb-2 cp rounded-3 bg">
@@ -60,14 +60,46 @@ const Domain = () => {
               </Col>
 
               <Col className="textdark d-flex justify-content-center" sm={6}>
-                <AddTask title="Edit" value="updateDomain" form={domain.id} />
+                <AddTask title="Edit" value="updateDomain"  form={domain.id} />
+                <div className="mx-1" >{" "}</div>
                 <Confirm title="Delete" name={domain.name}  value="deleteDomain" message={message} onConfirm={onConfirm} form={domain.id} />
                 {/* <Button className="coh px-4 ms-2" onClick={()=>{deleteDomain(domain.id)}}>Delete</Button> */}
               </Col>
             </Row>
           </Col>
         </Col>
-      )})}
+      )
+      
+      })
+    
+    :
+    
+    [1,1,1,1,1,1,1,1].map(()=>{
+      return (
+        <Col className="m-0" sm={12} >
+        <Col sm={9} className="py-2 mb-2 cp rounded-3 bg">
+          <Row className="m-0">
+            <Col className="textdark" sm={2}>
+             <div className="skeleton skeleton-id"></div>
+            </Col>
+            <Col className="textdark" sm={4}>
+              <div className="skeleton skeleton-id"></div>
+            </Col>
+
+            <Col className="textdark d-flex justify-content-center" sm={6}>
+            <div className="skeleton skeleton-id"></div>
+              
+            <div className="skeleton skeleton-id"></div>
+
+            </Col>
+          </Row>
+        </Col>
+      </Col>
+        )
+    })
+    
+    
+    }
       
     </Row>
   );

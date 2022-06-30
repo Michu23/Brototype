@@ -47,6 +47,7 @@ const schema = yup.object().shape({
   guardian_name: yup.string().required("Guardian name is required").min(3, "Guardian name should contain 3 characters"),
   relation: yup.string().required("Relation is required"),
   education: yup.string().required("Education is required"),
+  college: yup.string().required("College is required"),
   experience: yup.string().required("Experience is required"),
   company: yup.string().required("Company is required"),
   designation: yup.string().required("Designation is required"),

@@ -30,7 +30,7 @@ import AllStudents from "./components/Advisor/AllStudents/AllStudents"
 import Lead from "./pages/Lead/Lead";
 import Advisors from "./components/Staff/Advisors/Advisors";
 import Batch from "./components/Staff/Batch/Batch";
-import DomainComponent from "./components/Staff/Domain/Domain";
+import DomainComponent from "./components/Staff/Domain/TabPanel";
 import Group from "./components/Staff/Groups/Groups";
 import GroupManage from "./components/Staff/GroupManage/Groups";
 import Payments from "./components/Staff/Payment/Payment";

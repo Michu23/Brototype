@@ -457,6 +457,7 @@ export const AuthProvider = ({ children }) => {
       )
       .then((res) => {
         console.log(res.data);
+        getNotifications();
       })
       .catch((err) => {
         console.log(err);
@@ -474,6 +475,7 @@ export const AuthProvider = ({ children }) => {
       )
       .then((res) => {
         console.log(res.data);
+        getNotifications();
       })
       .catch((err) => {
         console.log(err);

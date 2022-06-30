@@ -121,7 +121,6 @@ def shiftAccept(request):
         date = datetime.date.today()
         month = date.strftime("%B")
         expiry = date+datetime.timedelta(6)
-        print(st[0].user.username)
 
         rpay= client.order.create({
             "amount": int(amount)*100,

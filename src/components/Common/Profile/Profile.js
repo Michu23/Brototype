@@ -101,24 +101,7 @@ function Profile({ by }) {
           public_id: data.data.public_id,
           signature: data.data.signature,
           timestamp: data.data.created_at,
-        });
-        //  await setNewPic({"secure_url":data.data.secure_url,"public_id":data.data.public_id, "signature":data.data.signature, "timestamp":data.data.created_at})
-        //  if (profile.public_id !== '' && profile.signature !== '') {
-        // const data = new FormData();
-        // data.append("public_id", profile.public_id);
-        // data.append("api_key", "866188884763553");
-        // data.append("signature", profile.signature);
-        // data.append("timestamp", profile.timestamp);
-        // axios.post(`https://api.cloudinary.com/v1_1/da3qthae5/image/destroy/`,data)
-        //   .then((data) => {
-        //     console.log(data);
-        //     console.log("delete aayittund");
-        //     backendUpdate(new_pic)
-        //   })
-        //  } else {
-        //   backendUpdate(new_pic)
-        //  }
-      })
+        })})
       .catch((err) => {
         alert(err);
       });
@@ -145,7 +128,7 @@ function Profile({ by }) {
         <h2>My Profile</h2>
       </Col>
       <form className="row m-0" onSubmit={handleSubmit(uploadProof)}>
-        <Col xs={12} md={6} className="p-0">
+        <Col xs={12} md={6} className="p-0" form={null}>
           <Col className="d-flex justify-content-end pe-3 pt-1">
             <label htmlFor="upload_image">
               <button

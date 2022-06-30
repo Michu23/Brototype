@@ -11,7 +11,7 @@ from Student.models import Student
 from Batch.models import Batch,Location,Branch
 from Student.serializer import  LocationStudentSerializer
 from .models import User, Profile, Domain, Notification
-from .serializer import UserSerealizer, NotificationSerealizer, ProfileSerealizer, DomainSerealizer,getNotificationTypes,LocationSerealizer,BranchSerealizer, StudentWeekSerializer, TaskSerializer
+from .serializer import UserSerealizer, NotificationSerealizer, ProfileSerealizer, DomainSerealizer,getNotificationTypes,LocationSerealizer,BranchSerealizer, StudentWeekSerializer, TaskSerializer, LocationFullSerealizer
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -128,7 +128,7 @@ def updateProfile(request):
 def getMyProfile(request):
     user = request.user
     if user.is_staff and request.user.is_superuser == False:
-        if user.iS_active:
+        if user.is_active:
             profile = ProfileSerealizer(Profile.objects.get(advisor=Advisor.objects.get(user=user)))
         else:
             return Response({'error': 'You are not authorized to view profile'})
@@ -220,7 +220,7 @@ def getLocations(request):
         location.branches = Branch.objects.filter(location=location).count()
         location.batches = Batch.objects.filter(location=location).count()
         location.save()
-    serealizer = LocationSerealizer(locations, many=True).data
+    serealizer = LocationFullSerealizer(locations, many=True).data
     return Response(serealizer)
 
         

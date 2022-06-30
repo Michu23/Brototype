@@ -806,7 +806,9 @@ export const AuthProvider = ({ children }) => {
 
   const getLocations = async () => {
     await axios
-      .get(BaseUrl + "user/getLocations", {})
+      .get(BaseUrl + "user/getLocations", {},{
+        headers: { Authorization: `Bearer ${authTokens.access}` },
+      })
       .then((res) => {
         console.log(res.data);
         setAllLocations(res.data);
@@ -821,22 +823,18 @@ export const AuthProvider = ({ children }) => {
 
 
   const getBranch = async () => {
-    // console.log("Inside");
-    // await axios
-    //   .post(
-    //     BaseUrl + "user/getBranches",
-    //     {
-    //       location: LocationId,
-    //     },
-    //     {}
-    //   )
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     setAllBranches(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    await axios
+      .post(
+        BaseUrl + "user/getBranches",{},{
+          headers: { Authorization: `Bearer ${authTokens.access}` },
+        })
+      .then((res) => {
+        console.log(res.data);
+        setAllBranches(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const [branchStudents, setBranchStudents] = useState(null);

@@ -11,7 +11,7 @@ export const LeadProvider = ({ children }) => {
   //Asign the useNavigate hook to a variable
   const navigate = useNavigate();
 
-  const { authTokens, getDomains, setProfile, getBatches, getReviewers } = useContext(AuthContext);
+  const { authTokens, getDomains, setProfile, getBatches, getReviewers, getLocations, getBranch } = useContext(AuthContext);
 
   //Define the state of the context
   const [advisorsNames, setAdvisorsNames] = useState(null);
@@ -42,6 +42,21 @@ export const LeadProvider = ({ children }) => {
       ).then((res) => {
         console.log(res.data);
         getBatches();
+      }).catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const createBranch = async (branch, location) => {
+    await axios.post(BaseUrl + "batch/create/branch",
+      {
+        'name': branch,
+        'location': location,
+      },
+      {
+        headers: { Authorization: `Bearer ${authTokens.access}` },
+      }).then((res) => {
+        getBranch();
       }).catch((err) => {
         console.log(err);
       });
@@ -81,6 +96,20 @@ export const LeadProvider = ({ children }) => {
       }).catch((err) => {
         console.log(err);
       });
+  };
+
+  const createLocation = async (location) => {
+    await axios.post(BaseUrl + "admins/create/location",{
+      name: location,
+    },
+    {
+      headers: { Authorization: `Bearer ${authTokens.access}` },
+    }).then((res) => {
+      console.log(res.data);
+      getLocations();
+    }).catch((err) => {
+      console.log(err);
+    });
   };
 
   const createPlacement = async (student, name, location, designation, LPA, address, count) => {
@@ -349,6 +378,19 @@ export const LeadProvider = ({ children }) => {
       });
   };
 
+  const deleteBranch = async (branchId) => {
+    await axios.post(BaseUrl + "batch/delete/branch",
+        { id: branchId },
+        {
+          headers: { Authorization: `Bearer ${authTokens.access}` },
+        }).then((res) => {
+        console.log(res.data);
+        getBranch();
+      }).catch((err) => {
+        console.log(err);
+      });
+  };
+
   const deleteDomain = async (domainId) => {
     await axios.post(BaseUrl + "user/delete/domain",
         { id: domainId },
@@ -373,6 +415,19 @@ export const LeadProvider = ({ children }) => {
         console.log(res.data);
         getGroups();
         navigate("/lead/groups");
+      }).catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteLocation = async (locationId) => {
+    await axios.post(BaseUrl + "admins/delete/location",
+        { id: locationId },
+        {
+          headers: { Authorization: `Bearer ${authTokens.access}` },
+        }).then((res) => {
+        console.log(res.data);
+        getLocations();
       }).catch((err) => {
         console.log(err);
       });
@@ -517,8 +572,10 @@ export const LeadProvider = ({ children }) => {
   const contextData = {
     //Create
     createBatch,
+    createBranch,
     createDomain,
     createGroup,
+    createLocation,
     createPlacement,
     createReviewer,
 
@@ -543,8 +600,10 @@ export const LeadProvider = ({ children }) => {
     //Delete
     blockAdvisor,
     deleteBatch,
+    deleteBranch,
     deleteDomain,
     deleteGroup,
+    deleteLocation,
     deleteReviewer,
 
     //Others

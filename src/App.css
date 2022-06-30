@@ -343,3 +343,13 @@ label{
     background-color: hsl(200, 20%, 95%);
   }
 }
+
+
+.payyy{
+  display: flex;
+  flex-direction: column;
+}
+
+.payname{
+  size: 24px;
+}

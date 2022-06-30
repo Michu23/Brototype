@@ -8,6 +8,7 @@ import { ShowChart } from "@mui/icons-material";
 import AuthContext from "../../../Context/AuthContext";
 import MyPays from "./MyPayements";
 import StyleContext from "../../../Context/StyleContext";
+import SpeedDialTooltipOpen from "./SpeedDialTooltipOpen";
 
 function Payment() {
   const {
@@ -107,13 +108,15 @@ function Payment() {
           
             <Row className="mx-0 my-2 paybutton">
               <Col xs={12}>
-                <Button
+                {/* <Button
                   size="lg"
                   onClick={() => displayRazorpay(amount, "Rent", rentid)}
                   className={`w-100 ${style.btn}`}
                 >
                   UPI
-                </Button>
+                </Button> */}
+                <SpeedDialTooltipOpen func={displayRazorpay} amount={amount} type="Rent" id={rentid} />
+
               </Col>
               
             
@@ -151,7 +154,7 @@ function Payment() {
           
             <Row className="mx-0 my-2 paybutton">
               <Col xs={12}>
-                <Button
+                {/* <Button
                   size="lg"
                   onClick={() =>
                     displayRazorpay(upfrontamount, "Upfront", upfrontid)
@@ -159,7 +162,9 @@ function Payment() {
                   className={`w-100 ${style.btn}`}
                 >
                   UPI
-                </Button>
+                </Button> */}
+                <SpeedDialTooltipOpen func={displayRazorpay} amount={upfrontamount} type="Upfront" id={upfrontid} />
+
               </Col>
             </Row>
          
@@ -195,7 +200,7 @@ function Payment() {
           
             <Row className="mx-0 my-2 paybutton">
               <Col xs={12}>
-                <Button
+                {/* <Button
                   size="lg"
                   onClick={() =>
                     displayRazorpay(shiftamount, "BatchShift", shiftid)
@@ -203,7 +208,8 @@ function Payment() {
                   className={`w-100 ${style.btn}`}
                 >
                   UPI
-                </Button>
+                </Button> */}
+                <SpeedDialTooltipOpen func={displayRazorpay} amount={shiftamount} type="BatchShift" id={shiftid} />
               </Col>
             </Row>
          
@@ -237,7 +243,7 @@ function Payment() {
           </Row>
             <Row className="mx-0 my-2 paybutton">
               <Col xs={12}>
-                <Button
+                {/* <Button
                   size="lg"
                   onClick={() =>
                     displayRazorpay(fineamount, "Fine", fineid)
@@ -245,7 +251,9 @@ function Payment() {
                   className={`w-100 ${style.btn}`}
                 >
                   UPI
-                </Button>
+                </Button> */}
+                <SpeedDialTooltipOpen func={displayRazorpay} amount={fineamount} type="Fine" id={fineid} />
+
               </Col>
             </Row>
          

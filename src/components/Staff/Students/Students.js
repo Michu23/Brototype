@@ -107,11 +107,11 @@ const Students = () => {
                     {student.group ? student.group : "Not Assigned"}
                   </Col>
                   <Col className="navTo textdark" sm={4}>
-                    <Row>
-                    <Col md={4} className="pt-2" sm={12}><AddTask  title="Manage" value="st_manage" form={student.id}/></Col>
-                    <Col md={4} sm={12}><Button
+                    <Row className="p-0 m-0">
+                    <Col md={4} className=" p-0 mx-2" sm={12}><AddTask  title="Manage" value="st_manage" form={student.id}/></Col>
+                    <Col md={4} sm={12} className="m-0 p-0"><Button
                       variant="contained"
-                      className="m-2 ms-0 px-4"
+                      className=" ms-0 px-4"
                       onClick={async () => {
                         await getProfile(student.id);
                         navigate("/lead/student/profile");

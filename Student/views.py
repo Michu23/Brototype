@@ -17,7 +17,7 @@ def getStudents(request):
     if request.user.is_lead or (request.user.is_staff and request.user.is_active) or request.user.is_superuser:
         students = Student.objects.all().order_by('batch')
         for student in students:
-            student.week = Manifest.objects.filter(student_name=student).order_by('-id')[0].title
+            student.week = Manifest.objects.filter(student_name=student).order_by('-id')[0].title[-2:] 
             student.save()
         serializer = ViewStudentSerializer(students, many=True).data
         return Response(serializer)

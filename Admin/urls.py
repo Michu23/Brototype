@@ -12,9 +12,9 @@ urlpatterns = [
     path('create/lead', views.createLead, name='create_leads'),
     path('delete/lead', views.deleteLead, name='delete_leads'),
     path('update/link', views.updateLink, name='update_link'),
-    path('create/reviewers', views.createReviewer, name='create_reviewers'),
-    path('delete/reviewers', views.deleteReviewer, name='delete_reviewers'),
-    path('update/reviewers', views.updateReviewer, name='update_reviewers'),
+    path('create/reviewer', views.createReviewer, name='create_reviewers'),
+    path('delete/reviewer', views.deleteReviewer, name='delete_reviewers'),
+    path('update/reviewer', views.updateReviewer, name='update_reviewers'),
     path('create/location', views.createLocation, name='create_location'),
     path('delete/location', views.deleteLocation, name='delete_location'),
 ]

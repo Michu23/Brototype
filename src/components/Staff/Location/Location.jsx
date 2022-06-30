@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from 'react'
 import ManageSearchRoundedIcon from "@mui/icons-material/ManageSearchRounded";
 import { Row, Col } from "react-bootstrap";
@@ -46,7 +47,7 @@ const Location = () => {
             className={`py-1 textwhite my-1 pb-3 text-start ps-3 rounded-3 ${style.inputField}`}
           >
             <label className={`${style.label}`}>Batch</label>
-            <input type="text"   className={`w-100 ${style.input}`} />
+            <input type="text" className={`w-100 ${style.input}`} />
           </Col>
 
           <Button className=" mx-1 searchbtn">
@@ -101,8 +102,8 @@ const Location = () => {
         )})}
       </Col>
     </Row>
-  )
-}
+  );
+};
 
 export default Location
 

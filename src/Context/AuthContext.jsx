@@ -918,6 +918,19 @@ export const AuthProvider = ({ children }) => {
     })
   }
 
+  const [userHomeDetailes, setUserHomeDetailes] = useState(null);
+
+  const getUserHomeDetailes = async () => {
+    await axios.post(BaseUrl + "user/view/home/details", {}, {
+      headers: { Authorization: `Bearer ${authTokens.access}` },
+    }).then((res) => {
+      console.log(res.data);
+      setUserHomeDetailes(res.data);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
 
   const contextData = {
     signupUser,
@@ -1021,6 +1034,8 @@ export const AuthProvider = ({ children }) => {
     reset_password,
     reset_password_confirm,
     deletePendings,
+    getUserHomeDetailes,
+    userHomeDetailes,
 
   };
   return (

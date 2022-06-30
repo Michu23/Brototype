@@ -215,15 +215,24 @@ def updateProfilephoto(request):
 
 @api_view(['GET'])
 def getLocations(request):
-    locations = LocationSerealizer(Location.objects.all(), many=True).data
-    return Response(locations)
+
+    locations = Location.objects.all()
+    for location in locations:
+        location.branches = Branch.objects.filter(location=location).count()
+        location.batches = Batch.objects.filter(location=location).count()
+        location.save()
+    serealizer = LocationSerealizer(locations, many=True).data
+    return Response(serealizer)
 
         
 @api_view(['POST'])
 def getBranches(request):
-    location = Location.objects.get(id=request.data['location'])
-    branches = BranchSerealizer(Branch.objects.filter(location=location), many=True).data
-    return Response(branches)
+    branches = Branch.objects.all()
+    for branch in branches:
+        branch.students = Student.objects.filter(branch=branch).count()
+        branch.save()
+    serealizer = BranchSerealizer(branches, many=True).data
+    return Response(serealizer)
     
 
 @api_view(['POST'])

@@ -15,4 +15,6 @@ urlpatterns = [
     path('create/reviewers', views.createReviewer, name='create_reviewers'),
     path('delete/reviewers', views.deleteReviewer, name='delete_reviewers'),
     path('update/reviewers', views.updateReviewer, name='update_reviewers'),
+    path('create/location', views.createLocation, name='create_location'),
+    path('delete/location', views.deleteLocation, name='delete_location'),
 ]

@@ -60,13 +60,14 @@ class NotificationSerealizer(serializers.ModelSerializer):
         fields = '__all__'
 
 class LocationSerealizer(serializers.ModelSerializer):
-    count = serializers.IntegerField(source='branch.count', read_only=True)
+    branches = serializers.CharField()
+    batches = serializers.CharField()
     class Meta:
         model = Location
-        fields = '__all__'
+        fields = ('id', 'place', 'branches', 'batches')
 
 class BranchSerealizer(serializers.ModelSerializer):
-    count = serializers.IntegerField(source='student.count', read_only=True)
+    students = serializers.CharField()
     class Meta:
         model = Branch
         fields = '__all__'

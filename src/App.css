@@ -353,3 +353,7 @@ label{
 .payname{
   size: 24px;
 }
+
+.MuiTextField-root{
+  border: #fff;
+}

@@ -11,6 +11,8 @@ import AdvisorContext from "../../../Context/AdvisorContext";
 import AddTask from "../AddTask/AddTask";
 import AuthContext from "../../../Context/AuthContext";
 import { useNavigate } from "react-router";
+import ManageSearchRoundedIcon from "@mui/icons-material/ManageSearchRounded";
+
 
 const Students = () => {
 
@@ -28,7 +30,7 @@ const Students = () => {
   },[])
 
   return (
-    <Row className={`m-0 px-3 rounded-2 bg py-3 ${style.tasks}`}>
+    <Row className={`m-0 px-3 rounded-2 bglight py-3 ${style.tasks}`}>
       <Col sm={12} className="d-flex justify-content-between">
         <div>
           <h2>My Students</h2>
@@ -40,17 +42,27 @@ const Students = () => {
             value={name} 
             onChange={(e)=>{setName(e.target.value)}}
             variant="outlined"
+            InputProps={{
+              style: {
+                  color: "var(--dark)"
+              }
+          }}
             className="mx-2 h-100"
           />
           <TextField
             id="outlined-basic"
             label="Batch"
             value={batch} 
+            InputProps={{
+              style: {
+                  color: "var(--dark)"
+              }
+          }}
             onChange={(e)=>{setBatch(e.target.value)}} 
             variant="outlined"
           />
-          <Button variant="contained" color="primary" className="mx-2 h-100">
-            <ManageSearchIcon />
+          <Button className=" mx-1 searchbtn">
+            <ManageSearchRoundedIcon className="searchbtn" />
           </Button>
         </div>
       </Col>
@@ -85,7 +97,7 @@ const Students = () => {
             return(
             <Col
             sm={12}
-            className={`py-2 mb-2 cp bglight rounded-3 ${style.tableBody}`}
+            className={`py-2 mb-2 cp bg rounded-3 ${style.tableBody}`}
             key={index}
             onClick={(e)=>{
               e.preventDefault()
@@ -114,7 +126,7 @@ const Students = () => {
               </Col>
               <Col className={`navTo ${style.tableBodyText} d-flex`} sm={3}>
                 <AddTask title="SHIFT" value="shift" form={student.id}/>
-                <Button variant="contained" color="error" onClick={()=>{sendTerminateRequest(student.id)}}>
+                <Button variant="contained" className="mx-2" color="error" onClick={()=>{sendTerminateRequest(student.id)}}>
                   Terminate
                 </Button>
               </Col>

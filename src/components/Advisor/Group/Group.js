@@ -29,8 +29,8 @@ const Work = () => {
   },[])
 
   return (
-    <Row className={`m-0 px-3 rounded-2 bg py-3 ${style.tasks}`}>
-      <Col sm={12} className="d-flex justify-content-between">
+    <Row className={`m-0 px-3 rounded-2 bglight py-3 ${style.tasks}`}>
+      <Col sm={12} className="d-flex  justify-content-between">
         <div>
           <h2>My Students</h2>
         </div>

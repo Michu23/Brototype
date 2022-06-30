@@ -11,6 +11,9 @@ import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import AuthContext from "../../../Context/AuthContext";
 import AdvisorContext from "../../../Context/AdvisorContext";
 import { useNavigate } from "react-router";
+import ManageSearchRoundedIcon from "@mui/icons-material/ManageSearchRounded";
+import { Margin } from "@mui/icons-material";
+
 
 const Work = () => {
 
@@ -27,7 +30,7 @@ const Work = () => {
   },[])
 
   return (
-    <Row className={`m-0 px-3 rounded-2 bg py-3 ${style.tasks}`}>
+    <Row className={`m-0 px-3 rounded-2 bglight py-3 ${style.tasks}`}>
       <Col sm={12} className="d-flex justify-content-between">
         <div>
           <h2>My Groups</h2>
@@ -36,12 +39,18 @@ const Work = () => {
         <TextField
             id="outlined-basic"
             label="Batch"
+          InputProps={{
+              style: {
+                  color: "var(--dark)"
+              }
+          }}
+
             value={batch}
             onChange={(e) => setBatch(e.target.value)}
             variant="outlined"
           />
-          <Button variant="contained" color="primary" className="mx-2 h-100">
-            <ManageSearchIcon />
+           <Button className=" mx-1 h-100 searchbtn">
+            <ManageSearchRoundedIcon className="searchbtn" />
           </Button>
         </div>
       </Col>
@@ -76,7 +85,7 @@ const Work = () => {
               return (
               <Col
               sm={12}
-              className={`py-2 mb-2 cp bglight rounded-3 ${style.tableBody}`}
+              className={`py-2 mb-2 cp bg rounded-3 ${style.tableBody}`}
               onClick={() => {setCurr_group(group.id)
               navigate('/advisor/group')}} >
               <Row className="m-0">

@@ -60,6 +60,11 @@ class NotificationSerealizer(serializers.ModelSerializer):
         fields = '__all__'
 
 class LocationSerealizer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ('id', 'place')
+
+class LocationFullSerealizer(serializers.ModelSerializer):
     branches = serializers.CharField()
     batches = serializers.CharField()
     class Meta:

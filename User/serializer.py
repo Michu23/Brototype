@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import Department, User, Domain, Profile, Notification
 from Admin.models import Advisor, Location
 from Student.models import Student
-from Manifest.models import Manifest
+from Manifest.models import Manifest, Tasks
 from Batch.models import Batch, Branch
 
 class UserSerealizer(serializers.ModelSerializer):
@@ -70,4 +70,16 @@ class BranchSerealizer(serializers.ModelSerializer):
     students = serializers.CharField()
     class Meta:
         model = Branch
+        fields = '__all__'
+
+class StudentWeekSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source='user.username')
+    week = serializers.CharField()
+    class Meta:
+        model = Student
+        fields = ('id', 'name', 'week')
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tasks
         fields = '__all__'

@@ -4,15 +4,14 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated, AllowAny
-import base64
 
 from Admin.models import Advisor, Code
-from Manifest.models import Manifest
+from Manifest.models import Manifest, Tasks
 from Student.models import Student
 from Batch.models import Batch,Location,Branch
 from Student.serializer import  LocationStudentSerializer
 from .models import User, Profile, Domain, Notification
-from .serializer import UserSerealizer, NotificationSerealizer, ProfileSerealizer, DomainSerealizer,getNotificationTypes,LocationSerealizer,BranchSerealizer
+from .serializer import UserSerealizer, NotificationSerealizer, ProfileSerealizer, DomainSerealizer,getNotificationTypes,LocationSerealizer,BranchSerealizer, StudentWeekSerializer, TaskSerializer
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -247,5 +246,22 @@ def getBatchStudents(request):
             student.save()
         students = LocationStudentSerializer(students, many=True).data
         return Response(students)
+    else:
+        return Response({"message": "You are not authorized to view Location"})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def getHomeDetails(request):
+    if request.user.is_student:
+        batch = Batch.objects.get(id=request.user.student.batch.id)
+        students = Student.objects.filter(batch=batch)
+        students = students.order_by('-manifest__title')
+        for student in students:
+            student.week = Manifest.objects.filter(student_name=student)[0].title
+            student.save()
+        student_serializer = StudentWeekSerializer(students, many=True).data
+        pendings = Tasks.objects.filter(week__student_name=request.user.student, status=False)
+        pendings_serializer = TaskSerializer(pendings, many=True).data
+        return Response({"students": student_serializer, "pendings": pendings_serializer})
     else:
         return Response({"message": "You are not authorized to view Location"})

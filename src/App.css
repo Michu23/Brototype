@@ -321,7 +321,15 @@ label{
   border-radius: .125rem;
 }
 
+.nots{
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
 
+.nots::-webkit-scrollbar {
+  display: none;
+}
 
 
 @keyframes skeleton-loader {

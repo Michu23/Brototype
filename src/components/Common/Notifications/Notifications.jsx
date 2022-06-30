@@ -18,7 +18,7 @@ const Notifications = () => {
         { (user.position === "Lead" || user.position === "Admin") && <Add title="Add" value="addnotifications"></Add>}
       </div>
 
-      {notifications &&
+      {notifications ?
         notifications.map((notification, index) => {
           return (
             <Row className="mx-2 mt-3 rounded-3 slides">
@@ -68,8 +68,39 @@ const Notifications = () => {
         )}
 
             </Row>
+            
           );
-        })}
+        }):
+
+        [1,1,1,1,1,1,1,1].map(()=>{
+          return (
+        
+
+        <Row className="mx-2 mt-3 rounded-3 slides">
+              <Col
+                xs={3}
+                className="my-auto d-flex justify-content-center text-muted"
+              >
+                <div className="skeleton skeleton-id"></div>
+              </Col>
+              <Col xs={1}>
+                <div
+                  className={`vertical skeleton skeleton-id`}
+                ></div>
+              </Col>
+              <Col xs={6} className="my-auto">
+                <p className="notitype"><div className="skeleton skeleton-id"></div></p>
+                <div className="skeleton skeleton-id"></div>
+              </Col>
+              
+
+            </Row>
+
+)
+})
+
+        
+        }
 
       {/* <Row className="mx-2 mt-3 rounded-3 slides">
         <Col

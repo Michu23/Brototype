@@ -5,6 +5,8 @@ import Chart from "../../Common/Chart/Chart";
 import AuthContext from "../../../Context/AuthContext";
 import Accordion from './SimpleAccordion'
 
+
+
 const MySpace = () => {
   const { chartData, getChartData, getNotifications } = useContext(AuthContext);
   useEffect(() => {
@@ -16,7 +18,9 @@ const MySpace = () => {
       {chartData && (
       <Row className="mt-5 col-11 chartspage">
         <Row>
-          <Col md={6}></Col>
+          <Col md={6}>
+          
+          </Col>
           <Col md={6}>
             <Accordion/>
           </Col>

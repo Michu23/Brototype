@@ -14,12 +14,15 @@ function Notification() {
   const { notifications, user } = useContext(AuthContext);
 
   return (
+    <>
     <Row className="m-0 rounded-3 py-4  ">
       <Col className={style.notification}>
         <h5 className="ms-3 mb-3">Notifications <FaBell/></h5>
       </Col>
+      </Row>
+      <Row className="nots">
 
-      {notifications && notifications.slice(0,2).map((notification, index) => {
+      {notifications && notifications.slice(0,5).map((notification, index) => {
         return (
           <Col
             className={`text-center ${style.hoverdiv}  cp pt-4`}
@@ -51,18 +54,21 @@ function Notification() {
             </Row>
           </Col>
         )})}
+        </Row>
+        <Row>
 
       <Col
-        className={`text-center ${style.hoverdiv}  cp pt-4`}
+        className={`text-center ${style.hoverdiv}  cp ms-2 mt-2 pt-4`}
         xs={12}
       >
         <Row className="m-0">
-          <Col className="text-center pb-3" xs={12}>
+          <Col className="text-center pb-3 mb-2" xs={12}>
             <Link to={`${ user.position ==="Student" ? "/notifications" : `/${user.position}/notifications`}`}><h6 className="m-0">See all</h6></Link>
           </Col>
         </Row>
       </Col>
     </Row>
+    </>
   );
 }
 

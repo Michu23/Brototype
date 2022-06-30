@@ -18,4 +18,6 @@ urlpatterns = [
     path('create/group', views.createGroup, name='create_group'),
     path('delete/group', views.deleteGroup, name='delete_group'),
     path('update/group', views.updateGroup, name='update_group'),
+    path('create/branch', views.createBranch, name='create_branch'),
+    path('delete/branch', views.deleteBranch, name='delete_branch'),
 ]

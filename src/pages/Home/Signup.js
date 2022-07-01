@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container2 from "@mui/material/Container";
@@ -194,7 +194,7 @@ const Signup = () => {
                 </div>
                 <div className="card-body flex-grow-0">
                   <div className="form-group pb-3 text-center text-muted">
-                    Already have an account? <Link to="/signin">Sign in</Link>
+                    Already have an account? <Link to="/signin" className="cp">Sign in</Link>
                   </div>
                 </div>
               </form>

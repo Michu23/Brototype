@@ -26,7 +26,7 @@ from datetime import timedelta
 SECRET_KEY = 'django-insecure-xqlvranstyd4h!j9p+-55krz+pg+*=$@z(w3ux$*16lnb=nu4n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

@@ -15,7 +15,6 @@ const AdminHome = () => {
     getNotifications()
   }, []);
 
-
   return (
     <>
     <Row className="m-0 p-3 rounded-2 pb-0">
@@ -49,7 +48,7 @@ const AdminHome = () => {
         </div>
       </Col>
 
-      <Col sm={12} className="py-2 my-2 bgdark  px-4 rounded-3">
+      <Col sm={12} className="py-2 mt-2 bgdark  px-4 rounded-3">
         <Row className="m-0 textlight" xs={0}>
           <Col className="bgdark" sm={1}>
             Index
@@ -73,7 +72,7 @@ const AdminHome = () => {
       </Col>
 
       <Col className="m-0 row ">
-        <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
+        <Col sm={12} className="py-2 my-2 cp rounded-3 bg">
         {leads ?
                 leads.map((lead, index) => {
                   return (
@@ -104,40 +103,38 @@ const AdminHome = () => {
            );
           }):
           
-          [1,1,1,1,1,1,1,1].map(()=>{
-            return (
-          <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
-              <Row className="m-0">
-                <Col className="textdark" sm={2}>
-                <div className="skeleton skeleton-id"></div>
-    
-                </Col>
-                <Col className="textdark" sm={2}>
-                <div className="skeleton skeleton-id"></div>
-    
-                </Col>
-                <Col className="textdark" sm={2}>
-                <div className="skeleton skeleton-id"></div>
-    
-                </Col>
-                <Col className="textdark" sm={3}>
-                <div className="skeleton skeleton-id"></div>
-    
-                </Col>
-    
-                <Col className="textdark d-flex" sm={3}>
-                  {/* <Button variant="contained" className="mx-1" color="error" onClick={() => {blockAdvisor(advisor.id)}}>Block</Button> */}
-                  <div className="skeleton skeleton-id"></div>
-    
-    
-                  <div className="skeleton skeleton-id"></div>
-    
+           [1,1,1,1,1,1,1,1].map(()=>{
+        return (
+      <Row className="m-0 my-2 p-1 py-2 bg"   >
+          
+              <Col className="textdark" sm={1}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark d-flex justify-content-center" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
              
-                </Col>
-              </Row>
-            </Col>
-             )
-            })
+            </Row>
+         )
+        })
           
           
           }

@@ -105,6 +105,7 @@ export default function AccountMenu() {
     <Navs title ="Domains" link="/lead/domain" icon={<DnsIcon  />}  />
     <Navs title ="Advisors" link="/lead/advisors" icon={<CastForEducationIcon  />}  />
     <Navs title ="Groups" link="/lead/groups" icon={<GroupIcon  />}  />
+    <Navs title ="Reviews" link="/lead/reviews" icon={<GroupIcon  />}  />
     <Navs title ="Students" link="/lead/students" icon={<SchoolIcon  />}  />
     <Navs title ="Requests" link="/lead/requests" icon={<QuestionMarkIcon  />}  />
     <Divider />

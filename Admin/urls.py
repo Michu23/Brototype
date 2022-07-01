@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, report
 
 
 
@@ -17,4 +17,6 @@ urlpatterns = [
     path('update/reviewer', views.updateReviewer, name='update_reviewers'),
     path('create/location', views.createLocation, name='create_location'),
     path('delete/location', views.deleteLocation, name='delete_location'),
+    path('view/advisor/report', report.advisorReport, name='advisor_report'),
+    path('view/reviewer/report', report.reviewerReport, name='reviewer_report'),
 ]

@@ -44,6 +44,11 @@ function NavBox() {
             link="/lead/advisors"
             icon={<CastForEducationIcon />}
           />
+          <Navs
+            title="Reviews"
+            link="/lead/reviews"
+            icon={<CastForEducationIcon />}
+          />
           <Navs title="Groups" link="/lead/groups" icon={<GroupIcon />} />
           <Navs title="Students" link="/lead/students" icon={<SchoolIcon />} />
           <Navs

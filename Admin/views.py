@@ -71,7 +71,6 @@ def createLead(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def deleteLead(request):
-    print(request.data['id'])
     if request.user.is_superuser:
         lead = Lead.objects.filter(id=request.data['id'])[0]
         lead.user.delete()

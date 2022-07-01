@@ -23,6 +23,8 @@ export const LeadProvider = ({ children }) => {
   const [requests, setRequests] = useState(null);
   const [students, setStudents] = useState(null);
   const [advisorLink, setAdvisorLink] = useState(null);
+  const [advisorReports, setAdvisorReports] = useState(null);
+  const [reviewerReports, setReviewerReports] = useState(null);
 
 
   //Create function
@@ -279,6 +281,34 @@ export const LeadProvider = ({ children }) => {
         console.log(err);
       });
   };
+
+  const advisorReport = async () => {
+    await axios.post(BaseUrl + "admins/view/advisor/report",
+        {},
+        {
+          headers: { Authorization: `Bearer ${authTokens.access}` },
+        }
+      ).then((res) => {
+        console.log(res.data);
+        setAdvisorReports(res.data);
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const reviewerReport = async () => {
+    await axios.post(BaseUrl + "admins/view/reviewer/report",
+        {},
+        {
+          headers: { Authorization: `Bearer ${authTokens.access}` },
+        }
+      ).then((res) => {
+        console.log(res.data);
+        setReviewerReports(res.data);
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
 
   //Update function
 
@@ -589,6 +619,8 @@ export const LeadProvider = ({ children }) => {
     getProfile,
     getRequests,
     getStudents,
+    advisorReport,
+    reviewerReport,
 
     //Update
     updateBatch,
@@ -625,6 +657,8 @@ export const LeadProvider = ({ children }) => {
     setPlacements,
     setRequests,
     setStudents,
+    setAdvisorReports,
+    setReviewerReports,
 
     //State variables
     advisors,
@@ -635,7 +669,9 @@ export const LeadProvider = ({ children }) => {
     groupLessers,
     placements,
     requests,
-    students
+    students,
+    advisorReports,
+    reviewerReports,
   };
   return (
     <LeadContext.Provider value={contextData}>{children}</LeadContext.Provider>

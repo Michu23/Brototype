@@ -36,6 +36,7 @@ import GroupManage from "./components/Staff/GroupManage/Groups";
 import Payments from "./components/Staff/Payment/Payment";
 import Placements from "./components/Staff/Placement/Placement";
 import Students from "./components/Staff/Students/Students";
+import Reviews from "./components/Staff/Reviews/TabPanel";
 ////////////////////////////////////
 import Communication from "./pages/Communication/Communication";
 ////////////////////////////////////
@@ -202,6 +203,12 @@ function App() {
                   path="/lead/payments"
                   element={
                     <Lead child={<Payments />}/>
+                  }
+                />
+                <Route
+                  path="/lead/reviews"
+                  element={
+                    <Lead child={<Reviews />}/>
                   }
                 />
                 <Route

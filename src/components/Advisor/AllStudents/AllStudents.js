@@ -109,7 +109,45 @@ const AllStudents = () => {
                 </Row>
               </Col>
             )}})
-          : null}
+          : 
+          
+          [1,1,1,1,1,1,1,1].map(()=>{
+            return (
+              <Col sm={12} className="py-3 mb-2 cp mt-1 rounded-3 bg"
+              
+              >
+                <Row className="m-0">
+                  <Col className="textdark" sm={1}>
+                  <div className="skeleton skeleton-id"></div>
+
+                  </Col>
+                  <Col className="textdark" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+
+                  </Col>
+                  <Col className="textdark" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+
+                  </Col>
+                  <Col className="textdark" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+
+                  </Col>
+                  <Col className="textdark" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+
+                  </Col>
+                  <Col className="textdark d-flex" sm={2}>
+                  <div className="skeleton skeleton-id"></div>
+
+                  </Col>
+                </Row>
+              </Col>
+              )
+          })
+          
+          
+          }
       </Col>
     </Row>
   );

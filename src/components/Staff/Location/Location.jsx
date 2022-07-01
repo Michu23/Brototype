@@ -77,7 +77,7 @@ const Location = () => {
       </Col>
 
       <Col className="m-0 row ">
-        {allLocations?.map((location, index) => {
+        {allLocations? allLocations.map((location, index) => {
           return (
             <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
               <Row className="m-0">
@@ -99,7 +99,38 @@ const Location = () => {
                 </Col>
               </Row>
             </Col>
-        )})}
+        )}):
+        
+        [1,1,1,1,1,1,1,1].map(()=>{
+          return (
+            <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
+            <Row className="m-0">
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark" sm={2}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+              <Col className="textdark d-flex justify-content-center" sm={4}>
+              <div className="skeleton skeleton-id"></div>
+
+              </Col>
+            </Row>
+          </Col>
+            )
+        })
+        
+        }
       </Col>
     </Row>
   );

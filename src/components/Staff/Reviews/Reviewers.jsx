@@ -42,17 +42,9 @@ const Advisors = () => {
     <Row className="m-0 px-3 rounded-2 bglight py-3">
       <Col sm={12} className="d-flex justify-content-between">
         <div>
-          <h2>Advisors</h2>
+          <h2>Reviewers</h2>
         </div>
-        <div>
-          {advisorLink ? <div className="d-flex">
-            <ChangeCode button="Change" title="Change Old Link" />
-            <Button className="ms-2 w-75 bgdark textlight"
-              onClick={()=>{copyToClipboard(BaseLink + "signup/" + advisorLink)}}>Link</Button>
-          </div>:<>
-            <ChangeCode button="Add Link" title="Add New Link" />
-          </>}
-        </div>
+        
       </Col>
 
       <Col sm={12} className="py-2 my-2 bgdark  px-4 rounded-3">
@@ -64,10 +56,10 @@ const Advisors = () => {
             Name
           </Col>
           <Col className="bgdark" sm={2}>
-            Batch
+            Students
           </Col>
           <Col className="bgdark" sm={3}>
-            Groups
+            Count
           </Col>
           <Col className="bgdark" sm={3}>
             Actions

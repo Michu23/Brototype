@@ -77,7 +77,7 @@ const Groups = () => {
 
       <Col className="m-0 row ">
 
-        {groups && groups.map((group, index) => {
+        {groups ? groups.map((group, index) => {
           if ((advisor !== '' && batch !== '' && group.advisor.includes(advisor) && group.batch.includes(batch)) || ((advisor !== '' && batch === '' && group.advisor.includes(advisor)) || (advisor === '' && batch !== '' &&  group.batch.includes(batch))) || (advisor === '' && batch === '')) {
           return (
               
@@ -105,7 +105,43 @@ const Groups = () => {
           </Col>
             )
           }
-        })}
+        }):
+
+        [1,1,1,1,1,1,1,1].map(()=>{
+          return (
+
+        <Col Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
+        <Row className="m-0">
+          <Col className="textdark" sm={2}>
+          <div className="skeleton skeleton-id"></div>
+
+          </Col>
+          <Col className="textdark" sm={2}>
+          <div className="skeleton skeleton-id"></div>
+
+          </Col>
+          <Col className="textdark" sm={2}>
+          <div className="skeleton skeleton-id"></div>
+
+          </Col>
+          <Col className="textdark" sm={2}>
+          <div className="skeleton skeleton-id"></div>
+
+          </Col>
+          <Col className="textdark" sm={2}>
+          <div className="skeleton skeleton-id"></div>
+
+          </Col>
+          <Col className="textdark d-flex" sm={2}>
+          <div className="skeleton skeleton-id"></div>
+
+          </Col>
+        </Row>
+      </Col>
+ )
+})
+
+        }
       </Col>
     </Row>
   );

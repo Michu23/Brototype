@@ -92,7 +92,7 @@ const Students = () => {
 
       <Col className="m-0 row">
         <>
-          {myStudents && myStudents.map((student, index) => {
+          {myStudents ? myStudents.map((student, index) => {
             if ((name !== '' && batch !== '' && student.advisor.includes(name) && student.batch.includes(batch)) || ((name !== '' && batch === '' && student.advisor.includes(name)) || (name === '' && batch !== '' &&  student.batch.includes(batch))) || (name === '' && batch === '')) {
             return(
             <Col
@@ -132,7 +132,46 @@ const Students = () => {
               </Col>
             </Row>
           </Col>
-          )}})}
+          )}}):
+          [1,1,1,1,1,1,1,1].map(()=>{
+            return (
+          <Col
+          sm={12}
+          className={`py-2 mb-2 cp bg rounded-3 ${style.tableBody}`}
+        >
+          <Row className="navTo m-0">
+            <Col className={`navTo ${style.tableBodyText}`} sm={1}>
+            <div className="skeleton skeleton-id"></div>
+
+            </Col>
+            <Col className={`navTo ${style.tableBodyText}`} sm={2}>
+            <div className="skeleton skeleton-id"></div>
+
+            </Col>
+            <Col className={`navTo ${style.tableBodyText}`} sm={2}>
+            <div className="skeleton skeleton-id"></div>
+
+            </Col>
+            <Col className={`navTo ${style.tableBodyText}`} sm={2}>
+            <div className="skeleton skeleton-id"></div>
+
+            </Col>
+
+            <Col className={`navTo ${style.tableBodyText}`} sm={2}>
+            <div className="skeleton skeleton-id"></div>
+
+            </Col>
+            <Col className={`navTo ${style.tableBodyText} d-flex`} sm={3}>
+            <div className="skeleton skeleton-id mx-2"></div>
+
+            <div className="skeleton skeleton-id"></div>
+
+            </Col>
+          </Row>
+        </Col>
+         )
+        })
+          }
         </>
       </Col>
     </Row>

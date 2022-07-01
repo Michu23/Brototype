@@ -44,15 +44,7 @@ const Advisors = () => {
         <div>
           <h2>Advisors</h2>
         </div>
-        <div>
-          {advisorLink ? <div className="d-flex">
-            <ChangeCode button="Change" title="Change Old Link" />
-            <Button className="ms-2 w-75 bgdark textlight"
-              onClick={()=>{copyToClipboard(BaseLink + "signup/" + advisorLink)}}>Link</Button>
-          </div>:<>
-            <ChangeCode button="Add Link" title="Add New Link" />
-          </>}
-        </div>
+       
       </Col>
 
       <Col sm={12} className="py-2 my-2 bgdark  px-4 rounded-3">
@@ -64,10 +56,10 @@ const Advisors = () => {
             Name
           </Col>
           <Col className="bgdark" sm={2}>
-            Batch
+            Students
           </Col>
           <Col className="bgdark" sm={3}>
-            Groups
+            Count
           </Col>
           <Col className="bgdark" sm={3}>
             Actions

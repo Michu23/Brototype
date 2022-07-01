@@ -15,7 +15,6 @@ const AdminHome = () => {
     getNotifications()
   }, []);
 
-
   return (
     <>
     <Row className="m-0 p-3 rounded-2 pb-0">
@@ -73,7 +72,7 @@ const AdminHome = () => {
       </Col>
 
       <Col className="m-0 row ">
-        <Col sm={12} className="py-2 mb-2 cp rounded-3 bglight">
+        <Col sm={12} className="py-2 my-2 cp rounded-3 bg">
         {leads ?
                 leads.map((lead, index) => {
                   return (

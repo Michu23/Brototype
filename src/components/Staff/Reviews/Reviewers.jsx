@@ -21,7 +21,7 @@ import TextField from "@mui/material/TextField";
 
 const Advisors = () => {
 
-  const { getAdvisors, advisors, getProfile, blockAdvisor, advisorLink } = useContext(LeadContext);
+  const { getAdvisors, advisors, getProfile, blockAdvisor, advisorLink, reviewerReport } = useContext(LeadContext);
   const { getNotifications } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -36,6 +36,7 @@ const Advisors = () => {
   useEffect(() => {
     getAdvisors();
     getNotifications()
+    reviewerReport()
   },[])
 
   return (

@@ -6,6 +6,7 @@ from Batch.models import Batch, Group
 from User.models import User, Department
 from .models import Advisor, Lead, Location, Reviewer, Code
 from .serializer import AdvisorFullSerealizer, AdvisorHalfSerializer, ReviewerSerializer, CodeSerializer, LeadSerealizer
+from .utils import createDeparments
 # Create your views here.
 
 @api_view(['POST'])
@@ -56,11 +57,11 @@ def blockAdvisor(request):
 @permission_classes([IsAuthenticated])
 def createLead(request):
     if request.user.is_superuser:
-        user = User.objects.create(username=request.data['username'], password=request.data['password'], email=request.data['email'])
-        user.department = Department.objects.get(name=request.data['staff'])
-        user.is_staff = False
-        user.is_lead = True
-        user.save()
+        department = Department.objects.all().count()
+        if department == 0:
+            createDeparments()
+        user = User.objects.create_user(username=request.data['username'], password=request.data['password'], email=request.data['email'],
+                                   is_staff=False, is_lead=True, department=Department.objects.get(name=request.data['staff']))
         location = Location.objects.get(id=request.data['location'])
         Lead.objects.create(user=user, name=request.data['name'], phone=request.data['phone'], location=location)
         return Response({"message": "Lead created successfully"})
@@ -70,7 +71,6 @@ def createLead(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def deleteLead(request):
-    print(request.data['id'])
     if request.user.is_superuser:
         lead = Lead.objects.filter(id=request.data['id'])[0]
         lead.user.delete()

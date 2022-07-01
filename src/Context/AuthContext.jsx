@@ -14,8 +14,6 @@ export default AuthContext;
 export const BaseUrl = "http://127.0.0.1:8000/";
 export const BaseLink = "http://localhost:3000/";
 
-
-
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 

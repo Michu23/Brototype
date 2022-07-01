@@ -34,7 +34,6 @@ def getMyStudents(request):
     if request.user.is_staff and request.user.is_superuser == False and request.user.is_active:
         # students = Student.objects.filter(batch__advisor=request.user.advisor, status__in=["Training", "RequestedTermination"])
         students = Student.objects.all()
-        print(students)
         for student in students:
             student.week = Manifest.objects.filter(student_name=student).order_by('-id')[0].title
             student.pending = Tasks.objects.filter(week=Manifest.objects.filter(student_name=student)[0], status=False).count()
@@ -179,7 +178,6 @@ def createPlacement(request):
 @permission_classes([IsAuthenticated])
 def updatePlacementProfile(request):
     if request.user.is_lead or request.user.is_superuser:
-        print(request.data)
         student = Student.objects.get(id=request.data['student'])
         EducationDetails.objects.create(student=student, education=request.data['education'], stream = request.data['stream'], courses=request.data['courses'], backlogs=request.data['backlogs'], experience=request.data['experience'], company=request.data['company'], duration=request.data['duration'])
         return Response({"message": "Student Updated"})

@@ -38,3 +38,18 @@ class AdvisorFullSerealizer(serializers.ModelSerializer):
     class Meta:
         model = Advisor
         fields = ('id', 'username', 'batch', 'groups')
+
+class AdvisorReviewSerealizer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username')
+    reviews = serializers.CharField()
+    student = serializers.CharField()
+    class Meta:
+        model = Advisor
+        fields = ('id', 'username', 'reviews', 'student')
+
+class ReviewerReviewSerealizer(serializers.ModelSerializer):
+    reviews = serializers.CharField()
+    student = serializers.CharField()
+    class Meta:
+        model = Reviewer
+        fields = ('id', 'name', 'reviews', 'student')

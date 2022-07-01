@@ -78,7 +78,7 @@ def getChartdata(request):
         return Response(chartData)
     elif request.user.is_lead or request.user.is_superuser:
         chartData = []
-        if request.user.department.name == "Lead":
+        if (request.user.department.name == "Lead" if request.user.is_lead else False) or request.user.is_superuser:
             domains = Domain.objects.all()
             onGoing = []
             overall = []
@@ -114,7 +114,7 @@ def getChartdata(request):
                     "brColor": overallBr,
                     "brWidth": 1},
                 "type":"doughnut"})
-        if request.user.department.name == "Placement" or request.user.department.name == "Lead" or request.user.is_superuser:
+        if (request.user.department.name == "Placement" if request.user.is_lead else False) or (request.user.department.name == "Lead" if request.user.is_lead else False) or request.user.is_superuser:
             now = datetime.now()
             months = [now]
             for _ in range(0, 5):
@@ -175,7 +175,7 @@ def getChartdata(request):
                         ],
                     "brWidth": 1},
                 "type":"bar"})
-        if request.user.department.name == "Finance" or request.user.department.name == "Lead" or request.user.is_superuser:
+        if (request.user.department.name == "Finance" if request.user.is_lead else False) or (request.user.department.name == "Lead" if request.user.is_lead else False) or request.user.is_superuser:
             now = datetime.now()
             months = getMonths(6)
             domains = Domain.objects.all()

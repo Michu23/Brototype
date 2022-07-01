@@ -255,7 +255,6 @@ def start_payment(request):
 def paying(request):
     if request.user.is_student:
         res = json.loads(request.data["response"])
-        print(res)
 
         ord_id = ""
         raz_pay_id = ""
@@ -277,14 +276,11 @@ def paying(request):
         'razorpay_payment_id': raz_pay_id,
         'razorpay_signature': raz_signature
         }
-        print(data)
 
         client = razorpay.Client(auth=("rzp_test_KgiLdhTO6F4BS3", "XBUSNhYRLL2J6eODHO4aw18W"))
         check = client.utility.verify_payment_signature(data)
-        print(check)
 
         payment = client.order.fetch(ord_id)
-        print(payment['amount'])
         
         if check and pay.status != 'Completed':
             if  payment['amount'] == payment['amount_paid']:
@@ -360,7 +356,6 @@ def sendForm(request):
     if request.user.is_lead or request.user.is_superuser:
         ids = request.data['id']
         amount = request.data['amount']
-        print(ids)
         next_day = datetime.datetime.now()+timedelta(1)
         date = datetime.date.today()
         month = date.strftime("%B")

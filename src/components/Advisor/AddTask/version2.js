@@ -70,10 +70,10 @@ export const AddTask2 = ({ content }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleSubmit} autoFocus>
+          <Button variant="contained" onClick={handleSubmit} autoFocus>
             Agree
           </Button>
-          <Button onClick={handleSubmit}>Close</Button>
+          <Button className="bgdark textlight"  onClick={handleSubmit}>Close</Button>
         </DialogActions>
       </Dialog>
     </form>

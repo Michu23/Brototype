@@ -16,11 +16,15 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useEffect } from 'react';
 /////////////////////////
+import Confirm from '../Confirm/Confirm';
 
 
 const Location = () => {
   const { deleteLocation } = useContext(LeadContext);
   const { allLocations, getLocations } = useContext(AuthContext);
+
+  const message = "Are you sure you want to delete this location?";
+  const onConfirm = "If you delete this location, all the leads associated with this location will be orphaned.";
 
   useEffect(() => {
     getLocations();
@@ -94,8 +98,9 @@ const Location = () => {
                 {location.branches}
                 </Col>
                 <Col className="textdark d-flex justify-content-center" sm={4}>
-                <Button color="error" variant="contained" 
-                onClick={()=>deleteLocation(location.id)} >Delete</Button>
+                {/* <Button color="error" variant="contained" 
+                onClick={()=>deleteLocation(location.id)} >Delete</Button> */}
+                <Confirm title="Delete" name={location.place} value={deleteLocation} message={message} onConfirm={onConfirm} form={location.id} />
                 </Col>
               </Row>
             </Col>

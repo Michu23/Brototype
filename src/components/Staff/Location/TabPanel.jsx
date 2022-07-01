@@ -51,8 +51,8 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Location" {...a11yProps(0)} />
-          <Tab label="Branch" {...a11yProps(1)} />
+          <Tab className='textdark' label="Location" {...a11yProps(0)} />
+          <Tab label="Branch" className='textdark' {...a11yProps(1)} />
           
         </Tabs>
       </Box>

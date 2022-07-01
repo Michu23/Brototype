@@ -9,10 +9,10 @@ import FormData from "form-data";
 const AuthContext = createContext();
 export default AuthContext;
 
-// export const BaseUrl = "https://api.brotocamp.space/";
-// export const BaseLink = "https://brotocamp.space/";
-export const BaseUrl = "http://127.0.0.1:8000/";
-export const BaseLink = "http://localhost:3000/";
+export const BaseUrl = "https://api.brotocamp.space/";
+export const BaseLink = "https://brotocamp.space/";
+// export const BaseUrl = "http://127.0.0.1:8000/";
+// export const BaseLink = "http://localhost:3000/";
 
 
 
@@ -86,25 +86,25 @@ export const AuthProvider = ({ children }) => {
         const position = jwt_decode(res.data.access).position;
         if (position === "Admin") {
           navigate("/lead");
-          infoToast("Welcome admin , Its Miras and Shafeeq of batch 20 who did this web application, Kindly assure our high salary placements");
+          successToast("Welcome admin , Its Miras and Shafeeq of batch 20 who did this web application, Kindly assure our high salary placements");
         } else if (position === "Advisor") {
           navigate("/advisor");
-          infoToast("Welcome Advisor");
+          successToast("Welcome Advisor");
         } else if (position === "Communication") {
           navigate("/");
-          infoToast("Welcome Communication Team");
+          successToast("Welcome Communication Team");
         } else if (position === "Finance") {
           navigate("/finance");
-          infoToast("Welcome Finance Head");
+          successToast("Welcome Finance Head");
         } else if (position === "Lead") {
           navigate("/lead");
-          infoToast("Welcome Lead");
+          successToast("Welcome Lead");
         } else if (position === "Placement") {
           navigate("/placement");
-          infoToast("Welcome Placement Cell");
+          successToast("Welcome Placement Cell");
         } else if (position === "Student") {
           navigate("/");
-          infoToast("Welcome Student");
+          successToast("Welcome Student");
         } else if (position === "Outsider") {
           logoutUser();
           warningToast("You are not authorized to access this page");
@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }) => {
     setSwap("video");
     setSwap2("video");
     navigate("/signin");
-    infoToast("Logged Out Successfully");
+    successToast("Logged Out Successfully");
   };
 
   const reset_password = async (email) => {
@@ -139,7 +139,7 @@ export const AuthProvider = ({ children }) => {
     await axios
       .post(BaseUrl + "user/password_reset/done/", { email }, { headers: { "Content-Type": "application/json" } })
       .then((res) => {
-        infoToast("Password reset link has been sent to your email");
+        successToast("Password reset link has been sent to your email");
       }).catch((err) => {
         warningToast("Email not found");
       }).finally(() => {
@@ -165,7 +165,7 @@ export const AuthProvider = ({ children }) => {
       await axios
         .post(BaseUrl + "user/reset_password_confirm", body , { headers: { "Content-Type": "application/json" } })
         .then((res) => {
-          infoToast("Password changed successfully");
+         successToast("Password changed successfully");
         }).catch((err) => {
           warningToast("Password not changed");
         }).finally(() => {

@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import AuthContext from "../../../Context/AuthContext";
 import Button from "@mui/material/Button";
 import Add from "../../Staff/AddTask/AddTask";
+import Confirm from "../CommonAlert/AlertDialogSlide";
 
 const Notifications = () => {
   const { notifications, user, deleteNotifications, getNotifications } = useContext(AuthContext);
@@ -10,6 +11,9 @@ const Notifications = () => {
   useEffect(() => {
     getNotifications()
   },[])
+
+  const message = "Do you want to delete this notification?";
+
   return (
     <Container fluid className="p-4 textdark">
       <div className="d-flex justify-content-between">
@@ -51,16 +55,8 @@ const Notifications = () => {
               </Col>
               <Col xs={2} className="my-auto d-flex justify-content-end">
                 {(user.position === "Lead" || user.position === "Admin") && (
-                  <Button
-                    variant="contained"
-                    color="error"
-                    className="dltbtn"
-                    onClick={() => {
-                      deleteNotifications(notification.id);
-                    }}
-                  >
-                    Delete
-                  </Button>
+                 
+                  <Confirm message={message} title="Delete" value={deleteNotifications} form={notification.id} />
                 )}
               </Col>
               {(user.position === "Lead" || user.position === "Admin") && (
@@ -196,3 +192,16 @@ const Notifications = () => {
 };
 
 export default Notifications;
+
+
+ // <Button
+                  //   variant="contained"
+                  //   color="error"
+                  //   className="dltbtn"
+                  //   onClick={() => {
+
+                  //     deleteNotifications(notification.id);
+                  //   }}
+                  // >
+                  //   Delete
+                  // </Button>

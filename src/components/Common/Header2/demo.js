@@ -53,17 +53,18 @@ export default function SwipeableTemporaryDrawer() {
   const list = (anchor) => (
     
     <Box
+      className='bglight'
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      <List className='bglight'>
          {(user.position === 'Lead' || user.position === "Admin") && (
 <>
 <Divider />
 
-    <Navs title ="Home" link="/lead" icon={<HomeIcon  />}  />
+    <Navs title ="Home" link="/lead" icon={<HomeIcon   />}  />
     <Navs title ="Batches" link="/lead/batch" icon={<BatchPredictionIcon   />}  />
     <Navs title ="Domains" link="/lead/domain" icon={<DnsIcon  />}  />
     <Navs title ="Advisors" link="/lead/advisors" icon={<CastForEducationIcon  />}  />

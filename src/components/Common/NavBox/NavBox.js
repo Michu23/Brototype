@@ -31,111 +31,111 @@ function NavBox() {
           <Navs
             title="Location"
             link="/lead/location"
-            icon={<BatchPredictionIcon />}
+            icon={<BatchPredictionIcon  className="textdark" />}
           />
           <Navs
             title="Batches"
             link="/lead/batch"
-            icon={<BatchPredictionIcon />}
+            icon={<BatchPredictionIcon  className="textdark" />}
           />
-          <Navs title="Domains" link="/lead/domain" icon={<DnsIcon />} />
+          <Navs title="Domains" link="/lead/domain" icon={<DnsIcon className="textdark"  />} />
           <Navs
             title="Advisors"
             link="/lead/advisors"
-            icon={<CastForEducationIcon />}
+            icon={<CastForEducationIcon className="textdark"  />}
           />
           <Navs
             title="Reviews"
             link="/lead/reviews"
-            icon={<CastForEducationIcon />}
+            icon={<CastForEducationIcon className="textdark"  />}
           />
-          <Navs title="Groups" link="/lead/groups" icon={<GroupIcon />} />
-          <Navs title="Students" link="/lead/students" icon={<SchoolIcon />} />
+          <Navs title="Groups" link="/lead/groups" icon={<GroupIcon className="textdark"  />} />
+          <Navs title="Students" link="/lead/students" icon={<SchoolIcon  className="textdark" />} />
           <Navs
             title="Requests"
             link="/lead/requests"
-            icon={<QuestionMarkIcon />}
+            icon={<QuestionMarkIcon className="textdark"  />}
           />
           <Navs
             title="Payments"
             link="/lead/payments"
-            icon={<CurrencyRupeeIcon />}
+            icon={<CurrencyRupeeIcon className="textdark" />}
           />
           <Navs
             title="Placements"
             link="/lead/placements"
-            icon={<WorkspacePremiumIcon />}
+            icon={<WorkspacePremiumIcon  className="textdark" />}
           />
         </>
       )}
 
       {user.position === "Finance" && (
         <>
-          <Navs title="Home" link="/finance" icon={<HomeIcon />} />
+          <Navs title="Home" link="/finance" icon={<HomeIcon  className="textdark" />} />
           <Navs
             title="Payments"
             link="/finance/payments"
-            icon={<CurrencyRupeeIcon />}
+            icon={<CurrencyRupeeIcon  className="textdark" />}
           />
         </>
       )}
 
       {user.position === "Placement" && (
         <>
-          <Navs title="Home" link="/placement" icon={<HomeIcon />} />
+          <Navs title="Home" link="/placement" icon={<HomeIcon  className="textdark" />} />
           <Navs
             title="Placements"
             link="/placement/placements"
-            icon={<WorkspacePremiumIcon />}
+            icon={<WorkspacePremiumIcon  className="textdark" />}
           />
           <Navs
             title="Students"
             link="/placement/students"
-            icon={<HomeIcon />}
+            icon={<HomeIcon  className="textdark" />}
           />
         </>
       )}
 
       {user.position === "Admin" && (
-        <Navs title="Leads" link="/admin" icon={<HomeIcon />} />
+        <Navs title="Leads" link="/admin" icon={<HomeIcon className="textdark"  />} />
       )}
 
       {user.position === "Advisor" && (
         <>
-          <Navs title="Home" link="/advisor" icon={<HomeIcon />} />
+          <Navs title="Home" link="/advisor" icon={<HomeIcon className="textdark"  />} />
           <Navs
             title="Profile"
             link="/advisor/profile"
-            icon={<AccountCircleIcon />}
+            icon={<AccountCircleIcon className="textdark"  />}
           />
           <Navs
             title="My students"
             link="/advisor/students"
-            icon={<SchoolIcon />}
+            icon={<SchoolIcon  className="textdark" />}
           />
-          <Navs title="My Work" link="/advisor/work" icon={<GroupIcon />} />
+          <Navs title="My Work" link="/advisor/work" icon={<GroupIcon className="textdark"  />} />
           <Navs
             title="All Students"
             link="/advisor/allStudents"
-            icon={<SchoolIcon />}
+            icon={<SchoolIcon  className="textdark" />}
           />
           <Navs
             title="Location"
             link="/advisor/location"
-            icon={<SchoolIcon />}
+            icon={<SchoolIcon  className="textdark" />}
           />
         </>
       )}
 
       {user.position === "Student" && (
         <>
-          <Navs title="Home" link="/" icon={<HomeIcon />} />
-          <Navs title="Profile" link="/profile" icon={<AccountCircleIcon />} />
-          <Navs title="My Tasks" link="/taskslist" icon={<TaskAltIcon />} />
+          <Navs title="Home" link="/" icon={<HomeIcon className="textdark"  />} />
+          <Navs title="Profile" link="/profile" icon={<AccountCircleIcon  className="textdark" />} />
+          <Navs title="My Tasks" link="/taskslist" icon={<TaskAltIcon className="textdark"  />} />
           <Navs
             title="My Payments"
             link="/payment"
-            icon={<CurrencyRupeeIcon />}
+            icon={<CurrencyRupeeIcon  className="textdark" />}
           />
         </>
       )}

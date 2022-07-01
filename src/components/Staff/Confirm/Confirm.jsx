@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
-import LeadContext from "../../../Context/LeadContext";
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -22,8 +22,7 @@ export default function AlertDialogSlide({
 }) {
   const [open, setOpen] = React.useState(false);
   const [copen, setCopen] = React.useState(false);
-  const { deleteDomain, deleteBatch, deleteGroup,blockAdvisor } =
-    React.useContext(LeadContext);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,13 +39,8 @@ export default function AlertDialogSlide({
   const handleSubmit = () => {
     setCopen(false);
     setOpen(false);
-    if (value === "deleteDomain") {
-      deleteDomain(form);
-    } else if (value === "deleteBatch") {
-      deleteBatch(form);
-    } else if (value === "deleteGroup") {
-        deleteGroup(form);
-    }
+    value(form);
+    
 
   };
 

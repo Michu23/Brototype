@@ -76,8 +76,8 @@ function Payment() {
 <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Completed" {...a11yProps(0)} />
-          <Tab label="Pending" {...a11yProps(1)} />
+          <Tab label="Completed" className='textdark'  {...a11yProps(0)} />
+          <Tab label="Pending" className='textdark'  {...a11yProps(1)} />
           
         </Tabs>
       </Box>

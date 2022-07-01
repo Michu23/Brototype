@@ -11,13 +11,12 @@ const Navs = ({title,link,icon}) => {
   return (
     <>
 <Link to={link}>
-<ListItem disablePadding>
-<ListItemButton>
-  <ListItemIcon>
+<ListItem className='bg textdark' disablePadding>
+<ListItemButton className='bg textdark' >
+  <ListItemIcon className='bg textdark' >
     {icon}
-    {/* <InboxIcon />  */}
   </ListItemIcon>
-  <ListItemText primary={title} />
+  <ListItemText  className='bg textdark'  primary={title} />
 </ListItemButton>
 </ListItem>
 </Link> 

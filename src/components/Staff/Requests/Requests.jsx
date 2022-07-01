@@ -77,8 +77,8 @@ const Requests = () => {
         <Box  className="m-2 p-0 w-100">
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Batch Shift" {...a11yProps(0)} />
-          <Tab label="Termination" {...a11yProps(1)} />
+          <Tab label="Batch Shift" className='textdark'  {...a11yProps(0)} />
+          <Tab label="Termination" className='textdark'  {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

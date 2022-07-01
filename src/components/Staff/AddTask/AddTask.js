@@ -655,10 +655,10 @@ const AddTask = ({ title, value, form }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleSubmit} autoFocus>
+          <Button color="primary" variant="contained" onClick={handleSubmit} autoFocus>
             Agree
           </Button>
-          <Button onClick={handleClose}>Close</Button>
+          <Button className="textlight bgdark" onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>

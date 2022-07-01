@@ -34,7 +34,7 @@ const Groups = () => {
           <h2 className="me-4">{groupDetails?.name}</h2>
           <AddTask title="Edit" value="group" />
           {/* <Button color="error" variant="contained" size="small" className="h-50 ms-2" onClick={()=>{deleteGroup(groupDetails.id)}} >Delete</Button> */}
-          <Confirm title="Delete" name={groupDetails.name}  value="deleteGroup" message={message} onConfirm={onConfirm} form={groupDetails.id} />
+          <Confirm title="Delete" name={groupDetails.name}  value={deleteGroup} message={message} onConfirm={onConfirm} form={groupDetails.id} />
 
         </div>
 

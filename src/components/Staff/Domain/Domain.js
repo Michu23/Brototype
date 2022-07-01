@@ -62,7 +62,7 @@ const Domain = () => {
               <Col className="textdark d-flex justify-content-center" sm={6}>
                 <AddTask title="Edit" value="updateDomain"  form={domain.id} />
                 <div className="mx-1" >{" "}</div>
-                <Confirm title="Delete" name={domain.name}  value="deleteDomain" message={message} onConfirm={onConfirm} form={domain.id} />
+                <Confirm title="Delete" name={domain.name}  value={deleteDomain} message={message} onConfirm={onConfirm} form={domain.id} />
                 {/* <Button className="coh px-4 ms-2" onClick={()=>{deleteDomain(domain.id)}}>Delete</Button> */}
               </Col>
             </Row>

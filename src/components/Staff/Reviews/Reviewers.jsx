@@ -87,7 +87,7 @@ const Advisors = () => {
 
             <Col className="textdark d-flex" sm={3}>
               {/* <Button variant="contained" className="mx-1" color="error" onClick={() => {blockAdvisor(advisor.id)}}>Block</Button> */}
-              <Confirm title="Block" name={advisor.username} value="blockAdvisor" message={message} onConfirm={onConfirm} form={advisor.id} />
+              <Confirm title="Block" name={advisor.username} value={blockAdvisor} message={message} onConfirm={onConfirm} form={advisor.id} />
 
               <Button className="bgdark textlight px-3 mx-1" onClick={ async () => {await getProfile(advisor.id)
           navigate("/lead/advisor/profile")}}>Profile</Button>

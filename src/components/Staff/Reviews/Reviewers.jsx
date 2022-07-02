@@ -21,7 +21,7 @@ import TextField from "@mui/material/TextField";
 
 const Advisors = () => {
 
-  const { getAdvisors, advisors, getProfile, blockAdvisor, advisorLink, reviewerReport } = useContext(LeadContext);
+  const { getAdvisors, advisors, getProfile, blockAdvisor, advisorLink, reviewerReport, reviewerReports } = useContext(LeadContext);
   const { getNotifications } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ const Advisors = () => {
       </Col>
 
       <Col className="m-0 row ">
-      {advisors ? advisors.map((advisor, index) =>{
+      {reviewerReports ? reviewerReports.map((reviewer, index) =>{
         return (
         <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
           <Row className="m-0">
@@ -77,13 +77,13 @@ const Advisors = () => {
               #{index + 1}
             </Col>
             <Col className="textdark" sm={2}>
-              {advisor.username}
+              {reviewer.username}
             </Col>
             <Col className="textdark" sm={2}>
-              {advisor.batch[0]} {advisor.batch[1] && "-"} {advisor.batch[1]}
+              {reviewer.students}
             </Col>
             <Col className="textdark" sm={3}>
-              {advisor.groups}
+              {reviewer.reviews}
             </Col>
 
             <Col className="textdark d-flex" sm={3}>

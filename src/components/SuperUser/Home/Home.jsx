@@ -85,13 +85,13 @@ const AdminHome = () => {
             {lead.name}
             </Col>
             <Col className="textdark" sm={2}>
-            {lead.user.username}
+            {lead.location}
             </Col>
             <Col className="textdark" sm={2}>
-            {lead.user.username}
+            {lead.user.department}
             </Col>
             <Col className="textdark" sm={2}>
-            {lead.user.username}
+            {lead.phone}
             </Col>
             <Col className="textdark d-flex justify-content-center" sm={2}>
               <Button color="error" variant="contained" className="pb-1">

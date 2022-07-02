@@ -11,7 +11,7 @@ from Student.models import Student
 from Batch.models import Batch,Location,Branch
 from Student.serializer import  LocationStudentSerializer
 from .models import User, Profile, Domain, Notification
-from .serializer import UserSerealizer, NotificationSerealizer, ProfileSerealizer, DomainSerealizer,getNotificationTypes,LocationSerealizer,BranchSerealizer, StudentWeekSerializer, TaskSerializer, LocationFullSerealizer
+from .serializer import UserSerealizer, NotificationSerealizer, ProfileSerealizer, DomainSerealizer,getNotificationTypes,LocationSerealizer,BranchSerealizer, StudentWeekSerializer, TaskSerializer, LocationFullSerealizer, BranchFullSerealizer
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -230,7 +230,7 @@ def getBranches(request):
     for branch in branches:
         branch.students = Student.objects.filter(branch=branch).count()
         branch.save()
-    serealizer = BranchSerealizer(branches, many=True).data
+    serealizer = BranchFullSerealizer(branches, many=True).data
     return Response(serealizer)
     
 

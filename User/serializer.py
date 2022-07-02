@@ -9,9 +9,10 @@ from Batch.models import Batch, Branch
 class UserSerealizer(serializers.ModelSerializer):
     batch = serializers.CharField(write_only=True)
     location = serializers.CharField(write_only=True)
+    department = serializers.CharField(source='department.name', read_only=True)
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'email', 'is_staff', 'is_student', 'batch', 'location']
+        fields = ['id', 'username', 'password', 'email', 'is_staff', 'is_student', 'batch', 'location', 'department']
     def create(self, validated_data):
         user = User.objects.create(
             username=validated_data['username'],email=validated_data['email']
@@ -76,6 +77,13 @@ class BranchSerealizer(serializers.ModelSerializer):
     class Meta:
         model = Branch
         fields = '__all__'
+        
+class BranchFullSerealizer(serializers.ModelSerializer):
+    students = serializers.CharField()
+    location = serializers.CharField(source='location.place')
+    class Meta:
+        model = Branch
+        fields = ('id', 'name', 'location', 'students')
 
 class StudentWeekSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='user.username')

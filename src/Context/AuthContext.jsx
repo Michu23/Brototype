@@ -9,10 +9,10 @@ import FormData from "form-data";
 const AuthContext = createContext();
 export default AuthContext;
 
-export const BaseUrl = "https://api.brotocamp.space/";
-export const BaseLink = "https://brotocamp.space/";
-// export const BaseUrl = "http://127.0.0.1:8000/";
-// export const BaseLink = "http://localhost:3000/";
+// export const BaseUrl = "https://api.brotocamp.space/";
+// export const BaseLink = "https://brotocamp.space/";
+export const BaseUrl = "http://127.0.0.1:8000/";
+export const BaseLink = "http://localhost:3000/";
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -875,10 +875,12 @@ export const AuthProvider = ({ children }) => {
     }).then((res) => {
       console.log(res.data);
       getLeads();
+      navigate("/admin");
     }).catch((err) => {
       console.log(err);
     })
   }
+
 
   const deleteLead = async (id) => {
     await axios.post(BaseUrl + "admins/delete/lead", {

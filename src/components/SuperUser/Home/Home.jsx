@@ -6,6 +6,7 @@ import ManageSearchRoundedIcon from "@mui/icons-material/ManageSearchRounded";
 import { Row, Col } from "react-bootstrap";
 import style from "./Requests.module.css";
 import Button from "@mui/material/Button";
+import NoData from "../../Common/EmptyData/NoData";
 
 const AdminHome = () => {
   const { leads, getLeads, deleteLead, getNotifications } = useContext(AuthContext);
@@ -72,8 +73,8 @@ const AdminHome = () => {
       </Col>
 
       <Col className="m-0 row ">
-        <Col sm={12} className="py-2 my-2 cp rounded-3 bg">
-        {leads ?
+        <Col sm={12} className="py-2 my-2 cp rounded-3 bglight">
+        {leads ? leads.length > 0 ? 
                 leads.map((lead, index) => {
                   return (
           <Row className="m-0"  key={index}>
@@ -102,6 +103,10 @@ const AdminHome = () => {
           </Row>
            );
           }):
+          
+          <NoData message="No Leads data found!" />
+          
+          :
           
            [1,1,1,1,1,1,1,1].map(()=>{
         return (

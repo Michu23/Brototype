@@ -25,6 +25,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave';
+import GradingIcon from '@mui/icons-material/Grading';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 
 
 export default function SwipeableTemporaryDrawer() {
@@ -59,12 +62,12 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List className='bglight'>
+      <List className='bglight textdark'>
          {(user.position === 'Lead' || user.position === "Admin") && (
 <>
 <Divider />
 
-    <Navs title ="Home" link="/lead" icon={<HomeIcon   />}  />
+    <Navs title ="Home" link="/lead" icon={<GradingIcon   />}  />
     <Navs title ="Batches" link="/lead/batch" icon={<BatchPredictionIcon   />}  />
     <Navs title ="Domains" link="/lead/domain" icon={<DnsIcon  />}  />
     <Navs title ="Advisors" link="/lead/advisors" icon={<CastForEducationIcon  />}  />
@@ -78,7 +81,7 @@ export default function SwipeableTemporaryDrawer() {
          )}
 
 {user.position === "Admin" && (
-        <Navs title="Leads" link="/admin" icon={<HomeIcon />} />
+        <Navs title="Leads" link="/admin" icon={<LeaderboardIcon />} />
       )}
 
           {user.position === 'Advisor' && (

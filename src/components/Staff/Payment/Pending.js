@@ -14,6 +14,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import NoData from "../../Common/EmptyData/NoData";
 //////////////////////////////////////////
 
 const Pending = ({name, batch}) => {
@@ -52,7 +53,7 @@ const Pending = ({name, batch}) => {
       </Col>
 
       <Col className="m-0 row">
-        {allpending ?
+        {allpending ? allpending.length > 0 ? 
           allpending.map((pending, index) => {
             if ((name !== '' && batch !== '' && pending.student.includes(name) && pending.batch.includes(batch)) || ((name !== '' && batch === '' && pending.student.includes(name)) || (name === '' && batch !== '' &&  pending.batch.includes(batch))) || (name === '' && batch === '')) {
             if (pending.status === "Expired") {
@@ -115,7 +116,10 @@ const Pending = ({name, batch}) => {
               );
             }}
           }):
-          
+
+          <NoData message="No pending payments!" />
+
+          :
           [1,1,1,1,1,1,1,1].map(()=>{
             return (
               <Col sm={12} className="py-2 mb-2 cp bg rounded-3">

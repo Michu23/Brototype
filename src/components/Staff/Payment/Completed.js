@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthContext from "../../../Context/AuthContext";
+import NoData from "../../Common/EmptyData/NoData";
 
 const Completed = ({name, batch}) => {
   const { allpaid, allCompletedPayments } = useContext(AuthContext);
@@ -38,7 +39,7 @@ const Completed = ({name, batch}) => {
 
       <Col className="m-0 row">
         <>
-          {allpaid ?
+          {allpaid ? allpaid.length > 0 ? 
             allpaid.map((paid, index) => {
               if ((name !== '' && batch !== '' && paid.student.includes(name) && paid.batch.includes(batch)) || ((name !== '' && batch === '' && paid.student.includes(name)) || (name === '' && batch !== '' &&  paid.batch.includes(batch))) || (name === '' && batch === '')) {
               return (
@@ -54,6 +55,10 @@ const Completed = ({name, batch}) => {
                 </Col>
               )}
             }):
+
+            <NoData message="No completed payments!"/>
+            
+            :
             
             [1,1,1,1,1,1,1,1].map(()=>{
               return (

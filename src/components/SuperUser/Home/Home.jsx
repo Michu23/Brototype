@@ -77,7 +77,7 @@ const AdminHome = () => {
         {leads ? leads.length > 0 ? 
                 leads.map((lead, index) => {
                   return (
-          <Row className="m-0"  key={index}>
+          <Row className="m-0 bg py-3 pb-1 my-2 cp rounded-3 "  key={index}>
           
             <Col className="textdark" sm={1}>
             #{index+1}
@@ -94,8 +94,8 @@ const AdminHome = () => {
             <Col className="textdark" sm={2}>
             {lead.phone}
             </Col>
-            <Col className="textdark d-flex justify-content-center" sm={2}>
-              <Button color="error" variant="contained" className="pb-1">
+            <Col className="textdark pb-2 d-flex justify-content-center" sm={2}>
+              <Button color="error" variant="contained" >
                 Delete
               </Button>
             </Col>

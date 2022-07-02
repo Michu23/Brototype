@@ -69,8 +69,15 @@ export const AuthProvider = ({ children }) => {
         stndingData(username, password);
       })
       .catch((err) => {
-        console.log(err.response.data);
-        console.log(err);
+        if (err.response.status === 400) {
+          warningToast("Username already exists");
+          setErrUser("Username already exists");
+          setTimeout(() => {
+            setErrUser("");
+          }, 1500);
+        } else {
+          warningToast("Something went wrong");
+        }
       });
   };
 
@@ -109,7 +116,11 @@ export const AuthProvider = ({ children }) => {
         }
       })
       .catch((err) => {
+        warningToast("Username or Password is incorrect");
         setErrUser("Username or Password is incorrect");
+        setTimeout(() => {
+          setErrUser("");
+        }, 1500);
       });
   };
 
@@ -875,9 +886,19 @@ export const AuthProvider = ({ children }) => {
     }).then((res) => {
       console.log(res.data);
       getLeads();
-      navigate("/admin");
+      successToast("Staff created successfully");
+      setTimeout(() => {
+        navigate("/admin");
+      }, 1500);
+      
     }).catch((err) => {
+
       console.log(err);
+      setErrUser("Username already exists");
+      setTimeout(() => {
+        setErrUser("");
+      }, 1500);
+      warningToast("Username already exists");
     })
   }
 

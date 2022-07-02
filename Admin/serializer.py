@@ -27,6 +27,7 @@ class CodeSerializer(serializers.ModelSerializer):
 
 class LeadSerealizer(serializers.ModelSerializer):
     user = UserSerealizer()
+    location = serializers.CharField(source='location.place')
     class Meta:
         model = Lead
         fields = '__all__'

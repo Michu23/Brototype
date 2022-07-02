@@ -80,6 +80,11 @@ function NavBox() {
             link="/finance/payments"
             icon={<CurrencyRupeeIcon  className="textdark navboxicons" />}
           />
+          <Navs
+            title="Reviews"
+            link="/finance/reviews"
+            icon={<CurrencyRupeeIcon  className="textdark navboxicons" />}
+          />
         </>
       )}
 

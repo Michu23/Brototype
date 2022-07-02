@@ -41,8 +41,10 @@ import Reviews from "./components/Staff/Reviews/TabPanel";
 import Communication from "./pages/Communication/Communication";
 ////////////////////////////////////
 import Finance from "./pages/Finance/Finance";
+import FinanceReviews from "./components/Finance/Reviews/Reviews";
 ////////////////////////////////////
 import Placement from "./pages/Placement/Placement";
+import PlacementStudents from "./components/Placement/Students/Students";
 ////////////////////////////////////
 import Admin from "./pages/Admin/Admin";
 import AdminHome from "./components/SuperUser/Home/Home";
@@ -304,6 +306,10 @@ function App() {
                   element={<Finance child={<Notifications />} />}
                 />
                 <Route
+                  path="/finance/reviews"
+                  element={<Finance child={<FinanceReviews />} />}
+                />
+                <Route
                   path="/placement"
                   element={
                     <Placement child={<AdvisorSpace />}/>
@@ -327,7 +333,7 @@ function App() {
                 />
                 <Route
                   path="/placement/students"
-                  element={<Placement child={<Notifications />} />}
+                  element={<Placement child={<PlacementStudents />} />}
                 />
               </Routes>
               <AdvisorProvider>

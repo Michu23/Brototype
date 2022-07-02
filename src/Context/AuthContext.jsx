@@ -875,10 +875,12 @@ export const AuthProvider = ({ children }) => {
     }).then((res) => {
       console.log(res.data);
       getLeads();
+      navigate("/admin");
     }).catch((err) => {
       console.log(err);
     })
   }
+
 
   const deleteLead = async (id) => {
     await axios.post(BaseUrl + "admins/delete/lead", {

@@ -22,6 +22,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 //////////////////////////////////////////
 import AuthContext from "../../../Context/AuthContext";
+import NoData from "../../Common/EmptyData/NoData";
 
 
 function TabPanel(props) {
@@ -133,7 +134,7 @@ const Requests = () => {
       </Col>
 
       <Col className="m-0 row ">
-        {requests && requests.shift.length > 0 ? requests.shift.map((request) => {
+        {requests ? requests.shift.length > 0 ? requests.shift.map((request) => {
           return (
         <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
           <Row className="m-0">
@@ -155,7 +156,7 @@ const Requests = () => {
             </Col>
            
           </Row>
-        </Col>)}) : 
+        </Col>)}) : <NoData message="No requests found" /> : 
         
         [1,1,1,1,1,1,1,1].map(()=>{
           return (
@@ -248,7 +249,7 @@ const Requests = () => {
       </Col>
 
       <Col className="m-0 row ">
-        {requests && requests.terminate.length > 0 ? requests.terminate.map((request) => {
+        {requests ? requests.terminate.length > 0 ? requests.terminate.map((request) => {
           return (
         <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
           <Row className="m-0">
@@ -270,7 +271,8 @@ const Requests = () => {
             </Col>
             
           </Row>
-        </Col>)}) :  [1,1,1,1,1,1,1,1].map(()=>{
+        </Col>)}) : <NoData message="No requests pending!" />
+        :  [1,1,1,1,1,1,1,1].map(()=>{
           return (
         <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
           <Row className="m-0">
@@ -300,6 +302,8 @@ const Requests = () => {
         </Col>
             )
         })}
+
+        
           
       </Col>
     </Row>

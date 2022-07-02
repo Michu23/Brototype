@@ -10,6 +10,7 @@ import Profile from './PlacementProfile'
 import PlacementProfile from "./PlacementProfile";
 import { Link } from "react-router-dom";
 import AuthContext from "../../../Context/AuthContext";
+import NoData from "../../Common/EmptyData/NoData";
 
 const Placement = () => {
   const { getPlacements, placements } = useContext(LeadContext);
@@ -81,7 +82,7 @@ const Placement = () => {
       </Col>
 
       <Col className="m-0 row ">
-        {placements ? placements.map((placement) => {
+        {placements ? placements.length>0 ? placements.map((placement) => {
           if ((name !== '' && batch !== '' && placement.student.user.username.includes(name) && placement.student.batch.name.includes(batch)) || ((name !== '' && batch === '' && placement.student.user.username.includes(name)) || (name === '' && batch !== '' &&  placement.student.batch.name.includes(batch))) || (name === '' && batch === '')) {
           return (
         <Link to={`/${user.position === "Placement" ? "placement" : "lead"}/placements/info`} style={{ textDecoration: 'none' }}
@@ -109,7 +110,7 @@ const Placement = () => {
             </Row>
           </Col>
         </Link>
-          )}}):
+          )}}): <NoData message="No placements yet!"/> :
           
           [1,1,1,1,1,1,1,1].map(()=>{
             return (

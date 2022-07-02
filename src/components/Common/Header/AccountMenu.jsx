@@ -22,6 +22,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave';
+import GradingIcon from '@mui/icons-material/Grading';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 
 
 import Pro from './pro.jpg';
@@ -100,12 +103,13 @@ export default function AccountMenu() {
 <>
 <Divider />
 
-    <Navs title ="Home" link="/lead" icon={<HomeIcon  />}  />
-    <Navs title ="Batches" link="/lead/batch" icon={<BatchPredictionIcon   />}  />
-    <Navs title ="Domains" link="/lead/domain" icon={<DnsIcon  />}  />
+    <Navs title ="Home" link="/lead" icon={<LeaderboardIcon  />}  />
+    {/* <Navs title ="Batches" link="/lead/batch" icon={<BatchPredictionIcon   />}  />
+    <Navs title ="Location" link="/lead/locations" icon={<AddLocationAltIcon   />}  />
+    <Navs title ="Domains" link="/lead/domain" icon={<DnsIcon  />}  /> */}
     <Navs title ="Advisors" link="/lead/advisors" icon={<CastForEducationIcon  />}  />
-    <Navs title ="Groups" link="/lead/groups" icon={<GroupIcon  />}  />
-    <Navs title ="Reviews" link="/lead/reviews" icon={<GroupIcon  />}  />
+    {/* <Navs title ="Groups" link="/lead/groups" icon={<GroupIcon  />}  /> */}
+    {/* <Navs title ="Reviews" link="/lead/reviews" icon={<GradingIcon  />}  /> */}
     <Navs title ="Students" link="/lead/students" icon={<SchoolIcon  />}  />
     <Navs title ="Requests" link="/lead/requests" icon={<QuestionMarkIcon  />}  />
     <Divider />
@@ -122,10 +126,10 @@ export default function AccountMenu() {
     <Divider />
 
     <Navs title ="Home" link="/advisor" icon={<HomeIcon   />}  />
-    <Navs title ="Profile" link="/advisor/profile" icon={<AccountCircleIcon   />}  />
+    {/* <Navs title ="Profile" link="/advisor/profile" icon={<AccountCircleIcon   />}  /> */}
     <Navs title ="My students" link="/advisor/students" icon={<SchoolIcon   />}  />
     <Navs title ="My Work" link="/advisor/work" icon={<GroupIcon   />}  />
-    <Navs title ="Students" link="/advisor/allStudents" icon={<SchoolIcon   />}  />
+    {/* <Navs title ="Students" link="/advisor/allStudents" icon={<SchoolIcon   />}  /> */}
     <Divider />
 
             </>
@@ -136,10 +140,10 @@ export default function AccountMenu() {
     <Divider />
 
     <Navs title ="Home" link="/" icon={<HomeIcon />}  />
-    <Navs title ="Profile" link="/profile" icon={<AccountCircleIcon   />}  />
+    {/* <Navs title ="Profile" link="/profile" icon={<AccountCircleIcon   />}  /> */}
     <Navs title ="My Tasks" link="/taskslist" icon={<TaskAltIcon   />}  />
     <Navs title ="My Payments" link="/payment" icon={<CurrencyRupeeIcon   />}  />
-    <Navs title ="Leave application" link="/" icon={<TimeToLeaveIcon   />}  />
+    {/* <Navs title ="Leave application" link="/" icon={<TimeToLeaveIcon   />}  /> */}
     <Divider />
 
             </>

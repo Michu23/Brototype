@@ -20,15 +20,15 @@ const AdminCreate = () => {
 
   return (
     <div>
-      <div className="p-0 pt-5 m-0 w-100" style={{ height: "100vh" }}>
+      <div className="p-0 pt-5 m-0  w-100" style={{ height: "100vh" }}>
         <div
-          className="container w-50 bg-light p-5 text-left bs"
+          className="container w-50 bglight p-5 text-left bs"
           style={{
             borderRadius: "2px",
           }}
         >
           <form onSubmit={handleSubmit} className="w-100">
-            <h2 className="text-center">
+            <h2 className="text-center textdark">
               New Staff
             </h2>
             <div className="form-group mt-4">

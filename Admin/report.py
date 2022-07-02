@@ -16,7 +16,7 @@ def advisorReport(request):
         for advisor in advisors:
             reviews = Review.objects.filter(advisor=advisor)
             advisor.reviews = reviews.count()
-            advisor.student = reviews.distinct('manifest__student_name').count()
+            advisor.students = reviews.distinct('manifest__student_name').count()
             advisor.save()
         serializer = AdvisorReviewSerealizer(advisors, many=True).data
         return Response(serializer)
@@ -32,7 +32,7 @@ def reviewerReport(request):
         for reviewer in reviewers:
             reviews = Review.objects.filter(reviewer=reviewer)
             reviewer.reviews = reviews.count()
-            reviewer.student = reviews.distinct('manifest__student_name').count()
+            reviewer.students = reviews.distinct('manifest__student_name').count()
             reviewer.save()
         serializer = ReviewerReviewSerealizer(reviewers, many=True).data
         return Response(serializer)

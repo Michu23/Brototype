@@ -325,6 +325,10 @@ function App() {
                   path="/Placement/notifications"
                   element={<Placement child={<Notifications />} />}
                 />
+                <Route
+                  path="/placement/students"
+                  element={<Placement child={<Notifications />} />}
+                />
               </Routes>
               <AdvisorProvider>
                 <Routes>

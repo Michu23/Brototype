@@ -73,7 +73,6 @@ class LocationFullSerealizer(serializers.ModelSerializer):
         fields = ('id', 'place', 'branches', 'batches')
 
 class BranchSerealizer(serializers.ModelSerializer):
-    students = serializers.CharField()
     class Meta:
         model = Branch
         fields = '__all__'

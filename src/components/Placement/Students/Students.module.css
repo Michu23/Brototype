@@ -1,0 +1,54 @@
+.profile {
+  background: var(--white);
+}
+
+.button {
+  border: none;
+  background: var(--dark);
+  color: var(--light);
+}
+
+.button:hover {
+  border: var(--dark);
+  background: var(--dark);
+  opacity: 90%;
+}
+
+.input {
+  border: none;
+  background: var(--white);
+  color: var(--dark);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.imgss {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid;
+  background-color: var(--dark);
+  opacity: 0.3;
+}
+
+.inputField {
+  background: var(--white);
+}
+
+.label {
+  color: var(--dark);
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.textarea {
+  border: none;
+  background: var(--white);
+}
+
+.textarea:focus {
+  outline: none;
+}

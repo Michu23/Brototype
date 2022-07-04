@@ -41,7 +41,7 @@ import Reviews from "./components/Staff/Reviews/TabPanel";
 import Communication from "./pages/Communication/Communication";
 ////////////////////////////////////
 import Finance from "./pages/Finance/Finance";
-import FinanceReviews from "./components/Finance/Reviews/Reviews";
+import FinanceReviews from "./components/Finance/Review/TabPanel";
 ////////////////////////////////////
 import Placement from "./pages/Placement/Placement";
 import PlacementStudents from "./components/Placement/Students/Students";

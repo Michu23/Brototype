@@ -78,7 +78,7 @@ const Work = () => {
               return (
               <Col
               sm={12}
-              className={`py-2 mb-2 cp bglight rounded-3 ${style.tableBody}`}
+              className={`py-2 my-1 cp bg rounded-3 ${style.tableBody}`}
               onClick={(e) => {
                 e.preventDefault()
               if ("navTo" === e.target.className.slice(0,5)) {

@@ -125,7 +125,33 @@ function PieChart({data}) {
     )
 }
 function LineChart({data}) {
+  
     const options = {
+
+      scales: {
+        y: {  // not 'yAxes: [{' anymore (not an array anymore)
+          ticks: {
+            className: "var(--info)", // not 'fontColor:' anymore
+            // fontSize: 18,
+            font: {
+              size: 18, // 'size' now within object 'font {}'
+            },
+            stepSize: 1,
+            beginAtZero: true
+          }
+        },
+        x: {  // not 'xAxes: [{' anymore (not an array anymore)
+          ticks: {
+            className: "var(--dark)",  // not 'fontColor:' anymore
+            //fontSize: 14,
+            font: {
+              size: 14 // 'size' now within object 'font {}'
+            },
+            stepSize: 1,
+            beginAtZero: true
+          }
+        }
+      },
       
       responsive: true,
       plugins: {

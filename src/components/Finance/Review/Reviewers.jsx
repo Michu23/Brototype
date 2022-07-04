@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import LeadContext from "../../../Context/LeadContext";
 import { useNavigate } from "react-router";
 import AuthContext, { BaseLink } from "../../../Context/AuthContext";
-import Confirm from "../Confirm/Confirm";
 
 /////////////////////////
 import Dialog from "@mui/material/Dialog";
@@ -77,7 +76,7 @@ const Advisors = () => {
               #{index + 1}
             </Col>
             <Col className="textdark" sm={2}>
-              {reviewer.username}
+              {reviewer.name}
             </Col>
             <Col className="textdark" sm={2}>
               {reviewer.reviews}

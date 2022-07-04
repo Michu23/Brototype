@@ -33,6 +33,7 @@ const Pending = () => {
                 <FaTrashAlt onClick={((e)=>{
               e.preventDefault();
               deletePendings(pending.id);
+              getPendings();
             }
               )} className="cp" />
               </div>

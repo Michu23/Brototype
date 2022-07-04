@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import LeadContext from "../../../Context/LeadContext";
 import { useNavigate } from "react-router";
 import AuthContext, { BaseLink } from "../../../Context/AuthContext";
-import Confirm from "../Confirm/Confirm";
 
 /////////////////////////
 import Dialog from "@mui/material/Dialog";
@@ -70,6 +69,7 @@ const Advisors = () => {
 
       <Col className="m-0 row ">
       {advisorReports ? advisorReports.map((advisor, index) =>{
+        console.log(advisorReports);
         return (
         <Col sm={12} className="py-2 mb-2 cp rounded-3 bg">
           <Row className="m-0">

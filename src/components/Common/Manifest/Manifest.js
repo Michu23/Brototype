@@ -35,6 +35,7 @@ function Manifest() {
     curr_manifest,
     user,
     folderSubmit,
+    getPendings,
   } = useContext(AuthContext);
   
   const { addTask, taskComplete,deleteTask } = useContext(AdvisorContext);
@@ -87,7 +88,8 @@ function Manifest() {
                     <FaTrashAlt
                     onClick={(e)=>{
                       e.preventDefault();
-                      deleteTask(task.id)
+                      deleteTask(task.id);
+                      getPendings();
                     }
                   }
                   
@@ -99,12 +101,14 @@ function Manifest() {
                       className="col-2 mx-2"
                       onClick={() => {
                         taskComplete(task.id);
+                        getPendings();
                       }}
                     />
                     <FaTrashAlt
                     onClick={(e)=>{
                       e.preventDefault();
-                      deleteTask(task.id)
+                      deleteTask(task.id);
+                      getPendings();
                     }
                   }
                 />
@@ -128,6 +132,7 @@ function Manifest() {
                     if(e.target.value!== ""){
                       addTask(e.target.value)
                       setTask("");
+                      getPendings();
                     }else {
                         return warningToast("Enter a task")
                     }
@@ -144,6 +149,7 @@ function Manifest() {
                     if(task!== ""){
                       addTask(task)
                       setTask("");
+                      getPendings();
                     }else {
                       warningToast("Enter a task")
                     }

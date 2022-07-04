@@ -43,14 +43,14 @@ class AdvisorFullSerealizer(serializers.ModelSerializer):
 class AdvisorReviewSerealizer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username')
     reviews = serializers.CharField()
-    student = serializers.CharField()
+    students = serializers.CharField()
     class Meta:
         model = Advisor
-        fields = ('id', 'username', 'reviews', 'student')
+        fields = ('id', 'username', 'reviews', 'students')
 
 class ReviewerReviewSerealizer(serializers.ModelSerializer):
     reviews = serializers.CharField()
-    student = serializers.CharField()
+    students = serializers.CharField()
     class Meta:
         model = Reviewer
-        fields = ('id', 'name', 'reviews', 'student')
+        fields = ('id', 'name', 'reviews', 'students')

@@ -167,7 +167,7 @@ def upfrontPayments(request):
             else:
                 return Response({'status':'Paid'})
     else:
-        return Response({'status':'Either Not Student or Not Upfront'})
+        return Response({'status':'Paid'})
             
                 
             

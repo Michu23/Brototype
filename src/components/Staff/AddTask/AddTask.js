@@ -370,10 +370,7 @@ const AddTask = ({ title, value, form }) => {
                             {location.place}
                           </MenuItem>
                         )})}
-                      {/* <MenuItem value={"kochi"}>Kochi</MenuItem>
-                      <MenuItem value={"calicut"}>Calicut</MenuItem>
-                      <MenuItem value={"trivandrum"}>Trivandrum</MenuItem>
-                      <MenuItem value={"dubai"}>Dubai</MenuItem> */}
+                     
                     </Select>
                   </FormControl>
                 </Row>

@@ -34,7 +34,8 @@ def getBatches(request):
 def createBatch(request):
     if request.user.is_lead or request.user.is_superuser:
         advisor = Advisor.objects.get(id=request.data['advisor'])
-        Batch.objects.create( name=request.data['name'], advisor=advisor, code=generateLink(request.data['name']))
+        Batch.objects.create( name=request.data['name'], advisor=advisor, location = Location.objects.get(id=request.data['location']),
+        code=generateLink(request.data['name']))
         return Response({"message": "Batch created successfully"})
     else:
         return Response({"message": "You are not authorized to create Batch"})

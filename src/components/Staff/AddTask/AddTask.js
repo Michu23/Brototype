@@ -18,10 +18,12 @@ import { set } from "react-hook-form";
 
 const AddTask = ({ title, value, form }) => {
   const {
+    allLocations,
     batches,
     domains,
     getBatches,
     getDomains,
+    getLocations,
     getNotificationsTypes,
     createNotifications,
   } = useContext(AuthContext) ;
@@ -57,7 +59,7 @@ const AddTask = ({ title, value, form }) => {
   const [count, setCount] = useState(0);
 
   const handleClickOpen = () => {
-    if (value === "batch" || value === "updateBatch" || value === "group") {
+    if (value === "updateBatch" || value === "group") {
       getAdvisors();
     } else if (value === "addgroup") {
       getAdvisors();
@@ -72,6 +74,9 @@ const AddTask = ({ title, value, form }) => {
       getDomains();
       getBatches();
       getStudents();
+    } else if (value === "batch") {
+      getAdvisors();
+      getLocations();
     }
 
     setName(null);
@@ -358,10 +363,17 @@ const AddTask = ({ title, value, form }) => {
                       maxHeight="200px"
                       MenuProps={MenuProps}
                     >
-                      <MenuItem value={"kochi"}>Kochi</MenuItem>
+                      {allLocations &&
+                        allLocations.map((location) =>{
+                          return (
+                          <MenuItem key={location.id} value={location.id}>
+                            {location.place}
+                          </MenuItem>
+                        )})}
+                      {/* <MenuItem value={"kochi"}>Kochi</MenuItem>
                       <MenuItem value={"calicut"}>Calicut</MenuItem>
                       <MenuItem value={"trivandrum"}>Trivandrum</MenuItem>
-                      <MenuItem value={"dubai"}>Dubai</MenuItem>
+                      <MenuItem value={"dubai"}>Dubai</MenuItem> */}
                     </Select>
                   </FormControl>
                 </Row>

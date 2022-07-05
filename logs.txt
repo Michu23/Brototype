@@ -1,0 +1,77 @@
+username : advisor01
+password : adminadmin
+
+username : advisor02
+password : adminadmin
+
+username : advisor03
+password : adminadmin
+
+username : advisor04
+password : adminadmin
+
+//lead
+
+username : lead1
+password : adminadmin
+
+//superuser
+
+username : admin
+password : admin
+
+//Batch 20
+
+username : student201
+password : student20
+
+username : student202
+password : student20
+
+//Batch 21
+
+username : student2101
+password : student21
+
+username : student2102
+password : student21
+
+//Batch 22
+
+username : student2201
+password : student22
+
+username : student2202
+password : student22
+
+//Batch 23
+
+username : student2301
+password : student23
+
+username : student2302
+password : student23
+
+//Batch 24
+
+username : student2401
+password : student24
+
+username : student2402
+password : student24
+
+//Batch 25
+
+username : student2501
+password : student25
+
+username : student2502
+password : student25
+
+//Batch 26
+
+username : student2601
+password : student26
+
+username : student2602
+password : student26

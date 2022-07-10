@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AuthContext from '../../../Context/AuthContext';
 import { useEffect } from 'react';
+import { Row,Col } from "react-bootstrap";
+
 
 import Table from 'react-bootstrap/Table';
 
@@ -16,8 +18,8 @@ export default function SimpleAccordion() {
     getUserHomeDetailes();
   }, []);
   return (
-    <div>
-      <Accordion defaultExpanded>
+    <Row className='my-4 mb-5'>
+      <Col><Accordion defaultExpanded>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
@@ -35,8 +37,8 @@ export default function SimpleAccordion() {
                 )})}
           </Typography>
         </AccordionDetails>
-      </Accordion>
-      <Accordion>
+      </Accordion></Col>
+      <Col><Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -67,7 +69,9 @@ export default function SimpleAccordion() {
             </Table>
           {/* </Typography> */}
         </AccordionDetails>
-      </Accordion>
-    </div>
+      </Accordion></Col>
+      
+      
+    </Row>
   );
 }

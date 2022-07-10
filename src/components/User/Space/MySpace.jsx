@@ -18,12 +18,9 @@ const MySpace = () => {
       {chartData && (
       <Row className="mt-5 col-11 chartspage">
         <Row>
-          <Col md={6}>
-          
-          </Col>
-          <Col md={6}>
+         
             <Accordion/>
-          </Col>
+         
         </Row>
         <div className="p-0 m-0 mb-4">
         <h2 className="text-center">My Charts</h2>

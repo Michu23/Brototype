@@ -8,6 +8,13 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
+const goToTop = () => {
+  window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+  });
+};
+
 const Navs = ({ link, title, icon }) => {
   return (
     <>
@@ -15,6 +22,7 @@ const Navs = ({ link, title, icon }) => {
         <Col
           className={`pe-0 row m-0 justify-content-end text-center navdiv position-relative cp  ${style.navItems}`}
           xs={12}
+          onClick={goToTop}
         >
           <Col className="my-2 p-0" xs={11}>
             <ListItem disablePadding>

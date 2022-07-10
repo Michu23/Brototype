@@ -46,7 +46,7 @@ def getChartdata(request):
                 # this is the data of count of on going students for each domain
                 {"data":
                     {"labels": [day.strftime("%A") for day in getDays(7)],
-                    "title":"By Day",
+                    "title":"Review count by Day",
                     "data": [
                         {"label":"You", "data": [reviews.filter(created=day).count() for day in getDays(7)],
                         "backgroundColor": colorCreater("0.4"),
@@ -57,7 +57,7 @@ def getChartdata(request):
                 # this is the data of count of on going students for each domain
                 {"data":
                     {"labels": [week[0].strftime("%d/%m")+"-"+week[1].strftime("%d/%m") for week in getWeeks(6)],
-                    "title":"By Week",
+                    "title":"Review count by Week",
                     "data": [
                         {"label":"You", "data": [reviews.filter(created__in=week).count() for week in getWeeks(6)],
                         "backgroundColor": colorCreater("0.4"),
@@ -68,13 +68,25 @@ def getChartdata(request):
                 # this is the data of count of on going students for each domain
                 {"data":
                     {"labels": [month.strftime("%B") for month in getMonths(6)],
-                    "title":"By Month",
+                    "title":"Review count by Month",
                     "data": [
                         {"label":"You", "data": [reviews.filter(created=month).count() for month in getMonths(6)],
                         "backgroundColor": colorCreater("0.4"),
                         "borderColor": colorCreater("1")}],
                     "brWidth": 1},
                 "type":"line"})
+        chartData.append(
+            # this is the data of count of on going students for each domain for the last 6 years
+            {"data":
+            {
+                "labels": getYears(6),
+                "title":"Review count by Year",
+                "data": [
+                    {"label":"You", "data": [reviews.filter(created__year=year).count() for year in getYears(6)],
+                    "backgroundColor": colorCreater("0.4"),
+                    "borderColor": colorCreater("1")}],
+                "brWidth": 1},
+            "type":"line"})
         return Response(chartData)
     elif request.user.is_lead or request.user.is_superuser:
         chartData = []
@@ -98,7 +110,7 @@ def getChartdata(request):
                 # this is the data of count of on going students for each domain
                 {"data":
                     {"labels": [domain.name for domain in domains],
-                    "label":"On Going",
+                    "label":"On Going Students",
                     "data": onGoing,
                     "bgColor": onGoingBg,
                     "brColor": onGoingBr,
@@ -258,9 +270,14 @@ def toInt(num):
         return 0
     else:
         return int(num)
+        
 def colorCreater(opcity):
     color = [random.choice(range(240)) for i in range(3)]
     return "rgb("+str(color[0])+", "+str(color[1])+", "+str(color[2])+", "+opcity+")"
+
+def getYears(n):
+    now = datetime.now()
+    return [now.year-i for i in range(n)]
 
 def getMonths(count):
     now = datetime.now()

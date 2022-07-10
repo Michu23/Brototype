@@ -596,6 +596,7 @@ const PlacementProfile = () => {
               <Button
                 className="submitProfile ms-3 bg-dark text-white"
                 color="primary"
+                onClick={goToTop}
               >
                 Cancel
               </Button>
@@ -607,3 +608,10 @@ const PlacementProfile = () => {
 }
 
 export default PlacementProfile
+
+const goToTop = () => {
+  window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+  });
+};

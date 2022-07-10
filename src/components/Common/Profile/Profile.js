@@ -562,6 +562,7 @@ function Profile({ by }) {
             <Button
               className="submitProfile ms-3 bg-dark text-white"
               color="primary"
+              onClick={goToTop}
             >
               Cancel
             </Button>
@@ -573,3 +574,10 @@ function Profile({ by }) {
 }
 
 export default Profile;
+
+const goToTop = () => {
+  window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+  });
+};

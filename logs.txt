@@ -22,56 +22,56 @@ password : admin
 
 //Batch 20
 
-username : student201
-password : student20
+username : Student201
+password : Student20
 
-username : student202
-password : student20
+username : Student202
+password : Student20
 
 //Batch 21
 
-username : student2101
-password : student21
+username : Student2101
+password : Student21
 
-username : student2102
-password : student21
+username : Student2102
+password : Student21
 
 //Batch 22
 
-username : student2201
-password : student22
+username : Student2201
+password : Student22
 
-username : student2202
-password : student22
+username : Student2202
+password : Student22
 
 //Batch 23
 
-username : student2301
-password : student23
+username : Student2301
+password : Student23
 
-username : student2302
-password : student23
+username : Student2302
+password : Student23
 
 //Batch 24
 
-username : student2401
-password : student24
+username : Student2401
+password : Student24
 
-username : student2402
-password : student24
+username : Student2402
+password : Student24
 
 //Batch 25
 
-username : student2501
-password : student25
+username : Student2501
+password : Student25
 
-username : student2502
-password : student25
+username : Student2502
+password : Student25
 
 //Batch 26
 
-username : student2601
-password : student26
+username : Student2601
+password : Student26
 
-username : student2602
-password : student26
+username : Student2602
+password : Student26

@@ -44,11 +44,18 @@ def rentPayments(request):
             
         if pay:
             if pay[0].status == 'Pending' or pay[0].status == 'Partially':
+                print('Pending')
                 if date.day>4 and date>pay[0].expiry_date:
+                    print('Expired')
                     pay[0].status = 'Expired'
                     pay[0].save()
+                else:
+                    pass
+            else:
+                pass
             
             if pay[0].status == 'Pending' or pay[0].status == 'Partially':
+                print('Pendingg')
                 context = {
                     'id':pay[0].paymentid,
                     'amount':pay[0].amount,
@@ -56,8 +63,11 @@ def rentPayments(request):
                     'status':pay[0].status,
                     }
                 return Response(context)
+            elif pay[0].status == 'Completed' or pay[0].status == 'Expired':
+                pass
             else:
-                return Response({'status':'Paid'})
+                pass
+            
         elif date.day <= 3:
             rpay= client.order.create({
             "amount": amount*100,
@@ -76,6 +86,7 @@ def rentPayments(request):
                 'status':pay.status,
             }
             return Response(context)
+
         elif len(pay2) == 0:
             newrpay = client.order.create({
             "amount": amount*100,
@@ -86,14 +97,8 @@ def rentPayments(request):
                 "Student": student.user.username,
             }
             })
+
             newpay = Payment.objects.create(student=student,amount=amount,totalamt=amount,types='Rent',status='Expired',month=month,paymentid=newrpay['id'])
-            context = {
-                'id':newpay.paymentid,
-                'amount':newpay.totalamt,
-                'type':newpay.types,
-                'status':newpay.status,
-            }
-            return Response(context)
         else:
             return Response({'status':'Paid'})
     else:

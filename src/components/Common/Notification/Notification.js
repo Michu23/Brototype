@@ -62,8 +62,13 @@ function Notification() {
         xs={12}
       >
         <Row className="m-0">
-          <Col className="text-center pb-3 mb-2" xs={12}>
-            <Link to={`${ user.position ==="Student" ? "/notifications" : `/${user.position}/notifications`}`}><h6 className="m-0">See all</h6></Link>
+          <Col className="text-center pb-3 mb-2" xs={12} onClick={()=>{
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+          });
+          }}>
+            <Link to={`${ user.position ==="Student" ? "/notifications" : `/${user.position}/notifications`}`} ><h6 className="m-0">See all</h6></Link>
           </Col>
         </Row>
       </Col>

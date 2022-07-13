@@ -1,0 +1,26 @@
+
+
+#mySidenav #about {
+  z-index: 1000;
+  position: fixed;
+  right: -250px;
+  transition: 0.3s;
+  width: 300px;
+  height: fit-content;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#mySidenav #about:hover {
+  right: 0px;
+}
+
+#about {
+  top: 550px;
+  color: rgb(255, 255, 255);
+  background-color: var(--dark);
+}
+
+

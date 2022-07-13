@@ -2,6 +2,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Back from "./components/Common/Back/Back";
+
 //////////////########//////////////
 import Profile from "./components/Common/Profile/Profile";
 import Manifest from "./components/Common/Manifest/Manifest";
@@ -94,6 +96,7 @@ function App() {
                         <>
                           <Tasks />
                           <Pending />
+                          
                         </>
                       }
                     />
@@ -131,6 +134,7 @@ function App() {
               </AdvisorProvider>
             </StudentProvider>
             <ToastContainer />
+            <Back/>
 
             {/* ADVISOR */}
             <AdvisorProvider>
@@ -216,7 +220,13 @@ function App() {
                 <Route
                   path="/lead/batch"
                   element={
-                    <Lead child={<Batch />}/>
+                    <Lead child={
+                   
+                    <Batch />
+                    
+                  }/>
+                    
+                   
                   }
                 />
                 <Route

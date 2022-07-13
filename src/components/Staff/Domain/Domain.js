@@ -6,11 +6,16 @@ import AddTask from "../../Staff/AddTask/AddTask"
 import AuthContext from "../../../Context/AuthContext";
 import LeadContext from "../../../Context/LeadContext";
 import Confirm from "../Confirm/Confirm";
+import { ButtonBase } from "@mui/material";
+import {HiArrowLeft} from 'react-icons/hi'
+import { useNavigate} from 'react-router-dom';
 
 const Domain = () => {
 
   const { getDomains, domains, getNotifications } = useContext(AuthContext);
   const { deleteDomain } = useContext(LeadContext);
+
+  const navigate = useNavigate();
 
   const message = "Are you sure you want to delete this domain?";
   const onConfirm = "If you delete this domain, all the students associated with it will be domainless!";
@@ -28,6 +33,14 @@ const Domain = () => {
         </div>
         <div>
          <AddTask title="Add Domain" value="domain" />
+
+
+         <div className="textlight bgdark d-flex justify-content-between my-3 mb-5 rounded-3 h-50 cp" onClick={() => navigate(-1)}>
+          <div className="mt-2 ms-1 textlight mt-3"><HiArrowLeft size={20}/></div>
+          <div className="d-flex justify-content-center pe-3"><Button><h6 className=" textlight">Back</h6></Button></div>
+         </div>
+         
+         
         </div>
       </Col>
       {/* <Col sm={6} className="d-flex justify-content-between"/> */}

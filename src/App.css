@@ -325,7 +325,9 @@ label{
   border-radius: .125rem;
 }
 
-
+.plrow{
+  font-size: 18px;
+}
 
 .nots{
   max-height: 200px;

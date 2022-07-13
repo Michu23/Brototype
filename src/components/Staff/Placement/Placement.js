@@ -88,7 +88,7 @@ const Placement = () => {
         <Link to={`/${user.position === "Placement" ? "placement" : "lead"}/placements/info`} style={{ textDecoration: 'none' }}
         onClick={()=>{setCurr_student(placement.student.id)}}>
           <Col sm={12} className="py-2 mb-2 cp rounded-3 bg" key={placement.id}>
-            <Row className="m-0">
+            <Row className="m-0 plrow">
               <Col className="textdark" sm={1}>
                 #{placement.student.batch.name}
               </Col>

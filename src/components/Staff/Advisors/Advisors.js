@@ -17,12 +17,14 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import StyleContext from "../../../Context/StyleContext";
 /////////////////////////
 
 const Advisors = () => {
 
   const { getAdvisors, advisors, getProfile, blockAdvisor, advisorLink } = useContext(LeadContext);
   const { getNotifications } = useContext(AuthContext);
+  const {successToast} = useContext(StyleContext);
 
   const navigate = useNavigate();
 
@@ -48,7 +50,10 @@ const Advisors = () => {
           {advisorLink ? <div className="d-flex">
             <ChangeCode button="Change" title="Change Old Link" />
             <Button className="ms-2 w-75 bgdark textlight"
-              onClick={()=>{copyToClipboard(BaseLink + "signup/" + advisorLink)}}>Link</Button>
+              onClick={()=>{
+                copyToClipboard(BaseLink + "signup/" + advisorLink)
+                successToast("Link copied to clipboard")
+                }}>Link</Button>
           </div>:<>
             <ChangeCode button="Add Link" title="Add New Link" />
           </>}

@@ -6,6 +6,7 @@ import AddTask from "../../Staff/AddTask/AddTask";
 import LeadContext from "../../../Context/LeadContext";
 import AuthContext,{ BaseLink } from "../../../Context/AuthContext";
 import Confirm from "../Confirm/Confirm";
+import StyleContext from "../../../Context/StyleContext";
 
 
 
@@ -13,6 +14,8 @@ const Batch = () => {
 
   const { batches, getBatches, getNotifications } = useContext(AuthContext);
   const { deleteBatch } = useContext(LeadContext);
+  const {successToast} = useContext(StyleContext);
+
 
   const message = "Are you sure you want to delete this batch?";
   const onConfirm = "If you delete this batch, all the students associated with it will be batchless!";
@@ -74,7 +77,10 @@ const Batch = () => {
               {batch.placement}
             </Col>
             <Col className="textdark d-flex" sm={5}>
-              <Button className="me-2" variant="contained" onClick={()=>{copyToClipboard(BaseLink+"signup/"+batch.code)}}>Link</Button>
+              <Button className="me-2" variant="contained" onClick={()=>{
+                copyToClipboard(BaseLink+"signup/"+batch.code)
+                successToast("Link copied to clipboard")
+                }}>Link</Button>
               <AddTask title="Edit" value="updateBatch" form={batch.id} />
               {/* <Button className="coh ms-3" onClick={()=>{deleteBatch(batch.id)}}>Delete</Button> */}
               <Confirm title="Delete" name={batch.name} value={deleteBatch} message={message} onConfirm={onConfirm} form={batch.id} />

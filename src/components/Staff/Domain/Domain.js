@@ -35,10 +35,10 @@ const Domain = () => {
          <AddTask title="Add Domain" value="domain" />
 
 
-         <div className="textlight bgdark d-flex justify-content-between my-3 mb-5 rounded-3 h-50 cp" onClick={() => navigate(-1)}>
+         {/* <div className="textlight bgdark d-flex justify-content-between my-3 mb-5 rounded-3 h-50 cp" onClick={() => navigate(-1)}>
           <div className="mt-2 ms-1 textlight mt-3"><HiArrowLeft size={20}/></div>
           <div className="d-flex justify-content-center pe-3"><Button><h6 className=" textlight">Back</h6></Button></div>
-         </div>
+         </div> */}
          
          
         </div>

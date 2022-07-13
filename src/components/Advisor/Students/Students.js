@@ -93,7 +93,7 @@ const Students = () => {
       <Col className="m-0 row">
         <>
           {myStudents ? myStudents.map((student, index) => {
-            if ((name !== '' && batch !== '' && student.advisor.includes(name) && student.batch.includes(batch)) || ((name !== '' && batch === '' && student.advisor.includes(name)) || (name === '' && batch !== '' &&  student.batch.includes(batch))) || (name === '' && batch === '')) {
+            if ((name !== '' && batch !== '' && student.advisor.toLowerCase().includes(name.toLowerCase()) && student.batch.toLowerCase().includes(batch.toLowerCase())) || ((name !== '' && batch === '' && student.advisor.toLowerCase().includes(name.toLowerCase())) || (name === '' && batch !== '' &&  student.batch.toLowerCase().includes(batch.toLowerCase()))) || (name === '' && batch === '')) {
             return(
             <Col
             sm={12}

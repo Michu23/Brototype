@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from Batch.models import Batch
 from Payment.models import Payment
-from User.models import Domain
+from User.models import Domain, Notification
 from .models import Shifted, Student, Placement, EducationDetails
 from .serializer import ViewStudentSerializer, MyStudentSerializer, PlacementSerializer, TerminateRequestSerializer, ShiftRequestSerializer, EducationSerializer
 from Manifest.models import Manifest, Tasks
@@ -151,6 +151,8 @@ def shiftReject(request):
 def terminateAccept(request):
     if request.user.is_lead or request.user.is_superuser:
         Student.objects.filter(id=request.data['id']).update(status="Terminated")
+        stname= Student.objects.get(id=request.data['id'])
+        Notification.objects.create(type="Termination",content=f"{stname.user.username} of batch {stname.batch} has been terminated",creator=request.user.username)
         return Response({"message": "Student Updated"})
     else:
         return Response({"message": "You are not authorized to perform this action"})
@@ -169,6 +171,8 @@ def terminateReject(request):
 def createPlacement(request):
     if request.user.is_lead or request.user.is_superuser:
         Student.objects.filter(id=request.data['student']).update(status="Placed")
+        stname = Student.objects.get(id=request.data['student'])
+        Notification.objects.create(type="Placement",content=f"{stname.user.username} has been placed in {request.data['name']} for {request.data['lpa']} LPA as a {request.data['designation']}",creator=request.user.username)
         Placement.objects.create(student=Student.objects.get(id=request.data['student']), company=request.data['name'], position=request.data['designation'], LPA=request.data['lpa'], location=request.data['location'], address=request.data['address'], count=request.data['count'])
         return Response({"message": "Student Updated"})
     else:
@@ -183,6 +187,7 @@ def updatePlacementProfile(request):
         return Response({"message": "Student Updated"})
     else:
         return Response({"message": "You are not authorized to perform this action"})
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -200,3 +205,4 @@ def getPlacement(request):
         return Response({"placement": placement, "education": education})
     else:
         return Response({"message": "You are not authorized to perform this action"})
+

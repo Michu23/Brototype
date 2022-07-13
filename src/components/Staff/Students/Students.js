@@ -80,7 +80,7 @@ const Students = () => {
       <Col className="m-0 row ">
         {students
           ? students.map((student) =>{
-            if ((name !== '' && batch !== '' && student.name.includes(name) && student.batch.includes(batch)) || ((name !== '' && batch === '' && student.name.includes(name)) || (name === '' && batch !== '' &&  student.batch.includes(batch))) || (name === '' && batch === '')) {
+            if ((name !== '' && batch !== '' && student.name.toLowerCase().includes(name.toLowerCase()) && student.batch.toLowerCase().includes(batch.toLowerCase())) || ((name !== '' && batch === '' && student.name.toLowerCase().includes(name.toLowerCase())) || (name === '' && batch !== '' &&  student.batch.toLowerCase().includes(batch.toLowerCase()))) || (name === '' && batch === '')) {
             return (
               <Col sm={12} className="py-3 mb-2 cp mt-1 rounded-3 bg"
               onClick={(e)=>{

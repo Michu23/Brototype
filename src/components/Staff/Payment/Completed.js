@@ -41,7 +41,7 @@ const Completed = ({name, batch}) => {
         <>
           {allpaid ? allpaid.length > 0 ? 
             allpaid.map((paid, index) => {
-              if ((name !== '' && batch !== '' && paid.student.includes(name) && paid.batch.includes(batch)) || ((name !== '' && batch === '' && paid.student.includes(name)) || (name === '' && batch !== '' &&  paid.batch.includes(batch))) || (name === '' && batch === '')) {
+              if ((name !== '' && batch !== '' && paid.student.toLowerCase().includes(name.toLowerCase()) && paid.batch.toLowerCase().includes(batch.toLowerCase())) || ((name !== '' && batch === '' && paid.student.toLowerCase().includes(name.toLowerCase())) || (name === '' && batch !== '' &&  paid.batch.toLowerCase().includes(batch.toLowerCase()))) || (name === '' && batch === '')) {
               return (
                 <Col sm={12} className="py-2 mb-2 cp bg rounded-3">
                   <Row className="m-0">

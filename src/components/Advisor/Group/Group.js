@@ -74,7 +74,7 @@ const Work = () => {
       <Col className="m-0 row">
         <>
             {myGroupDetails && myGroupDetails.map((student, index) => {
-              if ((name !== '' && student.name.includes(name)) || (name === '')) {
+              if ((name !== '' && student.name.toLowerCase().includes(name.toLowerCase())) || (name === '')) {
               return (
               <Col
               sm={12}

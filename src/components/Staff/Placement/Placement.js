@@ -83,7 +83,7 @@ const Placement = () => {
 
       <Col className="m-0 row ">
         {placements ? placements.length>0 ? placements.map((placement) => {
-          if ((name !== '' && batch !== '' && placement.student.user.username.includes(name) && placement.student.batch.name.includes(batch)) || ((name !== '' && batch === '' && placement.student.user.username.includes(name)) || (name === '' && batch !== '' &&  placement.student.batch.name.includes(batch))) || (name === '' && batch === '')) {
+          if ((name !== '' && batch !== '' && placement.student.user.username.toLowerCase().includes(name.toLowerCase()) && placement.student.batch.name.toLowerCase().includes(batch.toLowerCase())) || ((name !== '' && batch === '' && placement.student.user.username.toLowerCase().includes(name.toLowerCase())) || (name === '' && batch !== '' &&  placement.student.batch.name.toLowerCase().includes(batch.toLowerCase()))) || (name === '' && batch === '')) {
           return (
         <Link to={`/${user.position === "Placement" ? "placement" : "lead"}/placements/info`} style={{ textDecoration: 'none' }}
         onClick={()=>{setCurr_student(placement.student.id)}}>

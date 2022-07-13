@@ -595,7 +595,7 @@ const AddTask = ({ title, value, form }) => {
                     >
                       {students &&
                         students.map((student) =>{
-                          if ((batch !== null && domain !== null && batch === student.batch && findDomainName(domain) === student.domain)) {
+                          if ((batch !== null && domain !== null && batch === student.batch && findDomainName(domain) === student.domain )) {
                           return (
                           <MenuItem key={student.id} value={student.id}>
                             {student.name}

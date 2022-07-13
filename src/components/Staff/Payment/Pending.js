@@ -55,7 +55,7 @@ const Pending = ({name, batch}) => {
       <Col className="m-0 row">
         {allpending ? allpending.length > 0 ? 
           allpending.map((pending, index) => {
-            if ((name !== '' && batch !== '' && pending.student.includes(name) && pending.batch.includes(batch)) || ((name !== '' && batch === '' && pending.student.includes(name)) || (name === '' && batch !== '' &&  pending.batch.includes(batch))) || (name === '' && batch === '')) {
+            if ((name !== '' && batch !== '' && pending.student.toLowerCase().includes(name.toLowerCase()) && pending.batch.toLowerCase().includes(batch.toLowerCase())) || ((name !== '' && batch === '' && pending.student.toLowerCase().includes(name.toLowerCase())) || (name === '' && batch !== '' &&  pending.batch.toLowerCase().includes(batch.toLowerCase()))) || (name === '' && batch === '')) {
             if (pending.status === "Expired") {
               return (
                 <Col sm={12} className="py-2 mb-2 cp bg rounded-3">

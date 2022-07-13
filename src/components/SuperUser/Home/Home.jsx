@@ -16,6 +16,9 @@ const AdminHome = () => {
     getNotifications()
   }, []);
 
+  const [batch, setBatch] = useState('');
+  const [name, setName] = useState('');
+
   return (
     <>
     <Row className="m-0 p-3 rounded-2 pb-0">
@@ -32,7 +35,7 @@ const AdminHome = () => {
             className={`py-1 my-1 textwhite mx-2 pb-3 text-start ps-3 rounded-3 ${style.inputField}`}
           >
             <label className={`${style.label}`}>Name</label>
-            <input type="text" className={`w-100 ${style.input}`} />
+            <input type="text"  value={name} onChange={(e)=>{setName(e.target.value)}}  className={`w-100 ${style.input}`} />
           </Col>
 
           <Col
@@ -40,7 +43,7 @@ const AdminHome = () => {
             className={`py-1 textwhite my-1 pb-3 text-start ps-3 rounded-3 ${style.inputField}`}
           >
             <label className={`${style.label}`}>Batch</label>
-            <input type="text" className={`w-100 ${style.input}`} />
+            <input type="text"  value={batch} onChange={(e)=>{setBatch(e.target.value)}}  className={`w-100 ${style.input}`} />
           </Col>
 
           <Button className=" mx-1 searchbtn">
@@ -76,6 +79,7 @@ const AdminHome = () => {
         <Col sm={12} className="py-2 my-2 cp rounded-3 bglight">
         {leads ? leads.length > 0 ? 
                 leads.map((lead, index) => {
+                if ((name !== '' && batch !== '' && lead.name.toLowerCase().includes(name.toLowerCase()) && lead.location.toLowerCase().includes(batch.toLowerCase())) || ((name !== '' && batch === '' && lead.name.toLowerCase().includes(name.toLowerCase())) || (name === '' && batch !== '' &&  lead.location.toLowerCase().includes(batch.toLowerCase()))) || (name === '' && batch === '')) {
                   return (
           <Row className="m-0 bg py-3 pb-1 my-2 cp rounded-3 "  key={index}>
           
@@ -101,7 +105,7 @@ const AdminHome = () => {
             </Col>
            
           </Row>
-           );
+           )}
           }):
           
           <NoData message="No Leads data found!" />

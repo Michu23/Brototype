@@ -9,10 +9,10 @@ import FormData from "form-data";
 const AuthContext = createContext();
 export default AuthContext;
 
-export const BaseUrl = "https://api.brotocamp.space/";
-export const BaseLink = "https://brotocamp.space/";
-// export const BaseUrl = "http://127.0.0.1:8000/";
-// export const BaseLink = "http://localhost:3000/";
+// export const BaseUrl = "https://api.brotocamp.space/";
+// export const BaseLink = "https://brotocamp.space/";
+export const BaseUrl = "http://127.0.0.1:8000/";
+export const BaseLink = "http://localhost:3000/";
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
         const position = jwt_decode(res.data.access).position;
         if (position === "Admin") {
           navigate("/lead");
-          successToast("Welcome admin , Its Miras and Shafeeq of batch 20 who did this web application, Kindly assure our high salary placements");
+          // successToast("Welcome admin , Its Miras and Shafeeq of batch 20 who did this web application, Kindly assure our high salary placements");
         } else if (position === "Advisor") {
           navigate("/advisor");
           successToast("Welcome Advisor");

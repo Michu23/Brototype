@@ -63,7 +63,7 @@ def createLead(request):
         user = User.objects.create_user(username=request.data['username'], password=request.data['password'], email=request.data['email'],
                                    is_staff=False, is_lead=True, department=Department.objects.get(name=request.data['staff']))
         location = Location.objects.get(id=request.data['location'])
-        Lead.objects.create(user=user, name=request.data['name'], phone=request.data['phone'], location=location)
+        Lead.objects.create(user=user, name=request.data['fullname'], phone=request.data['phone'], location=location)
         return Response({"message": "Lead created successfully"})
     else:
         return Response({"message": "You are not authorized to create Lead"})

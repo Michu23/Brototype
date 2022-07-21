@@ -77,7 +77,7 @@ const Advisors = () => {
               #{index + 1}
             </Col>
             <Col className="textdark" sm={2}>
-              {reviewer.username}
+              {reviewer.name}
             </Col>
             <Col className="textdark" sm={2}>
               {reviewer.students}

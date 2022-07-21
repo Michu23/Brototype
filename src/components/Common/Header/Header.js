@@ -13,13 +13,17 @@ import AuthContext from "../../../Context/AuthContext";
 import Button from "@mui/material/Button";
 import StyleContext from "../../../Context/StyleContext";
 import AccountMenu from "./AccountMenu";
+import { useNavigate } from "react-router";
+
 
 
 
 function Header() {
 
   const { logoutUser, user } = useContext(AuthContext);
-  const { darkmode, setDarkmode,successToast } = useContext(StyleContext);
+  const { darkmode, setDarkmode,successToast,warningToast } = useContext(StyleContext);
+  const navigate = useNavigate();
+
 
 
   const handleDarkMode = (e) => {
@@ -51,12 +55,23 @@ function Header() {
       <Col md={5}>
         <Row className="m-0">
           <Col md={5} className="p-0">
-            <Row className={`m-0 d-flex rounded-3 ${style.search}`}>
+            <Row className={`m-0  d-flex rounded-3 ${style.search}`}>
               <Col xs={10} className="p-0 py-2 ps-3">
                 <input
                   type="text"
-                  className={`w-100 ${style.searchBar}`}
-                  id=""
+                  className={`w-100 textdark ${style.searchBar}`}
+                  onKeyUp={(e) => {
+                    if(e.keyCode == 13){
+                        if(e.target.value!== "" && e.target.value!== null && e.target.value!== undefined && e.target.value!== " "){
+                          var val = e.target.value;
+                          const replacedval = val.replaceAll(' ','+');
+                          window.open(`https://www.google.com/search?q=${replacedval}`, '_blank'); 
+                          e.target.value = "";
+                        }else {
+                            return warningToast("Enter something to search");
+                        }
+                    }
+                  }}
                 />
               </Col>
               <Col xs={2} className="p-0">

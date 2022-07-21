@@ -7,6 +7,13 @@ import Button from "@mui/material/Button";
 const Back = () => {
   const navigate = useNavigate();
 
+  const goToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+  };
+
   return (
     <div id="mySidenav" className="sidenav cp" onClick={() => navigate(-1)}>
     <div href="#" id="about" className="p-3">
@@ -15,9 +22,7 @@ const Back = () => {
             <div className="mt-2 ms-1 textlight mt-1"><HiArrowLeft size={20}/></div>
             </div>
             <div>
-                
-                <div className="d-flex justify-content-center pe-3"><Button><h4 className=" textlight">Back</h4></Button></div>
-                
+                <div className="d-flex justify-content-center pe-3" onClick={goToTop}><Button><h4 className=" textlight">Back</h4></Button></div>
             </div>
         </div>
     </div>

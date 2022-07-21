@@ -125,7 +125,6 @@ function Manifest() {
               value={task}
               onChange={(e) => {
                 setTask(e.target.value);
-                
               }}
               onKeyUp={(e) => {
                 if(e.keyCode == 13){

@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import StyleContext from "../../../Context/StyleContext";
 import AccountMenu from "./AccountMenu";
 import { useNavigate } from "react-router";
+import {FcGoogle} from 'react-icons/fc';
 
 
 
@@ -56,10 +57,11 @@ function Header() {
         <Row className="m-0">
           <Col md={5} className="p-0">
             <Row className={`m-0  d-flex rounded-3 ${style.search}`}>
-              <Col xs={10} className="p-0 py-2 ps-3">
+              <Col xs={10} className="p-0 py-2 ps-2 d-flex">
+              <FcGoogle size={25} className="m-0 ps-1"/>
                 <input
                   type="text"
-                  className={`w-100 textdark ${style.searchBar}`}
+                  className={`w-100 ms-1 textdark ${style.searchBar}`}
                   onKeyUp={(e) => {
                     if(e.keyCode == 13){
                         if(e.target.value!== "" && e.target.value!== null && e.target.value!== undefined && e.target.value!== " "){
